@@ -1,0 +1,253 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Tensors, Lagrange methods, and Hausdorff Measure</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m47228</md:content-id>
+  <md:title>Tensors, Lagrange methods, and Hausdorff Measure</md:title>
+  <md:abstract/>
+  <md:uuid>690b910f-0362-4475-81ce-4b62dc0fc0b2</md:uuid>
+</metadata>
+
+<content>
+    <para id="id62173">Presentation Notes
+Harry</para>
+    <para id="id62184">
+      <emphasis effect="bold">The Stress Tensor:</emphasis>
+    </para>
+    <para id="id62190">Informally, tensors are geometric objects that describe linear relations between vectors, scalars, and other tensors (say, linear maps or dot products). A tensor can be represented by a multi-dimensional array of values and the number of indices needed to specify a component in this array is said to be the order of the tensor.</para>
+    <para id="id62196">
+      <emphasis effect="bold">Multi-dimensional arrays:</emphasis>
+    </para>
+    <para id="id62541">1. Scalar [a] - this is a tensor of order 0 because we don't need any indices to specify "a" within a 1x1 array</para>
+    <para id="id62545">2. Vector [ai
+] i=1,...,n - This is a tensor of order 1 because we need 1 index to specify a component of the vector</para>
+    <para id="id62555">3. mxn matrix - this is a tensor of order 2</para>
+    <para id="id62558">4. Tensors of higher order can be thought of as multidimensional "boxes"</para>
+    <para id="id62562">Notice that we can create a tensor of a new order through the multiplication of tensors. For example, the products of a nxmxp tensor with an px1 vector will yield an nxm matrix.</para>
+    <para id="id62567"><emphasis effect="bold">Definition:</emphasis> The stress force on an object is said to be the force per unit area</para>
+    <para id="id62574">So, the stress tensor is an order 2 tensor (a matrix) which takes a unit length direction vector normal to the surface of an object as an input and gives the stress force vector (with respect to the given coordinate system) at this surface as an output.</para>
+    <para id="id62579">Then, for our problem, which is in 3 dimensions, the stress tensor is a 3x3 matrix with entries Tij, where i,j=1,2,3.</para>
+    <para id="id62584">Imagine a beam and say that we would like to calculate the stress vector at a point, p, in the beam due to a force at the endpoint. Then, given a coordinate system, consider an "epsilon-cube" around p. Given an applied force at the endpoint of the beam (which translates to the same force at p) Tij is the stress vector acting on the ith face in the -jth direction - note that opposite faces have the same index. For an explanation of these properties, see [1].</para>
+    <para id="id62591">One can check that in the context of a Michell Truss, the stress tensor will be a rank-one matrix and that the system of forces is in equilibrium if the divergence of the stress tensor is the negative of the applied forces. In other words, admissible trusses satisfy
+</para>
+    <equation id="id62604">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>∇</m:mi>
+          <m:mi>σ</m:mi>
+          <m:mo>=</m:mo>
+          <m:mo>-</m:mo>
+          <m:mi>F</m:mi>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id62624"> where F is the vector sum of the applied forces. See [5] for an explanation and derivation of this equation.</para>
+    <para id="id62630"><emphasis effect="bold">Definition:</emphasis> Strain is the amount of deformation an object experiences as a result of external forces when compared with its original size and shape.</para>
+    <para id="id62639">The strain tensor is operates similarly to the stress tensor, but the entries Tij are replaced by partial derivates of the position of a point, p, with respect to movement in the coordinate directions as a result of external forces. In the context of a Michell Truss, the strain tensor will always be a rank-one matrix as well.</para>
+    <para id="id62645">One can investigate the relationship between stress and strain via a stress/strain curve.</para>
+    <para id="id62649">
+      <emphasis effect="bold">Euler-Lagrange Equations</emphasis>
+    </para>
+    <para id="id62655">How do we optimize functionals? Consider a functional</para>
+    <equation id="id62659">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>I</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>u</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:msubsup>
+            <m:mo>∫</m:mo>
+            <m:mi>a</m:mi>
+            <m:mi>b</m:mi>
+          </m:msubsup>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>x</m:mi>
+            <m:mo>,</m:mo>
+            <m:mi>u</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>,</m:mo>
+            <m:msup>
+              <m:mi>u</m:mi>
+              <m:mo>'</m:mo>
+            </m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mspace width="0.166667em"/>
+          <m:mi>d</m:mi>
+          <m:mi>x</m:mi>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id62917">over a region containing a and b.</para>
+    <para id="id62922">Let <emphasis effect="bold">u(x)</emphasis> be a minimizer for I(u). Then <emphasis effect="bold">u(x)</emphasis> should satisfy the Euler-Lagrange equations as follows:</para>
+    <equation id="id62937">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mfrac>
+            <m:mi>d</m:mi>
+            <m:mrow>
+              <m:mi>d</m:mi>
+              <m:mi>x</m:mi>
+            </m:mrow>
+          </m:mfrac>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mfrac>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:mi>f</m:mi>
+                <m:mo>(</m:mo>
+                <m:mi>x</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:msup>
+                  <m:mi mathvariant="bold">u</m:mi>
+                  <m:mo>'</m:mo>
+                </m:msup>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi mathvariant="bold">x</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>x</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi mathvariant="bold">u</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi mathvariant="bold">x</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>,</m:mo>
+              <m:msup>
+                <m:mi mathvariant="bold">u</m:mi>
+                <m:mo>'</m:mo>
+              </m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi mathvariant="bold">x</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mspace width="4pt"/>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mrow>
+              <m:mi>d</m:mi>
+              <m:mi>f</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mi>d</m:mi>
+              <m:mi mathvariant="bold">u</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="bold">x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>x</m:mi>
+            <m:mo>,</m:mo>
+            <m:mi mathvariant="bold">u</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="bold">x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>,</m:mo>
+            <m:msup>
+              <m:mi mathvariant="bold">u</m:mi>
+              <m:mo>'</m:mo>
+            </m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="bold">x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>)</m:mo>
+          </m:mrow>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id63120"> For derivations and explanations of these equations, see [2] and [3].</para>
+    <para id="id63126">Note that this doesn't mean that any function like <emphasis effect="bold">u(x)</emphasis> satisfying the equations is a minimizer. In fact, any stationary function for I(u) will satisfy the Euler-Lagrange equations. However, the point for us is that if we can create some sort of functional describing possible truss structures given a set of balanced forces, then we can employ the Euler-Lagrange equations to see which of these truss structures are "stationary," and thus possibly cost minimizers for supporting the given set of point forces.</para>
+    <para id="id63138">The next question one might ask is how to construct such a functional for a finite set of point forces.</para>
+    <para id="id63143">
+      <emphasis effect="bold">Using Lagrange Multipliers to Model a Finite System of Point Forces</emphasis>
+    </para>
+    <para id="id63150">The Lagrange multiplier method is used to find the maximum and minimum of a function subject to a set of constraints. For example, one could find the maximum and minimum values of the function f(x,y) = 6x + 8y subject to the constraint g(x,y) = x<sup>2</sup>+ y<sup>2</sup>- 1 = 0 (e.g. maximize and minimize the function on the unit circle). Our goal is to minimize the cost of an admissible truss structure subject to constraints regarding the application of a finite number of point forces. For example, given a balanced system of point forces in the plane,</para>
+    <para id="id63168"><emphasis effect="bold">Unknowns</emphasis>:</para>
+    <para id="id63175">1. Weights of each possible beam in the structure with wij
+= wji
+</para>
+    <para id="id63188">2. Li
+multipliers to balance the x component of the applied forces</para>
+    <para id="id63197">3. Mi
+multipliers to balance the y component of the applied forces</para>
+    <para id="id63206"><emphasis effect="bold">Constraints</emphasis> = balance of force components in each coordinate direction at each point of application. These equations are of the form:</para>
+    <para id="id63215">At a point, a0
+:</para>
+    <para id="id63223">(x-component force, y-component force) = Li
+[sum of the x-components of the weights of each beam connected at a0
+] + Mi
+[sum of the y-components of the weights of each beam connected at a0
+]</para>
+    <para id="id63249">As one might imagine, this problem can become complicated to solve in cases which lack symmetry. In the usual basic equilateral triangle example (with a point also at the centroid) that we used, there were still 4 constraint equations (one for each point of application) with an x-component part, y-component part, and all the unknown weights.</para>
+    <para id="id63255">One should note that any solution for the simultaneous equations will generate an admissible truss structure. However, solving these equations simultaneously is a difficult problem in higher dimensions, or even when there are just more than four points and forces, none of which are symmetrically arranged. Overall, this is usually an impractical approach for finding a cost-minimizing truss structure given a set of balanced point forces.</para>
+    <para id="id63262">
+      <emphasis effect="bold">Intro to Hausdorff Measure</emphasis>
+    </para>
+    <para id="id63269"><emphasis effect="bold">Definition</emphasis>: If U is a nonempty subset of <m:math overflow="scroll"><m:msup><m:mi>ℜ</m:mi><m:mi>n</m:mi></m:msup></m:math>, the diameter of U is said to be <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>U</m:mi><m:mo>|</m:mo></m:mrow></m:math> = sup<m:math overflow="scroll"><m:mrow><m:mo>{</m:mo><m:mo>|</m:mo><m:mrow><m:mi>x</m:mi><m:mo>-</m:mo><m:mi>y</m:mi></m:mrow><m:mo>|</m:mo></m:mrow></m:math>, x,y <m:math overflow="scroll"><m:mrow><m:mo>∈</m:mo><m:mi>U</m:mi><m:mo>}</m:mo></m:mrow></m:math></para>
+    <para id="id63335"><emphasis effect="bold">Definition</emphasis>: Fix <m:math overflow="scroll"><m:mrow><m:mi>δ</m:mi><m:mo>&gt;</m:mo></m:mrow></m:math>0. If E<m:math overflow="scroll"><m:mrow><m:mo>⊂</m:mo><m:mo>∪</m:mo><m:msub><m:mi>U</m:mi><m:mi>i</m:mi></m:msub></m:mrow></m:math> where i = 1,...,<m:math overflow="scroll"><m:mi>∞</m:mi></m:math> and <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>U</m:mi><m:mo>|</m:mo></m:mrow></m:math><m:math overflow="scroll"><m:mrow><m:mo>≤</m:mo><m:mi>δ</m:mi></m:mrow></m:math>, we say that the collection of <m:math overflow="scroll"><m:msub><m:mi>U</m:mi><m:mi>i</m:mi></m:msub></m:math>'s is a <m:math overflow="scroll"><m:mi>δ</m:mi></m:math>-cover of E.</para>
+    <para id="id63425"><emphasis effect="bold">Definition</emphasis>: Let E<m:math overflow="scroll"><m:mrow><m:mo>⊂</m:mo><m:msup><m:mrow><m:mi>R</m:mi></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:math>. For every <m:math overflow="scroll"><m:mrow><m:mi>δ</m:mi><m:mo>&gt;</m:mo></m:mrow></m:math>0 and <m:math overflow="scroll"><m:mrow><m:mi>α</m:mi><m:mo>≥</m:mo></m:mrow></m:math>0, <m:math overflow="scroll"><m:mi>δ</m:mi></m:math>,<m:math overflow="scroll"><m:mi>α</m:mi></m:math><m:math overflow="scroll"><m:mrow><m:mo>∈</m:mo><m:mi>ℜ</m:mi></m:mrow></m:math>, let <m:math overflow="scroll"><m:msubsup><m:mi>H</m:mi><m:mi>δ</m:mi><m:mi>α</m:mi></m:msubsup></m:math>(E) = inf<m:math overflow="scroll"><m:mrow><m:mo>{</m:mo><m:mo>∑</m:mo><m:mo>|</m:mo><m:msub><m:mi>U</m:mi><m:mi>i</m:mi></m:msub><m:msup><m:mo>|</m:mo><m:mi>α</m:mi></m:msup></m:mrow></m:math>, E<m:math overflow="scroll"><m:mrow><m:mo>⊂</m:mo><m:mo>∪</m:mo><m:msub><m:mi>U</m:mi><m:mi>i</m:mi></m:msub></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>U</m:mi><m:mi>i</m:mi></m:msub><m:mrow><m:mo>|</m:mo><m:mo>≤</m:mo><m:mi>δ</m:mi><m:mo>}</m:mo></m:mrow></m:mrow></m:math> where i = 1,...,<m:math overflow="scroll"><m:mi>∞</m:mi></m:math>. Then, we get the <m:math overflow="scroll"><m:mi>α</m:mi></m:math>-dimensional Hausdorff measure of E by letting <m:math overflow="scroll"><m:mi>δ</m:mi></m:math> go to 0 as we take the sum over all <m:math overflow="scroll"><m:mi>δ</m:mi></m:math>-covers.</para>
+    <para id="id63620">So, <emphasis effect="bold"><m:math overflow="scroll"><m:msup><m:mi>H</m:mi><m:mi>α</m:mi></m:msup></m:math>(E)</emphasis> = <m:math overflow="scroll"><m:msub><m:mo movablelimits="true" form="prefix">lim</m:mo><m:mrow><m:mi>δ</m:mi><m:mo>→</m:mo><m:mn>0</m:mn></m:mrow></m:msub></m:math><m:math overflow="scroll"><m:msubsup><m:mi>H</m:mi><m:mi>δ</m:mi><m:mi>α</m:mi></m:msubsup></m:math>(E) = sup<m:math overflow="scroll"><m:mrow><m:mo>{</m:mo><m:msubsup><m:mi>H</m:mi><m:mi>δ</m:mi><m:mi>α</m:mi></m:msubsup><m:mo>}</m:mo></m:mrow></m:math> among all <m:math overflow="scroll"><m:mrow><m:mi>δ</m:mi><m:mo>&gt;</m:mo></m:mrow></m:math>0 since <m:math overflow="scroll"><m:msubsup><m:mi>H</m:mi><m:mi>δ</m:mi><m:mi>α</m:mi></m:msubsup></m:math> increases as <m:math overflow="scroll"><m:mi>δ</m:mi></m:math> decreases.</para>
+    <para id="id63737">One important basic result in developing the notion of Hausdorff measure is that if <m:math overflow="scroll"><m:mi>δ</m:mi></m:math> is strictly less than the distance between two positively separated sets, E and F, then no set in a <m:math overflow="scroll"><m:mi>δ</m:mi></m:math>-cover of <m:math overflow="scroll"><m:mrow><m:mi>E</m:mi><m:mo>∪</m:mo><m:mi>F</m:mi></m:mrow></m:math> can intersect both E and F. This means that for some <m:math overflow="scroll"><m:mrow><m:mi>α</m:mi><m:mo>&gt;</m:mo></m:mrow></m:math>0,</para>
+    <para id="id63782"><m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>H</m:mi><m:mi>δ</m:mi><m:mi>α</m:mi></m:msubsup><m:mrow><m:mo>(</m:mo><m:mi>E</m:mi><m:mo>∪</m:mo><m:mi>F</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> = <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>H</m:mi><m:mi>δ</m:mi><m:mi>α</m:mi></m:msubsup><m:mrow><m:mo>(</m:mo><m:mi>E</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> + <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>H</m:mi><m:mi>δ</m:mi><m:mi>α</m:mi></m:msubsup><m:mrow><m:mo>(</m:mo><m:mi>F</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math></para>
+    <para id="id63862">Now, suppose we have two values for <m:math overflow="scroll"><m:mi>α</m:mi></m:math>, s and t, with s&lt;t and we want to consider the Hausdorff measure of a set E<m:math overflow="scroll"><m:mrow><m:mo>⊂</m:mo><m:msup><m:mi>R</m:mi><m:mi>n</m:mi></m:msup></m:mrow></m:math>. Then, <m:math overflow="scroll"><m:msubsup><m:mi>H</m:mi><m:mi>δ</m:mi><m:mi>s</m:mi></m:msubsup></m:math>(E) <m:math overflow="scroll"><m:mo>≥</m:mo></m:math><m:math overflow="scroll"><m:mrow><m:mi>δ</m:mi><m:mrow><m:mi>s</m:mi><m:mo>-</m:mo><m:mi>t</m:mi></m:mrow></m:mrow></m:math><m:math overflow="scroll"><m:msubsup><m:mi>H</m:mi><m:mi>δ</m:mi><m:mi>t</m:mi></m:msubsup></m:math>(E) <m:math overflow="scroll"><m:mo>⇒</m:mo></m:math> if <m:math overflow="scroll"><m:msubsup><m:mi>H</m:mi><m:mi>δ</m:mi><m:mi>t</m:mi></m:msubsup></m:math>(E) &gt;0, then <m:math overflow="scroll"><m:msubsup><m:mi>H</m:mi><m:mi>δ</m:mi><m:mi>s</m:mi></m:msubsup></m:math>(E) is infinite as <m:math overflow="scroll"><m:mi>δ</m:mi></m:math> goes to 0.</para>
+    <para id="id64001">From this, we can see that there is a unique value for <m:math overflow="scroll"><m:mi>α</m:mi></m:math>, called the <emphasis effect="bold">Hausdorff dimension</emphasis>, d, of E such that
+<m:math overflow="scroll"><m:msup><m:mi>H</m:mi><m:mi>α</m:mi></m:msup></m:math>(E) = <m:math overflow="scroll"><m:mi>∞</m:mi></m:math> if 0<m:math overflow="scroll"><m:mrow><m:mo>≤</m:mo><m:mi>α</m:mi><m:mo>&lt;</m:mo><m:mi>d</m:mi><m:mi>i</m:mi><m:mi>m</m:mi><m:mi>E</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:msup><m:mi>H</m:mi><m:mi>α</m:mi></m:msup></m:math>(E) = 0 if dimE <m:math overflow="scroll"><m:mrow><m:mo>&lt;</m:mo><m:mi>α</m:mi><m:mo>&lt;</m:mo><m:mi>∞</m:mi></m:mrow></m:math> For all of the above in the Hausdorff measure section, see [4].</para>
+    <para id="id64099">So given a set E, how do we calculate its Hausdorff dimension?</para>
+    <para id="id64103"><emphasis effect="bold">Definition</emphasis>: Let f:A<m:math overflow="scroll"><m:mo>→</m:mo></m:math>B (and for our purposes, assume, A,B<m:math overflow="scroll"><m:mo>⊂</m:mo></m:math><m:math overflow="scroll"><m:msup><m:mi>R</m:mi><m:mi>n</m:mi></m:msup></m:math>). The function, f, is said to <emphasis effect="bold">Holder continuous</emphasis> of exponent <m:math overflow="scroll"><m:mi>γ</m:mi></m:math> if: sup<m:math overflow="scroll"><m:mfrac><m:mrow><m:mo>|</m:mo><m:mrow><m:mi>f</m:mi><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo><m:mo>-</m:mo><m:mi>f</m:mi><m:mo>(</m:mo><m:mi>y</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:msup><m:mrow><m:mo>|</m:mo><m:mrow><m:mi>x</m:mi><m:mo>-</m:mo><m:mi>y</m:mi></m:mrow><m:mo>|</m:mo></m:mrow><m:mi>γ</m:mi></m:msup></m:mfrac></m:math><m:math overflow="scroll"><m:mo>&lt;</m:mo></m:math><m:math overflow="scroll"><m:mi>∞</m:mi></m:math> among all x,y<m:math overflow="scroll"><m:mrow><m:mo>∈</m:mo><m:mi>A</m:mi></m:mrow></m:math>.</para>
+    <para id="id64239"><emphasis effect="bold">Proposition</emphasis>: If f:A<m:math overflow="scroll"><m:mo>→</m:mo></m:math>B is onto and Holder continuous for some <m:math overflow="scroll"><m:mi>γ</m:mi></m:math>, then dim(B)<m:math overflow="scroll"><m:mo>≤</m:mo></m:math><m:math overflow="scroll"><m:mfrac><m:mn>1</m:mn><m:mi>γ</m:mi></m:mfrac></m:math>dim(A), where these are the Hausdorff dimensions of A and B.</para>
+    <para id="id64287"><emphasis effect="italics">Proof</emphasis>: Let <m:math overflow="scroll"><m:mo>∪</m:mo></m:math><m:math overflow="scroll"><m:msub><m:mi>U</m:mi><m:mi>i</m:mi></m:msub></m:math>, i = 1,...,<m:math overflow="scroll"><m:mi>∞</m:mi></m:math> be a <m:math overflow="scroll"><m:mi>δ</m:mi></m:math>-covering of A for some <m:math overflow="scroll"><m:mrow><m:mi>δ</m:mi><m:mo>&gt;</m:mo></m:mrow></m:math>0. Then, f(<m:math overflow="scroll"><m:mo>∪</m:mo></m:math><m:math overflow="scroll"><m:msub><m:mi>U</m:mi><m:mi>i</m:mi></m:msub></m:math>) covers B and by the Holder continuity condition, we have that for each <m:math overflow="scroll"><m:msub><m:mi>U</m:mi><m:mi>i</m:mi></m:msub></m:math>, C<m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:mrow><m:mi>A</m:mi><m:mo>∩</m:mo><m:msub><m:mi>U</m:mi><m:mi>I</m:mi></m:msub></m:mrow><m:msup><m:mrow><m:mo>|</m:mo></m:mrow><m:mi>γ</m:mi></m:msup></m:mrow></m:math><m:math overflow="scroll"><m:mo>&gt;</m:mo></m:math><m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:mrow><m:mi>f</m:mi><m:mo>(</m:mo><m:mi>A</m:mi><m:mo>∩</m:mo><m:msub><m:mi>U</m:mi><m:mi>i</m:mi></m:msub><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>|</m:mo></m:mrow></m:mrow></m:math>, where the bars denote the diameters of those sets and C is a constant.</para>
+    <para id="id64460">This implies that for any <m:math overflow="scroll"><m:mi>α</m:mi></m:math>, <m:math overflow="scroll"><m:msup><m:mi>C</m:mi><m:mfrac><m:mi>α</m:mi><m:mi>γ</m:mi></m:mfrac></m:msup></m:math><m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:mrow><m:mi>A</m:mi><m:mo>∩</m:mo><m:msub><m:mi>U</m:mi><m:mi>I</m:mi></m:msub></m:mrow><m:msup><m:mrow><m:mo>|</m:mo></m:mrow><m:mi>α</m:mi></m:msup></m:mrow></m:math><m:math overflow="scroll"><m:mo>&gt;</m:mo></m:math><m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:mrow><m:mi>f</m:mi><m:mo>(</m:mo><m:mi>A</m:mi><m:mo>∩</m:mo><m:msub><m:mi>U</m:mi><m:mi>i</m:mi></m:msub><m:mo>)</m:mo></m:mrow><m:msup><m:mrow><m:mo>|</m:mo></m:mrow><m:mfrac><m:mi>α</m:mi><m:mi>γ</m:mi></m:mfrac></m:msup></m:mrow></m:math></para>
+    <para id="id64575">Taking this sum over all <m:math overflow="scroll"><m:mo>ı</m:mo></m:math>, we get that <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>∑</m:mo><m:mo>|</m:mo></m:mrow><m:mrow><m:mi>f</m:mi><m:mo>(</m:mo><m:mi>A</m:mi><m:mo>∩</m:mo><m:msub><m:mi>U</m:mi><m:mi>i</m:mi></m:msub><m:mo>)</m:mo></m:mrow><m:msup><m:mrow><m:mo>|</m:mo></m:mrow><m:mfrac><m:mi>α</m:mi><m:mi>γ</m:mi></m:mfrac></m:msup></m:mrow></m:math><m:math overflow="scroll"><m:mo>&lt;</m:mo></m:math><m:math overflow="scroll"><m:msup><m:mi>C</m:mi><m:mfrac><m:mi>α</m:mi><m:mi>γ</m:mi></m:mfrac></m:msup></m:math><m:math overflow="scroll"><m:mrow><m:mrow><m:mo>∑</m:mo><m:mo>|</m:mo></m:mrow><m:mrow><m:mi>A</m:mi><m:mo>∩</m:mo><m:msub><m:mi>U</m:mi><m:mi>i</m:mi></m:msub></m:mrow><m:msup><m:mrow><m:mo>|</m:mo></m:mrow><m:mi>α</m:mi></m:msup></m:mrow></m:math><m:math overflow="scroll"><m:mo>&lt;</m:mo></m:math><m:math overflow="scroll"><m:msup><m:mi>C</m:mi><m:mfrac><m:mi>α</m:mi><m:mi>γ</m:mi></m:mfrac></m:msup></m:math><m:math overflow="scroll"><m:mrow><m:mrow><m:mo>∑</m:mo><m:mo>|</m:mo></m:mrow><m:msub><m:mi>U</m:mi><m:mi>i</m:mi></m:msub><m:msup><m:mrow><m:mo>|</m:mo></m:mrow><m:mi>α</m:mi></m:msup></m:mrow></m:math><m:math overflow="scroll"><m:mo>⇒</m:mo></m:math><m:math overflow="scroll"><m:msup><m:mi>H</m:mi><m:mfrac><m:mi>α</m:mi><m:mi>γ</m:mi></m:mfrac></m:msup></m:math>(B) <m:math overflow="scroll"><m:mo>&lt;</m:mo></m:math><m:math overflow="scroll"><m:msup><m:mi>C</m:mi><m:mfrac><m:mi>α</m:mi><m:mi>γ</m:mi></m:mfrac></m:msup></m:math><m:math overflow="scroll"><m:msup><m:mi>H</m:mi><m:mi>α</m:mi></m:msup></m:math>(A)</para>
+    <para id="id64821">Now, suppose the <m:math overflow="scroll"><m:mi>α</m:mi></m:math> is larger than dim(A). This means that <m:math overflow="scroll"><m:msup><m:mi>H</m:mi><m:mi>α</m:mi></m:msup></m:math>(A) = 0 so that <m:math overflow="scroll"><m:msup><m:mi>H</m:mi><m:mi>α</m:mi></m:msup></m:math>(B) = 0 as well. Decrease <m:math overflow="scroll"><m:mi>α</m:mi></m:math> until it reaches dim(A). Then, dim(B) <m:math overflow="scroll"><m:mo>≤</m:mo></m:math><m:math overflow="scroll"><m:mfrac><m:mn>1</m:mn><m:mi>γ</m:mi></m:mfrac></m:math>dimA, as desired.</para>
+    <para id="id64894">We can use these measures in the context of the Michell problem. Developing the problem in new ways might allow one to use different techniques to find minimal cost structures among admissible configurations.</para>
+    <para id="id64899">
+      <emphasis effect="bold">References</emphasis>
+    </para>
+    <para id="id64905">[1] A brief introduction to tensors and their properties,</para>
+    <para id="id64909">http://www.brown.edu/departments/engineering/courses/en221/notes/tensors/tensors.htm</para>
+    <para id="id64913">[2] <emphasis effect="italics">Introduction to the Calculus of Variations</emphasis> Imperial College Press, 1992.</para>
+    <para id="id64923">[3] Euler-Lagrange equation, http://farside.ph.utexas.edu/teaching/3361/fluidhtml/node181.html, April 2012</para>
+    <para id="id64927">[4] K.J. Falconer, <emphasis effect="italics">The Geometry of Fractal Sets</emphasis> Cambridge University Press, 1985.</para>
+    <para id="id64937">[5] Wilfred, Gango. Michell trusses and existence of lines of principal action. 2004.</para>
+  </content>
+</document>

@@ -1,0 +1,602 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
+  <title>The Steiner Tree Problem</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m47209</md:content-id>
+  <md:title>The Steiner Tree Problem</md:title>
+  <md:abstract>An overview of the Steiner tree problem.</md:abstract>
+  <md:uuid>9def6eec-2ef8-48d7-80a9-85323f46b684</md:uuid>
+</metadata>
+
+<content>
+    <section id="id62159">
+      <title>Introduction</title>
+      <para id="id62165">Given a set of points, called terminals, a spanning tree is the set of terminals plus a number of edges, in which two terminals connected by exactly one simple path. The problem of the minimal spanning tree is to find the shortest spanning tree, where the length of a tree is the sum of the lengths of its edges. In some cases, points in addition to the original set, called Steiner points, can be carefully placed so that the spanning tree connecting the new Steiner points and the original set of points is shorter than any tree that could be created by adding, removing, or moving any Steiner point. The resulting spanning tree is called a Steiner tree.</para>
+      <para id="id62174">The Michell truss problem begins with a set of point forces, which can be viewed as points in the Steiner tree problem. Because shorter beams cost less than longer beams of the same weight, it is beneficial to minimize the length of the beams used in a truss. Applications of the Steiner tree problem may help optimize a truss by minimizing the length of its beams.</para>
+    </section>
+    <section id="id62181">
+      <title>Definition</title>
+      <para id="id62187">The Toricelli point of a triangle, also called the Fermat point, is found by constructing two equilateral triangles on any three sides of the triangle, and drawing a line from the new vertex of each equilateral triangle to the opposite vertex of the original triangle. The location where these two lines intersect is the Toricelli point.</para>
+      <para id="id62194">Each triangle has exactly one Toricelli point. In an acute triangle, the Toricelli point is inside the triangle, and the lines from the Toricelli point to each vertex of the triangle create <m:math overflow="scroll"><m:msup><m:mn>120</m:mn><m:mo>∘</m:mo></m:msup></m:math> angles. Toricelli proved the shortest path connecting all three vertices of a triangle consists of three lines, each from the Toricelli point of the triangle to a vertex of the triangle.</para>
+    </section>
+    <section id="id62553">
+      <title>Theorem 1</title>
+      <para id="id62560">No two edges of a Steiner tree can meet at an angle less than <m:math overflow="scroll"><m:msup><m:mn>120</m:mn><m:mo>∘</m:mo></m:msup></m:math>.</para>
+    </section>
+    <section id="id62577">
+      <title>Proof</title>
+      <para id="id62583">If the two edges meet at an angle of less than <m:math overflow="scroll"><m:msup><m:mn>120</m:mn><m:mo>∘</m:mo></m:msup></m:math>, then select points on the edges that are equidistant from the vertex, and locate a new Steiner point at the Torricelli point of the triangle created by the vertex and the two selected points. Because the triangle is acute, the three new edges created by connecting the Toricelli point to the vertices of the triangle must be shorter in sum than the total length of the original two edges.</para>
+    </section>
+    <section id="id62604">
+      <title>Theorem 2</title>
+      <para id="id62610">A Steiner tree has no crossing edges.</para>
+    </section>
+    <section id="id62615">
+      <title>Proof</title>
+      <para id="id62621">If a Steiner tree had crossing edges, the cross would create at least two angles less than or equal to <m:math overflow="scroll"><m:msup><m:mn>90</m:mn><m:mo>∘</m:mo></m:msup></m:math>.</para>
+    </section>
+    <section id="id62639">
+      <title>Definition</title>
+      <para id="id62646">The degree of a point in a tree is defined as the number of edges connected to that point.</para>
+    </section>
+    <section id="id62651">
+      <title>Theorem 3</title>
+      <para id="id62657">Each Steiner point of a Steiner tree is of degree 3.</para>
+    </section>
+    <section id="id62662">
+      <title>Proof</title>
+      <para id="id62668">From Theorem 1, no two edges meet at an angle of less than <m:math overflow="scroll"><m:msup><m:mn>120</m:mn><m:mo>∘</m:mo></m:msup></m:math>, so the Steiner point can be of degree 3 at most. A Steiner point of degree 1 can simply be eliminated, as it creates an unnecessary edge, and a Steiner point of degree 2 can just be replaced with a straight line. Therefore a Steiner point must be of degree 3.</para>
+    </section>
+    <section id="id62689">
+      <title>Theorem 4</title>
+      <para id="id62695">A Steiner tree connecting <m:math overflow="scroll"><m:mi>n</m:mi></m:math> terminals contains at most <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>2</m:mn></m:mrow></m:math> Steiner points.</para>
+    </section>
+    <section id="id62720">
+      <title>Proof</title>
+      <para id="id62726">The Euler characteristic for lines is 1, which means that <m:math overflow="scroll"><m:mrow><m:mo>#</m:mo><m:mtext>vertices</m:mtext><m:mo>-</m:mo><m:mo>#</m:mo><m:mtext>edges</m:mtext><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>. Therefore there are <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>k</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:math> edges in a tree, where <m:math overflow="scroll"><m:mi>n</m:mi></m:math> is the number of terminal points and <m:math overflow="scroll"><m:mi>k</m:mi></m:math> is the number of Steiner points.</para>
+      <para id="id62785">Each Steiner point has 3 edges coming from it, and each terminal point has at least one, so there are at least <m:math overflow="scroll"><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>k</m:mi><m:mo>+</m:mo><m:mi>n</m:mi></m:mrow><m:mn>2</m:mn></m:mfrac></m:math> total edges; the division by 2 accounts for the fact that each edge is counted at two vertices. Therefore</para>
+      <equation id="id62810">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>n</m:mi>
+            <m:mo>+</m:mo>
+            <m:mi>k</m:mi>
+            <m:mo>-</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>≥</m:mo>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>3</m:mn>
+                <m:mi>k</m:mi>
+                <m:mo>+</m:mo>
+                <m:mi>n</m:mi>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id62846">which, by simple algebra, yields</para>
+      <equation id="id62851">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>n</m:mi>
+            <m:mo>-</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>≥</m:mo>
+            <m:mi>k</m:mi>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+    </section>
+    <section id="id62874">
+      <title>Definition</title>
+      <para id="id62880">A Steiner tree with <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>2</m:mn></m:mrow></m:math> Steiner points is a full Steiner tree.</para>
+    </section>
+    <section id="id62897">
+      <title>Theorem 5</title>
+      <para id="id62904">Every Steiner tree that is not a full Steiner tree can be decomposed into a union of full Steiner trees.</para>
+    </section>
+    <section id="id62909">
+      <title>Proof</title>
+      <para id="id62915">See <link target-id="bid0"/></para>
+    </section>
+    <section id="id62924">
+      <title>Examples</title>
+      <para id="id62930">In a 3 by 4 rectangle, two Steiner trees can be created, but the one with edge between the Steiner points parallel to the long side is the Steiner minimal tree.</para>
+      <para id="id62934">In a 1 by 2 rectangle, the minimum spanning tree is not a Steiner tree.</para>
+    </section>
+    <section id="id62939">
+      <title>Definition</title>
+      <para id="id62946">A topology on a graph determines how many terminals and Steiner points there are, and how the points are connected to each other. A topology is a degeneracy of another if it can be obtained from shrinking edges of the original. The set of degeneracies of a topology <m:math overflow="scroll"><m:mi>G</m:mi></m:math> is denoted by <m:math overflow="scroll"><m:mrow><m:mi>D</m:mi><m:mo>(</m:mo><m:mi>G</m:mi><m:mo>)</m:mo></m:mrow></m:math>.</para>
+      <para id="id62974">A topology is a Steiner topology (full Steiner topology) if every Steiner point has degree 3 (and terminal has degree 1).</para>
+      <para id="id62979">If <m:math overflow="scroll"><m:mi>F</m:mi></m:math> is a full Steiner topology, then <m:math overflow="scroll"><m:mrow><m:msub><m:mi>D</m:mi><m:mi>s</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>F</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> is the set of Steiner topologies in <m:math overflow="scroll"><m:mrow><m:mi>D</m:mi><m:mo>(</m:mo><m:mi>F</m:mi><m:mo>)</m:mo></m:mrow></m:math>.</para>
+      <para id="id63027">It is easy to see that a Steiner tree contains no closed shapes, called cycles. Otherwise, one edge could be deleted, and the resulting structure would be of shorter total length while still connecting all of the points.</para>
+    </section>
+    <section id="id63033">
+      <title>Theorem 5</title>
+      <para id="id63040">A Steiner tree whose topology is in <m:math overflow="scroll"><m:mrow><m:mi>D</m:mi><m:mo>(</m:mo><m:mi>F</m:mi><m:mo>)</m:mo></m:mrow></m:math> for some full Steiner topology <m:math overflow="scroll"><m:mi>F</m:mi></m:math> is the unique minimum tree among trees whose topologies are in <m:math overflow="scroll"><m:mrow><m:msub><m:mi>D</m:mi><m:mi>s</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>F</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>.</para>
+    </section>
+    <section id="id63089">
+      <title>Proof</title>
+      <para id="id63096">Let <m:math overflow="scroll"><m:mi>T</m:mi></m:math> be a tree whose topology <m:math overflow="scroll"><m:mrow><m:mi>G</m:mi><m:mo>∈</m:mo><m:msub><m:mi>D</m:mi><m:mi>s</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>F</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>. Let <m:math overflow="scroll"><m:mrow><m:msub><m:mi>v</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:msub><m:mi>v</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:math> be an enumeration of the vertices. Define <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mrow><m:mi>i</m:mi><m:mi>j</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math> if <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:msub><m:mi>v</m:mi><m:mi>i</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi>v</m:mi><m:mi>j</m:mi></m:msub><m:mo>]</m:mo></m:mrow></m:math> is an edge in <m:math overflow="scroll"><m:mi>G</m:mi></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mrow><m:mi>i</m:mi><m:mi>j</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> otherwise. Then the length of <m:math overflow="scroll"><m:mi>T</m:mi></m:math> is</para>
+      <equation id="id63428">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mfenced open="|" close="|">
+              <m:mi>T</m:mi>
+            </m:mfenced>
+            <m:mo>=</m:mo>
+            <m:munder>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mo>&lt;</m:mo>
+                <m:mi>j</m:mi>
+              </m:mrow>
+            </m:munder>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mi>j</m:mi>
+              </m:mrow>
+            </m:msub>
+            <m:mfenced separators="" open="|" close="|">
+              <m:msub>
+                <m:mi>v</m:mi>
+                <m:mi>i</m:mi>
+              </m:msub>
+              <m:mo>-</m:mo>
+              <m:msub>
+                <m:mi>v</m:mi>
+                <m:mi>j</m:mi>
+              </m:msub>
+            </m:mfenced>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63496"><m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>v</m:mi><m:mi>i</m:mi></m:msub><m:mo>-</m:mo><m:msub><m:mi>v</m:mi><m:mi>j</m:mi></m:msub><m:mrow><m:mo>|</m:mo></m:mrow></m:mrow></m:math> is a norm, and norms are convex due to the triangle inequality, so <m:math overflow="scroll"><m:mi>T</m:mi></m:math> is strictly convex except when edges remain the same direction in a perturbation. In that case, when the three edges from a Steiner point are parallel, moving the Steiner point towards the side of the two overlapping edges decreases the total length, and thus <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>T</m:mi><m:mo>|</m:mo></m:mrow></m:math> is strictly convex. Because a Steiner tree is a local minimum, strict convexity guarantees that it is the unique minimum among trees with topologies in <m:math overflow="scroll"><m:mrow><m:msub><m:mi>D</m:mi><m:mi>s</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>F</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>.</para>
+    </section>
+    <section id="id63577">
+      <title>Corollary</title>
+      <para id="id63583">There exists at most one relatively minimal tree for a given topology.</para>
+    </section>
+    <section id="id63588">
+      <title>Definition</title>
+      <para id="id63594">A Steiner hull for a given set of points <m:math overflow="scroll"><m:mi>N</m:mi></m:math> is a region which is known to contain a Steiner minimal tree.</para>
+      <para id="id63607">In the Euclidean plane, the Steiner hull is bounded.</para>
+    </section>
+    <section id="id63612">
+      <title>Lemma</title>
+      <para id="id63618">Let <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:msub><m:mi>v</m:mi><m:mi>i</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi>v</m:mi><m:mi>j</m:mi></m:msub><m:mo>]</m:mo></m:mrow></m:math> be any path in a Steiner minimal tree, where <m:math overflow="scroll"><m:msub><m:mi>v</m:mi><m:mi>i</m:mi></m:msub></m:math> and <m:math overflow="scroll"><m:msub><m:mi>v</m:mi><m:mi>j</m:mi></m:msub></m:math> are defined as before. Let <m:math overflow="scroll"><m:mrow><m:mi>L</m:mi><m:mo>(</m:mo><m:msub><m:mi>v</m:mi><m:mi>i</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi>v</m:mi><m:mi>j</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> be the region consisting of all points <m:math overflow="scroll"><m:mi>p</m:mi></m:math> satisfying</para>
+      <equation id="id63715">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mi>p</m:mi>
+              <m:mo>-</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>v</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>&lt;</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>v</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>-</m:mo>
+            <m:msub>
+              <m:mi>v</m:mi>
+              <m:mi>j</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mspace width="4.pt"/>
+              <m:mtext>and</m:mtext>
+              <m:mspace width="4.pt"/>
+              <m:mo>|</m:mo>
+              <m:mi>p</m:mi>
+            </m:mrow>
+            <m:mo>-</m:mo>
+            <m:msub>
+              <m:mi>v</m:mi>
+              <m:mi>j</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>&lt;</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>v</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>-</m:mo>
+            <m:msub>
+              <m:mi>v</m:mi>
+              <m:mi>j</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>|</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63816"><m:math overflow="scroll"><m:mrow><m:mi>L</m:mi><m:mo>(</m:mo><m:msub><m:mi>v</m:mi><m:mi>i</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi>v</m:mi><m:mi>j</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> is the lune-shaped intersection of circles of radius <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>v</m:mi><m:mi>i</m:mi></m:msub><m:mo>-</m:mo><m:msub><m:mi>v</m:mi><m:mi>j</m:mi></m:msub><m:mrow><m:mo>|</m:mo></m:mrow></m:mrow></m:math> centered on <m:math overflow="scroll"><m:msub><m:mi>v</m:mi><m:mi>i</m:mi></m:msub></m:math> and <m:math overflow="scroll"><m:msub><m:mi>v</m:mi><m:mi>j</m:mi></m:msub></m:math>. No other vertex of the Steiner minimal tree can lie in <m:math overflow="scroll"><m:mrow><m:mi>L</m:mi><m:mo>(</m:mo><m:msub><m:mi>v</m:mi><m:mi>i</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi>v</m:mi><m:mi>j</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math>.</para>
+    </section>
+    <section id="id63940">
+      <title>Proof</title>
+      <para id="id63946">If <m:math overflow="scroll"><m:mi>q</m:mi></m:math> were such a vertex, the Steiner minimal tree would contain either a edge from <m:math overflow="scroll"><m:mi>q</m:mi></m:math> to <m:math overflow="scroll"><m:msub><m:mi>v</m:mi><m:mi>i</m:mi></m:msub></m:math> not containing <m:math overflow="scroll"><m:msub><m:mi>v</m:mi><m:mi>j</m:mi></m:msub></m:math>, or vice versa. If the SMT contains a edge from <m:math overflow="scroll"><m:mi>q</m:mi></m:math> to <m:math overflow="scroll"><m:msub><m:mi>v</m:mi><m:mi>i</m:mi></m:msub></m:math>, for example, the SMT can be shortened by deleting <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:msub><m:mi>v</m:mi><m:mi>i</m:mi></m:msub><m:mo>,</m:mo><m:mi>v</m:mi><m:mo>]</m:mo></m:mrow></m:math> and adding <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mi>q</m:mi><m:mo>,</m:mo><m:msub><m:mi>v</m:mi><m:mi>j</m:mi></m:msub><m:mo>]</m:mo></m:mrow></m:math>, a contradiction.</para>
+      <para id="id64060">Similar statements can be made to further specify where a Steiner hull may be.</para>
+    </section>
+    <section id="id64065">
+      <title>Remark</title>
+      <para id="id64071">It is easy to see that a full Steiner topology with <m:math overflow="scroll"><m:mi>n</m:mi></m:math> terminals has <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>3</m:mn></m:mrow></m:math> edges. Let <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo><m:mo>,</m:mo><m:mi>n</m:mi><m:mo>≥</m:mo><m:mn>2</m:mn></m:mrow></m:math>, denote the number of full Steiner topologies with <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>2</m:mn></m:mrow></m:math> Steiner points. Adding a Steiner point to the middle of any of the edges and connecting it to a new terminal results in a full Steiner tree for <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:math> terminals. Geometrically, this causes the edge to become two separate edges, connected by the new Steiner point. In order to be consistent with the fact that edges must meet at <m:math overflow="scroll"><m:msup><m:mn>120</m:mn><m:mo>∘</m:mo></m:msup></m:math> angles at Steiner points, the two new edges will rotate to meet at an angle of <m:math overflow="scroll"><m:msup><m:mn>120</m:mn><m:mo>∘</m:mo></m:msup></m:math> with each other and with the edge connecting the new Steiner point to the new terminal. Thus there are <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>3</m:mn></m:mrow></m:math> ways to create a new full Steiner tree, so</para>
+      <equation id="id64196">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>f</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+            <m:mo>=</m:mo>
+            <m:mo>(</m:mo>
+            <m:mn>2</m:mn>
+            <m:mi>n</m:mi>
+            <m:mo>-</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>)</m:mo>
+            <m:mi>f</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id64241">which has the solution</para>
+      <equation id="id64246">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>f</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mn>2</m:mn>
+                <m:mi>n</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>4</m:mn>
+                <m:mo>)</m:mo>
+                <m:mo>!</m:mo>
+              </m:mrow>
+              <m:mrow>
+                <m:msup>
+                  <m:mn>2</m:mn>
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:msup>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo>-</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>!</m:mo>
+              </m:mrow>
+            </m:mfrac>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id64313">Let <m:math overflow="scroll"><m:mrow><m:mi>F</m:mi><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>,</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:math> denote the number of Steiner topologies with <m:math overflow="scroll"><m:mi>n</m:mi></m:math> terminals and <m:math overflow="scroll"><m:mi>k</m:mi></m:math> Steiner points such that no terminal is of degree 3. Then <m:math overflow="scroll"><m:mrow><m:mi>F</m:mi><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>,</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:math> can be obtained from f(k) by first selecting <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>2</m:mn></m:mrow></m:math> terminals and a full Steiner topology on it, and then adding the remaining <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi><m:mo>-</m:mo><m:mn>2</m:mn></m:mrow></m:math> terminals one at a time at interior points of some edges, creating a "kink" in each edge. The first terminal can go to one of the <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:math> edges, the second to one of <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>2</m:mn></m:mrow></m:math> edges, and so on, until the <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi><m:mo>-</m:mo><m:mn>2</m:mn><m:mo>)</m:mo></m:mrow></m:math>th point is added to one of the <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>k</m:mi><m:mo>+</m:mo><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi><m:mo>-</m:mo><m:mn>2</m:mn><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>k</m:mi><m:mo>-</m:mo><m:mn>2</m:mn></m:mrow></m:math> edges. Thus</para>
+      <equation id="id64500">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>F</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mfrac linethickness="0pt">
+                <m:mi>n</m:mi>
+                <m:mrow>
+                  <m:mi>k</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:mn>2</m:mn>
+                </m:mrow>
+              </m:mfrac>
+            </m:mfenced>
+            <m:mi>f</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mfrac>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>n</m:mi>
+                <m:mo>+</m:mo>
+                <m:mi>k</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>2</m:mn>
+                <m:mo>)</m:mo>
+                <m:mo>!</m:mo>
+              </m:mrow>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mn>2</m:mn>
+                <m:mi>k</m:mi>
+                <m:mo>)</m:mo>
+                <m:mo>!</m:mo>
+              </m:mrow>
+            </m:mfrac>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id64588">Letting <m:math overflow="scroll"><m:msub><m:mi>n</m:mi><m:mn>3</m:mn></m:msub></m:math> denote the number of terminals of degree 3</para>
+      <equation id="id64606">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>F</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:msub>
+                  <m:mi>n</m:mi>
+                  <m:mn>3</m:mn>
+                </m:msub>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mfrac>
+                <m:mrow>
+                  <m:mi>n</m:mi>
+                  <m:mo>-</m:mo>
+                  <m:mi>k</m:mi>
+                  <m:mo>-</m:mo>
+                  <m:mn>2</m:mn>
+                </m:mrow>
+                <m:mn>2</m:mn>
+              </m:mfrac>
+            </m:munderover>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mfrac linethickness="0pt">
+                <m:mi>n</m:mi>
+                <m:msub>
+                  <m:mi>n</m:mi>
+                  <m:mn>3</m:mn>
+                </m:msub>
+              </m:mfrac>
+            </m:mfenced>
+            <m:mi>F</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>-</m:mo>
+              <m:msub>
+                <m:mi>n</m:mi>
+                <m:mn>3</m:mn>
+              </m:msub>
+              <m:mo>,</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>n</m:mi>
+                <m:mn>3</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mfrac>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>n</m:mi>
+                <m:mo>+</m:mo>
+                <m:msub>
+                  <m:mi>n</m:mi>
+                  <m:mn>3</m:mn>
+                </m:msub>
+                <m:mo>)</m:mo>
+                <m:mo>!</m:mo>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>!</m:mo>
+              </m:mrow>
+            </m:mfrac>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id64763">A table containing the values of <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>F</m:mi><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:math> for <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:mn>8</m:mn></m:mrow></m:math> is given.</para>
+      <table id="id64822" summary="">
+        <tgroup cols="8">
+          <tbody>
+            <row>
+              <entry>
+                <m:math overflow="scroll">
+                  <m:mi>n</m:mi>
+                </m:math>
+              </entry>
+              <entry>2</entry>
+              <entry>3</entry>
+              <entry>4</entry>
+              <entry>5</entry>
+              <entry>6</entry>
+              <entry>7</entry>
+              <entry>8</entry>
+            </row>
+            <row>
+              <entry>
+                <m:math overflow="scroll">
+                  <m:mrow>
+                    <m:mi>f</m:mi>
+                    <m:mo>(</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:math>
+              </entry>
+              <entry>1</entry>
+              <entry>1</entry>
+              <entry>3</entry>
+              <entry>15</entry>
+              <entry>105</entry>
+              <entry>945</entry>
+              <entry>10395</entry>
+            </row>
+            <row>
+              <entry>
+                <m:math overflow="scroll">
+                  <m:mrow>
+                    <m:mi>F</m:mi>
+                    <m:mo>(</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:math>
+              </entry>
+              <entry>1</entry>
+              <entry>4</entry>
+              <entry>31</entry>
+              <entry>360</entry>
+              <entry>5625</entry>
+              <entry>110880</entry>
+              <entry>2643795</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <!--empty paragraphs get left behind.-->
+    </section>
+    <section id="id65070">
+      <title>Computational Complexity</title>
+      <para id="id65077">The optimization problem:</para>
+      <para id="id65081"><emphasis effect="bold">Given</emphasis>: A set <m:math overflow="scroll"><m:mi>N</m:mi></m:math> of terminals in the Euclidean plane</para>
+      <para id="id65099"><emphasis effect="bold">Find</emphasis>: A Steiner tree of shortest length spanning <m:math overflow="scroll"><m:mi>N</m:mi></m:math></para>
+      <para id="id65115">can be recast as a decision problem:</para>
+      <para id="id65118"><emphasis effect="bold">Given</emphasis>: A set <m:math overflow="scroll"><m:mi>N</m:mi></m:math> of terminals in the Euclidean plane and an integer <m:math overflow="scroll"><m:mi>B</m:mi></m:math></para>
+      <para id="id65142"><emphasis effect="bold">Decide</emphasis>: Is there a Steiner tree <m:math overflow="scroll"><m:mi>T</m:mi></m:math> that spans <m:math overflow="scroll"><m:mi>N</m:mi></m:math> such that <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>T</m:mi><m:mo>|</m:mo><m:mo>≤</m:mo><m:mi>B</m:mi></m:mrow></m:math></para>
+      <para id="id65186">The Steiner tree problem is NP-complete. This means that it is at least as hard as any problem in NP, but the solution is still verifiable in polynomial time. However, the problem cannot be solved in polynomial time. The discrete Euclidean Steiner problem, however, is not known to be NP-complete.</para>
+      <para id="id65192"><emphasis effect="bold">Given</emphasis>: A set <m:math overflow="scroll"><m:mi>N</m:mi></m:math> of terminals with integer coordinates in the Euclidean plane and an integer <m:math overflow="scroll"><m:mi>B</m:mi></m:math>.</para>
+      <para id="id65217"><emphasis effect="bold">Decide</emphasis>: Is there a Steiner tree <m:math overflow="scroll"><m:mi>T</m:mi></m:math> that spans <m:math overflow="scroll"><m:mi>N</m:mi></m:math> such that all Steiner points have integer coordinates and the discrete length of <m:math overflow="scroll"><m:mi>T</m:mi></m:math> is less than or equal to <m:math overflow="scroll"><m:mi>B</m:mi></m:math>, where the discrete length of each edge of <m:math overflow="scroll"><m:mi>T</m:mi></m:math> is the smallest integer not less than the length of that edge.</para>
+      <para id="id65271">There is a version of this problem that is in P: Given a finite set in a Banach-Minkowski plane, a minimal Steiner tree for this set can be found in polynomially bounded time with an algorithm that executes only graph theoretic functions.</para>
+    </section>
+    <section id="id65277">
+      <title>The Steiner Ratio</title>
+      <para id="id65284">The Steiner ratio is the smallest possible ratio between the total length of a minimum Steiner tree and the total length of a minimum spanning tree. It is conjectured that, in the Euclidean Steiner problem, the Steiner ratio is <m:math overflow="scroll"><m:mfrac><m:msqrt><m:mn>3</m:mn></m:msqrt><m:mn>2</m:mn></m:mfrac></m:math>. This is called the Gilbert-Pollak conjecture, and was though to be proven in 1990, but some people do not accept this proof. Gilbert and Pollak also conjectured the ratio for higher dimensional spaces, but this was disproven.</para>
+      <para id="id65306">It's easy to see that this is true in the four point case. Alternatively, the Steiner ratio is sometimes given as the total length of the minimum spanning tree over the length of the minimum Steiner tree. The Steiner ratio for the rectilinear Steiner tree, which is when all edges of the Steiner tree are perpendicular, is <m:math overflow="scroll"><m:mfrac><m:mn>3</m:mn><m:mn>2</m:mn></m:mfrac></m:math>.</para>
+    </section>
+    <section id="id65325">
+      <title>Other applications</title>
+      <para id="id65332">Steiner trees have many biological applications. They can be used to describe the ways proteins connect and fold. Steiner trees are also used in phylogeny. Organic chemistry diagrams often include Steiner trees. For example, CH<m:math overflow="scroll"><m:msub><m:mrow/><m:mn>6</m:mn></m:msub></m:math>N<m:math overflow="scroll"><m:msub><m:mrow/><m:mn>3</m:mn></m:msub></m:math> is a regular hexagon Steiner tree.</para>
+      <para id="id65363">Steiner trees have many computer science applications as well, such as in network design and circuit layout.</para>
+    </section>
+  </content>
+  <bib:file>
+    <bib:entry id="bid1">
+      <bib:book>
+        <!--required fields-->
+        <bib:author>Cieslik, Dietmar</bib:author>
+        <bib:title>The Steiner ratio</bib:title>
+        <bib:publisher>Kluwer Academic Pub.</bib:publisher>
+        <bib:year>2001</bib:year>
+        <!--optional fields-->
+        <bib:volume>v. 10</bib:volume>
+        <bib:series/>
+        <bib:address>Dordrecht</bib:address>
+        <bib:edition/>
+        <bib:month/>
+        <bib:note/>
+      </bib:book>
+    </bib:entry>
+    <bib:entry id="bid2">
+      <bib:book>
+        <!--required fields-->
+        <bib:author>Cieslik, Dietmar</bib:author>
+        <bib:title>Steiner minimal trees</bib:title>
+        <bib:publisher>Kluwer Academic</bib:publisher>
+        <bib:year>1998</bib:year>
+        <!--optional fields-->
+        <bib:volume>v. 23</bib:volume>
+        <bib:series/>
+        <bib:address>Dordrecht</bib:address>
+        <bib:edition/>
+        <bib:month/>
+        <bib:note/>
+      </bib:book>
+    </bib:entry>
+    <bib:entry id="bid3">
+      <bib:book>
+        <!--required fields-->
+        <bib:author>Du, Dingzhu and Pardalos, P. M</bib:author>
+        <bib:title>Handbook of combinatorial optimization</bib:title>
+        <bib:publisher>Kluwer Academic Publishers</bib:publisher>
+        <bib:year>1998</bib:year>
+        <!--optional fields-->
+        <bib:volume/>
+        <bib:series/>
+        <bib:address>Boston</bib:address>
+        <bib:edition/>
+        <bib:month/>
+        <bib:note/>
+      </bib:book>
+    </bib:entry>
+    <bib:entry id="bid0">
+      <bib:book>
+        <!--required fields-->
+        <bib:author>Hwang, Frank and Richards, Dana and Winter, Pawel</bib:author>
+        <bib:title>The Steiner tree problem</bib:title>
+        <bib:publisher>North-Holland</bib:publisher>
+        <bib:year>1992</bib:year>
+        <!--optional fields-->
+        <bib:volume>53</bib:volume>
+        <bib:series/>
+        <bib:address>Amsterdam</bib:address>
+        <bib:edition/>
+        <bib:month/>
+        <bib:note/>
+      </bib:book>
+    </bib:entry>
+  </bib:file>
+</document>

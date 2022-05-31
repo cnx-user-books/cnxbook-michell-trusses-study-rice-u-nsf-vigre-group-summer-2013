@@ -1,0 +1,2879 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
+  <title>A Look at a Paper by Strang and Kohn</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m47210</md:content-id>
+  <md:title>A Look at a Paper by Strang and Kohn</md:title>
+  <md:abstract>This module attempts to present the paper "Hencky-Prandtl Nets and Constrained Michell Trusses" by Gilbert Strang and Robert Kohn in a way that is accessible to undergraduate mathematics students.</md:abstract>
+  <md:uuid>5eee6dc9-3baf-4fb0-adf1-c86d9a9df4fb</md:uuid>
+</metadata>
+
+<content>
+    <para id="id120534">Hencky-Prandtl Nets and Constrained Michell Trusses
+</para>
+    <section id="id120553">
+      <title>Introduction</title>
+      <para id="id120559">The paper <emphasis effect="italics">“Hencky-Prandtl Nets and Constrained Michell Trusses”</emphasis> by Gilbert Strang and Robert Kohn <link target-id="bid0"/> provides many interesting insights into the problem posed by Michell in his 1904 paper <emphasis effect="italics">“The limits of economy of material in framed-structures”</emphasis><link target-id="bid1"/>. This module attempts to present the former paper in a manner that can be understood by undergraduate students in mathematics.</para>
+      <para id="id120924">Michell's problem assumes a material with given tensile and compressive yield limits, say <m:math overflow="scroll"><m:mrow><m:mo>±</m:mo><m:msub><m:mi>σ</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:math>, and allows concentrated forces. A force <m:math overflow="scroll"><m:mi>F</m:mi></m:math> can only be carried by beams with cross-sectional area <m:math overflow="scroll"><m:mrow><m:mi>F</m:mi><m:mo>/</m:mo><m:msub><m:mi>σ</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:math>, so if the points of application of the forces are too close together, there will be difficulty in finding enough space. Because there is no restriction on the magnitude or the spacing of the external loads, which are surface tractions <m:math overflow="scroll"><m:mi>f</m:mi></m:math> distributed along the boundary <m:math overflow="scroll"><m:mi>Γ</m:mi></m:math> of the given simply connected domain <m:math overflow="scroll"><m:mi>Ω</m:mi></m:math>, one needs to be careful to ensure Michell's problem is self-consistent. To do this, we remove the limitation imposed by <m:math overflow="scroll"><m:msub><m:mi>σ</m:mi><m:mn>0</m:mn></m:msub></m:math> and allow increasingly strong beams whose cost is proportional to their strength. This way, the cross-sectional area doesn't get too large, so there isn't a problem with finding enough space.</para>
+    </section>
+    <section id="id121016">
+      <title>Variational forms of the stress problems</title>
+      <para id="id121023">The following is a brief derivation of the Michell problem, where the stress constrains come from the equilibrium equations:</para>
+      <equation id="id121027">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mtext>div</m:mtext>
+            <m:mspace width="4.pt"/>
+            <m:mi>σ</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+            <m:mspace width="4.pt"/>
+            <m:mtext>in</m:mtext>
+            <m:mspace width="4.pt"/>
+            <m:mi>Ω</m:mi>
+            <m:mo>,</m:mo>
+            <m:mi>σ</m:mi>
+            <m:mo>:</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mi>f</m:mi>
+            <m:mspace width="4.pt"/>
+            <m:mtext>on</m:mtext>
+            <m:mspace width="4.pt"/>
+            <m:mi>Γ</m:mi>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id121081">where</para>
+      <equation id="id121087">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>σ</m:mi>
+            <m:mo>=</m:mo>
+            <m:mfenced separators="" open="[" close="]">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd>
+                    <m:msub>
+                      <m:mi>σ</m:mi>
+                      <m:mi>x</m:mi>
+                    </m:msub>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:msub>
+                      <m:mi>τ</m:mi>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mi>y</m:mi>
+                      </m:mrow>
+                    </m:msub>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:msub>
+                      <m:mi>τ</m:mi>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mi>y</m:mi>
+                      </m:mrow>
+                    </m:msub>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:msub>
+                      <m:mi>σ</m:mi>
+                      <m:mi>y</m:mi>
+                    </m:msub>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <equation id="id121153">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mtext>div</m:mtext>
+            <m:mi>σ</m:mi>
+            <m:mo>=</m:mo>
+            <m:mfenced separators="" open="[" close="]">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mfrac>
+                        <m:mi>d</m:mi>
+                        <m:mrow>
+                          <m:mi>d</m:mi>
+                          <m:mi>x</m:mi>
+                        </m:mrow>
+                      </m:mfrac>
+                      <m:msub>
+                        <m:mi>σ</m:mi>
+                        <m:mi>x</m:mi>
+                      </m:msub>
+                    </m:mrow>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mfrac>
+                        <m:mi>d</m:mi>
+                        <m:mrow>
+                          <m:mi>d</m:mi>
+                          <m:mi>y</m:mi>
+                        </m:mrow>
+                      </m:mfrac>
+                      <m:msub>
+                        <m:mi>τ</m:mi>
+                        <m:mrow>
+                          <m:mi>x</m:mi>
+                          <m:mi>y</m:mi>
+                        </m:mrow>
+                      </m:msub>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mfrac>
+                        <m:mi>d</m:mi>
+                        <m:mrow>
+                          <m:mi>d</m:mi>
+                          <m:mi>x</m:mi>
+                        </m:mrow>
+                      </m:mfrac>
+                      <m:msub>
+                        <m:mi>τ</m:mi>
+                        <m:mrow>
+                          <m:mi>x</m:mi>
+                          <m:mi>y</m:mi>
+                        </m:mrow>
+                      </m:msub>
+                    </m:mrow>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mfrac>
+                        <m:mi>d</m:mi>
+                        <m:mrow>
+                          <m:mi>d</m:mi>
+                          <m:mi>y</m:mi>
+                        </m:mrow>
+                      </m:mfrac>
+                      <m:msub>
+                        <m:mi>σ</m:mi>
+                        <m:mi>y</m:mi>
+                      </m:msub>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id121441">and its eigenvalues, or principal stresses, are</para>
+      <equation id="uid1">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>λ</m:mi>
+              <m:mrow>
+                <m:mn>1</m:mn>
+                <m:mo>,</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>σ</m:mi>
+                <m:mi>x</m:mi>
+              </m:msub>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>σ</m:mi>
+                <m:mi>y</m:mi>
+              </m:msub>
+              <m:mo>±</m:mo>
+              <m:msup>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:msub>
+                        <m:mi>σ</m:mi>
+                        <m:mi>x</m:mi>
+                      </m:msub>
+                      <m:mo>-</m:mo>
+                      <m:msub>
+                        <m:mi>σ</m:mi>
+                        <m:mi>y</m:mi>
+                      </m:msub>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                  <m:mo>+</m:mo>
+                  <m:mn>4</m:mn>
+                  <m:msub>
+                    <m:mrow>
+                      <m:msup>
+                        <m:mi>τ</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:msup>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mi>x</m:mi>
+                      <m:mi>y</m:mi>
+                    </m:mrow>
+                  </m:msub>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mrow>
+                  <m:mn>1</m:mn>
+                  <m:mo>/</m:mo>
+                  <m:mn>2</m:mn>
+                </m:mrow>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id121568">The formula for <link target-id="uid1"/> comes from the quadratic formula for the 2-D Lagrangian strain tensor. Bars are placed in the directions of principle stress, which, by definition, come from the orthogonal eigenvectors of <m:math overflow="scroll"><m:mi>σ</m:mi></m:math>. The required cross-sectional areas at any point are proportional (scaled by <m:math overflow="scroll"><m:msub><m:mi>σ</m:mi><m:mn>0</m:mn></m:msub></m:math>) to <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>λ</m:mi><m:mn>1</m:mn></m:msub><m:mrow><m:mo>|</m:mo></m:mrow></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>λ</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>|</m:mo></m:mrow></m:mrow></m:math> and the total volume of the truss is proportional to</para>
+      <equation id="uid2">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>Φ</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>σ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:munder>
+              <m:mrow>
+                <m:mspace width="0.277778em"/>
+                <m:mpadded width="-3pt">
+                  <m:mo>∫</m:mo>
+                </m:mpadded>
+                <m:mpadded width="-3pt">
+                  <m:mo>∫</m:mo>
+                </m:mpadded>
+                <m:mspace width="0.277778em"/>
+              </m:mrow>
+              <m:mi>Ω</m:mi>
+            </m:munder>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>λ</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>+</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>λ</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mspace width="4pt"/>
+            <m:mi>d</m:mi>
+            <m:mi>x</m:mi>
+            <m:mspace width="4pt"/>
+            <m:mi>d</m:mi>
+            <m:mi>y</m:mi>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id121736">Michell's optimal design can be determined from the solution to</para>
+      <equation id="uid3">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mtext>Minimize</m:mtext>
+              </m:mtd>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mi>Φ</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>σ</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mtext>subject</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:mtext>to</m:mtext>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mtext>div</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:mi>σ</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mn>0</m:mn>
+                  <m:mo>,</m:mo>
+                  <m:mspace width="0.277778em"/>
+                  <m:mi>σ</m:mi>
+                  <m:mo>:</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mi>f</m:mi>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id121822">To express the problem in a way that suggests a computational algorithm, we introduce a stress function <m:math overflow="scroll"><m:mrow><m:mi>ψ</m:mi><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>)</m:mo></m:mrow></m:math>. For any statically admissible stress tensor <m:math overflow="scroll"><m:mi>σ</m:mi></m:math> there is a function <m:math overflow="scroll"><m:mi>ψ</m:mi></m:math> such that</para>
+      <equation id="id121864">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>σ</m:mi>
+            <m:mo>=</m:mo>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd>
+                    <m:msub>
+                      <m:mi>ψ</m:mi>
+                      <m:mrow>
+                        <m:mi>y</m:mi>
+                        <m:mi>y</m:mi>
+                      </m:mrow>
+                    </m:msub>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:msub>
+                        <m:mi>ψ</m:mi>
+                        <m:mrow>
+                          <m:mi>x</m:mi>
+                          <m:mi>y</m:mi>
+                        </m:mrow>
+                      </m:msub>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:msub>
+                        <m:mi>ψ</m:mi>
+                        <m:mrow>
+                          <m:mi>x</m:mi>
+                          <m:mi>y</m:mi>
+                        </m:mrow>
+                      </m:msub>
+                    </m:mrow>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:msub>
+                      <m:mi>ψ</m:mi>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mi>x</m:mi>
+                      </m:mrow>
+                    </m:msub>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id121941">where the subscripts indicate partial derivatives. It is easy to see that <m:math overflow="scroll"><m:mrow><m:mtext>div</m:mtext><m:mspace width="4.pt"/><m:mi>σ</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>. In the first column, for example,</para>
+      <equation id="id121965">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mfrac>
+              <m:mi>∂</m:mi>
+              <m:mrow>
+                <m:mi>∂</m:mi>
+                <m:mi>x</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:msub>
+              <m:mi>σ</m:mi>
+              <m:mi>x</m:mi>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mi>∂</m:mi>
+              <m:mrow>
+                <m:mi>∂</m:mi>
+                <m:mi>y</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:msub>
+              <m:mi>τ</m:mi>
+              <m:mrow>
+                <m:mi>x</m:mi>
+                <m:mi>y</m:mi>
+              </m:mrow>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mi>∂</m:mi>
+              <m:mrow>
+                <m:mi>∂</m:mi>
+                <m:mi>x</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:msub>
+              <m:mi>ψ</m:mi>
+              <m:mrow>
+                <m:mi>y</m:mi>
+                <m:mi>y</m:mi>
+              </m:mrow>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mi>∂</m:mi>
+              <m:mrow>
+                <m:mi>∂</m:mi>
+                <m:mi>y</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mo>-</m:mo>
+              <m:msub>
+                <m:mi>ψ</m:mi>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mi>y</m:mi>
+                </m:mrow>
+              </m:msub>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>ψ</m:mi>
+              <m:mrow>
+                <m:mi>y</m:mi>
+                <m:mi>y</m:mi>
+                <m:mi>x</m:mi>
+              </m:mrow>
+            </m:msub>
+            <m:mo>-</m:mo>
+            <m:msub>
+              <m:mi>ψ</m:mi>
+              <m:mrow>
+                <m:mi>x</m:mi>
+                <m:mi>y</m:mi>
+                <m:mi>y</m:mi>
+              </m:mrow>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id122102"><m:math overflow="scroll"><m:mi>ψ</m:mi></m:math> is determined up to a linear function, because all second derivatives of a linear function are zero.
+Given the unit normal <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mo>(</m:mo><m:msub><m:mi>n</m:mi><m:mi>x</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi>n</m:mi><m:mi>y</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math>, the unit tangent <m:math overflow="scroll"><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mo>(</m:mo><m:mo>-</m:mo><m:msub><m:mi>n</m:mi><m:mi>y</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi>n</m:mi><m:mi>x</m:mi></m:msub><m:mo>)</m:mo><m:mo>,</m:mo></m:mrow></m:math> and the condition</para>
+      <equation id="id122184">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd>
+                    <m:msub>
+                      <m:mi>σ</m:mi>
+                      <m:mi>x</m:mi>
+                    </m:msub>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:msub>
+                      <m:mi>τ</m:mi>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mi>y</m:mi>
+                      </m:mrow>
+                    </m:msub>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:msub>
+                      <m:mi>τ</m:mi>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mi>y</m:mi>
+                      </m:mrow>
+                    </m:msub>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:msub>
+                      <m:mi>σ</m:mi>
+                      <m:mi>y</m:mi>
+                    </m:msub>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd>
+                    <m:msub>
+                      <m:mi>n</m:mi>
+                      <m:mi>x</m:mi>
+                    </m:msub>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:msub>
+                      <m:mi>n</m:mi>
+                      <m:mi>y</m:mi>
+                    </m:msub>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+            <m:mo>=</m:mo>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd>
+                    <m:msub>
+                      <m:mi>f</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:msub>
+                      <m:mi>f</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+            <m:mo>,</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id122303"><m:math overflow="scroll"><m:mrow><m:msub><m:mi>ψ</m:mi><m:mrow><m:mi>y</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:msub><m:mi>n</m:mi><m:mi>x</m:mi></m:msub><m:mo>-</m:mo><m:msub><m:mi>ψ</m:mi><m:mrow><m:mi>x</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:msub><m:mi>n</m:mi><m:mi>y</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math> or <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>(</m:mo><m:mtext>grad</m:mtext><m:mspace width="4.pt"/><m:msub><m:mi>ψ</m:mi><m:mi>y</m:mi></m:msub><m:mo>)</m:mo></m:mrow><m:mo>·</m:mo><m:mi>t</m:mi><m:mo>=</m:mo><m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math> and similarly for <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub></m:math>. Therefore the tangential derivative of <m:math overflow="scroll"><m:msub><m:mi>ψ</m:mi><m:mi>y</m:mi></m:msub></m:math> is, by definition, <m:math overflow="scroll"><m:mrow><m:mfrac><m:mrow><m:mi>∂</m:mi><m:msub><m:mi>ψ</m:mi><m:mi>y</m:mi></m:msub></m:mrow><m:mrow><m:mi>∂</m:mi><m:mi>t</m:mi></m:mrow></m:mfrac><m:mo>=</m:mo><m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math> or <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ψ</m:mi><m:mi>y</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>P</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msubsup><m:mo>∫</m:mo><m:mrow><m:msub><m:mi>P</m:mi><m:mn>0</m:mn></m:msub></m:mrow><m:mi>P</m:mi></m:msubsup><m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub><m:mspace width="4pt"/><m:mi>d</m:mi><m:mi>s</m:mi></m:mrow></m:math> by the fundamental theorem of calculus, and similarly for <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub></m:math>. In order for the constraints to be compatible, the external loads <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub></m:math> and <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub></m:math> must be self-equilibrating, and therefore the boundary values <m:math overflow="scroll"><m:msub><m:mi>ψ</m:mi><m:mi>x</m:mi></m:msub></m:math> and <m:math overflow="scroll"><m:msub><m:mi>ψ</m:mi><m:mi>y</m:mi></m:msub></m:math> are well defined: the integrals around the closed curve <m:math overflow="scroll"><m:mi>Γ</m:mi></m:math> are zero. Provided that there is no net torque from the external forces, <m:math overflow="scroll"><m:mi>ψ</m:mi></m:math> itself can be determined. Write <m:math overflow="scroll"><m:mrow><m:mi>ψ</m:mi><m:mo>=</m:mo><m:mi>g</m:mi></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ψ</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mi>h</m:mi></m:mrow></m:math>, where <m:math overflow="scroll"><m:msub><m:mi>ψ</m:mi><m:mi>n</m:mi></m:msub></m:math> is the normal derivative of <m:math overflow="scroll"><m:mi>ψ</m:mi></m:math>.</para>
+      <para id="id122656">If the signs of <m:math overflow="scroll"><m:msub><m:mi>λ</m:mi><m:mn>1</m:mn></m:msub></m:math> and <m:math overflow="scroll"><m:msub><m:mi>λ</m:mi><m:mn>2</m:mn></m:msub></m:math> are the same, then</para>
+      <equation id="id122685">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mrow>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>λ</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>+</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>λ</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>=</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>λ</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>λ</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>=</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>ψ</m:mi>
+              <m:mrow>
+                <m:mi>x</m:mi>
+                <m:mi>x</m:mi>
+              </m:mrow>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>ψ</m:mi>
+              <m:mrow>
+                <m:mi>y</m:mi>
+                <m:mi>y</m:mi>
+              </m:mrow>
+            </m:msub>
+            <m:mrow>
+              <m:mo>|</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id122778">because the trace of the matrix <m:math overflow="scroll"><m:mi>σ</m:mi></m:math> is equal to the sum of the eigenvalues.</para>
+      <para id="id122792">If the <m:math overflow="scroll"><m:msub><m:mi>λ</m:mi><m:mn>1</m:mn></m:msub></m:math> and <m:math overflow="scroll"><m:msub><m:mi>λ</m:mi><m:mn>2</m:mn></m:msub></m:math> are of opposite signs, then</para>
+      <equation id="uid4">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mfenced separators="" open="|" close="|">
+                    <m:msub>
+                      <m:mi>λ</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                  </m:mfenced>
+                  <m:mo>+</m:mo>
+                  <m:mfenced separators="" open="|" close="|">
+                    <m:msub>
+                      <m:mi>λ</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                  </m:mfenced>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mfenced separators="" open="|" close="|">
+                    <m:msub>
+                      <m:mi>λ</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:mo>-</m:mo>
+                    <m:msub>
+                      <m:mi>λ</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                  </m:mfenced>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mfenced separators="" open="|" close="|">
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mn>2</m:mn>
+                    </m:mfrac>
+                    <m:msup>
+                      <m:mrow>
+                        <m:mo>(</m:mo>
+                        <m:msub>
+                          <m:mi>σ</m:mi>
+                          <m:mi>x</m:mi>
+                        </m:msub>
+                        <m:mo>+</m:mo>
+                        <m:msub>
+                          <m:mi>σ</m:mi>
+                          <m:mi>y</m:mi>
+                        </m:msub>
+                        <m:mo>±</m:mo>
+                        <m:msup>
+                          <m:mrow>
+                            <m:mo>(</m:mo>
+                            <m:msub>
+                              <m:mi>σ</m:mi>
+                              <m:mi>x</m:mi>
+                            </m:msub>
+                            <m:mo>-</m:mo>
+                            <m:msub>
+                              <m:mi>σ</m:mi>
+                              <m:mi>y</m:mi>
+                            </m:msub>
+                            <m:mo>)</m:mo>
+                          </m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:msup>
+                        <m:mo>+</m:mo>
+                        <m:mn>4</m:mn>
+                        <m:msubsup>
+                          <m:mi>τ</m:mi>
+                          <m:mrow>
+                            <m:mi>x</m:mi>
+                            <m:mi>y</m:mi>
+                          </m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:msubsup>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                      <m:mfrac>
+                        <m:mn>1</m:mn>
+                        <m:mn>2</m:mn>
+                      </m:mfrac>
+                    </m:msup>
+                    <m:mo>-</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mn>2</m:mn>
+                    </m:mfrac>
+                    <m:msup>
+                      <m:mrow>
+                        <m:mo>(</m:mo>
+                        <m:msub>
+                          <m:mi>σ</m:mi>
+                          <m:mi>x</m:mi>
+                        </m:msub>
+                        <m:mo>+</m:mo>
+                        <m:msub>
+                          <m:mi>σ</m:mi>
+                          <m:mi>y</m:mi>
+                        </m:msub>
+                        <m:mo>∓</m:mo>
+                        <m:msup>
+                          <m:mrow>
+                            <m:mo>(</m:mo>
+                            <m:msub>
+                              <m:mi>σ</m:mi>
+                              <m:mi>x</m:mi>
+                            </m:msub>
+                            <m:mo>-</m:mo>
+                            <m:msub>
+                              <m:mi>σ</m:mi>
+                              <m:mi>y</m:mi>
+                            </m:msub>
+                            <m:mo>)</m:mo>
+                          </m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:msup>
+                        <m:mo>+</m:mo>
+                        <m:mn>4</m:mn>
+                        <m:msubsup>
+                          <m:mi>τ</m:mi>
+                          <m:mrow>
+                            <m:mi>x</m:mi>
+                            <m:mi>y</m:mi>
+                          </m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:msubsup>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                      <m:mfrac>
+                        <m:mn>1</m:mn>
+                        <m:mn>2</m:mn>
+                      </m:mfrac>
+                    </m:msup>
+                  </m:mfenced>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mn>2</m:mn>
+                  </m:mfrac>
+                  <m:mfenced separators="" open="|" close="|">
+                    <m:mo>±</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:msup>
+                      <m:mrow>
+                        <m:mo>(</m:mo>
+                        <m:msup>
+                          <m:mrow>
+                            <m:mo>(</m:mo>
+                            <m:msub>
+                              <m:mi>σ</m:mi>
+                              <m:mi>x</m:mi>
+                            </m:msub>
+                            <m:mo>-</m:mo>
+                            <m:msub>
+                              <m:mi>σ</m:mi>
+                              <m:mi>y</m:mi>
+                            </m:msub>
+                            <m:mo>)</m:mo>
+                          </m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:msup>
+                        <m:mo>+</m:mo>
+                        <m:mn>4</m:mn>
+                        <m:msubsup>
+                          <m:mi>τ</m:mi>
+                          <m:mrow>
+                            <m:mi>x</m:mi>
+                            <m:mi>y</m:mi>
+                          </m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:msubsup>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                      <m:mfrac>
+                        <m:mn>1</m:mn>
+                        <m:mn>2</m:mn>
+                      </m:mfrac>
+                    </m:msup>
+                  </m:mfenced>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:msup>
+                    <m:mfenced separators="" open="(" close=")">
+                      <m:msup>
+                        <m:mfenced separators="" open="(" close=")">
+                          <m:msub>
+                            <m:mi>σ</m:mi>
+                            <m:mi>x</m:mi>
+                          </m:msub>
+                          <m:mo>-</m:mo>
+                          <m:msub>
+                            <m:mi>σ</m:mi>
+                            <m:mi>y</m:mi>
+                          </m:msub>
+                        </m:mfenced>
+                        <m:mn>2</m:mn>
+                      </m:msup>
+                      <m:mo>+</m:mo>
+                      <m:mn>4</m:mn>
+                      <m:msubsup>
+                        <m:mi>τ</m:mi>
+                        <m:mrow>
+                          <m:mi>x</m:mi>
+                          <m:mi>y</m:mi>
+                        </m:mrow>
+                        <m:mn>2</m:mn>
+                      </m:msubsup>
+                    </m:mfenced>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mn>2</m:mn>
+                    </m:mfrac>
+                  </m:msup>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id123265">
+Therefore, in order to minimize the largest principle stress, the Michell problem becomes</para>
+      <equation id="id123272">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mtext>Minimize</m:mtext>
+              </m:mtd>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:munder>
+                    <m:mrow>
+                      <m:mspace width="0.277778em"/>
+                      <m:mpadded width="-3pt">
+                        <m:mo>∫</m:mo>
+                      </m:mpadded>
+                      <m:mpadded width="-3pt">
+                        <m:mo>∫</m:mo>
+                      </m:mpadded>
+                      <m:mspace width="0.277778em"/>
+                    </m:mrow>
+                    <m:mi>Ω</m:mi>
+                  </m:munder>
+                  <m:mrow>
+                    <m:mtext>max</m:mtext>
+                    <m:mo>(</m:mo>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>ψ</m:mi>
+                    <m:mrow>
+                      <m:mi>x</m:mi>
+                      <m:mi>x</m:mi>
+                    </m:mrow>
+                  </m:msub>
+                  <m:mo>+</m:mo>
+                  <m:msub>
+                    <m:mi>ψ</m:mi>
+                    <m:mrow>
+                      <m:mi>y</m:mi>
+                      <m:mi>y</m:mi>
+                    </m:mrow>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mo>,</m:mo>
+                    <m:msup>
+                      <m:mrow>
+                        <m:mo>(</m:mo>
+                        <m:msup>
+                          <m:mrow>
+                            <m:mo>(</m:mo>
+                            <m:msub>
+                              <m:mi>ψ</m:mi>
+                              <m:mrow>
+                                <m:mi>x</m:mi>
+                                <m:mi>x</m:mi>
+                              </m:mrow>
+                            </m:msub>
+                            <m:mo>-</m:mo>
+                            <m:msub>
+                              <m:mi>ψ</m:mi>
+                              <m:mrow>
+                                <m:mi>y</m:mi>
+                                <m:mi>y</m:mi>
+                              </m:mrow>
+                            </m:msub>
+                            <m:mo>)</m:mo>
+                          </m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:msup>
+                        <m:mo>+</m:mo>
+                        <m:mn>4</m:mn>
+                        <m:msubsup>
+                          <m:mi>ψ</m:mi>
+                          <m:mrow>
+                            <m:mi>x</m:mi>
+                            <m:mi>y</m:mi>
+                          </m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:msubsup>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                        <m:mo>/</m:mo>
+                        <m:mn>2</m:mn>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mspace width="4pt"/>
+                  <m:mi>d</m:mi>
+                  <m:mi>x</m:mi>
+                  <m:mspace width="4pt"/>
+                  <m:mi>d</m:mi>
+                  <m:mi>y</m:mi>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mtext>subject</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:mtext>to</m:mtext>
+                  <m:mspace width="4.pt"/>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mi>ψ</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mi>g</m:mi>
+                  <m:mo>,</m:mo>
+                  <m:msub>
+                    <m:mi>ψ</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msub>
+                  <m:mo>=</m:mo>
+                  <m:mi>h</m:mi>
+                  <m:mspace width="4.pt"/>
+                  <m:mtext>on</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:mi>Γ</m:mi>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id123499">In real life, unlike in Michell's problem, beams in a truss cannot be arbitrarily strong. Thus, if <m:math overflow="scroll"><m:mi>Λ</m:mi></m:math> denotes the upper bound on the stresses, the design problem for a constrained Michell truss is</para>
+      <equation id="uid5">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mtext>Minimize</m:mtext>
+                  <m:mspace width="4.pt"/>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:munder>
+                    <m:mrow>
+                      <m:mspace width="0.277778em"/>
+                      <m:mpadded width="-3pt">
+                        <m:mo>∫</m:mo>
+                      </m:mpadded>
+                      <m:mpadded width="-3pt">
+                        <m:mo>∫</m:mo>
+                      </m:mpadded>
+                      <m:mspace width="0.277778em"/>
+                    </m:mrow>
+                    <m:mi>Ω</m:mi>
+                  </m:munder>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>λ</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>σ</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mo>+</m:mo>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>λ</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>σ</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mtext>subject</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:mtext>to</m:mtext>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>λ</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mo>≤</m:mo>
+                    <m:mi>Λ</m:mi>
+                    <m:mo>,</m:mo>
+                    <m:mspace width="0.277778em"/>
+                    <m:mtext>div</m:mtext>
+                    <m:mspace width="4.pt"/>
+                    <m:mi>σ</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mn>0</m:mn>
+                    <m:mo>,</m:mo>
+                    <m:mspace width="0.277778em"/>
+                    <m:mi>σ</m:mi>
+                    <m:mo>:</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mspace width="4.pt"/>
+                    <m:mtext>on</m:mtext>
+                    <m:mspace width="4.pt"/>
+                    <m:mi>Γ</m:mi>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id123701">The stress tensor is made up of two tensors: the mean hydrostatic stress tensor and the stress deviator tensor. The hydrostatic stress is the average of the normal stress components, <m:math overflow="scroll"><m:msub><m:mi>σ</m:mi><m:mi>x</m:mi></m:msub></m:math> and <m:math overflow="scroll"><m:msub><m:mi>σ</m:mi><m:mi>y</m:mi></m:msub></m:math>. The deviatoric stress is what's left over, namely <m:math overflow="scroll"><m:mrow><m:msup><m:mi>σ</m:mi><m:mi>D</m:mi></m:msup><m:mo>=</m:mo><m:mi>σ</m:mi><m:mo>-</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mrow><m:mo>(</m:mo><m:msub><m:mi>σ</m:mi><m:mi>x</m:mi></m:msub><m:mo>+</m:mo><m:msub><m:mi>σ</m:mi><m:mi>y</m:mi></m:msub><m:mo>)</m:mo></m:mrow><m:mi>I</m:mi></m:mrow></m:math>. The constraint on the strength of the beams can act only on <m:math overflow="scroll"><m:msup><m:mi>σ</m:mi><m:mi>D</m:mi></m:msup></m:math> instead of <m:math overflow="scroll"><m:mi>σ</m:mi></m:math>, therefore ignoring the hydrostatic component of the force. This is useful for working with a composite material that can only withstand pure pressure. The constraint then applies to the eigenvalues of <m:math overflow="scroll"><m:msup><m:mi>σ</m:mi><m:mi>D</m:mi></m:msup></m:math>. Using the same quadratic formula as in <link target-id="uid1"/>, we get that</para>
+      <equation id="id123834">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mrow>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>λ</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi>σ</m:mi>
+                <m:mi>D</m:mi>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:msub>
+                  <m:mi>λ</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msub>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:msup>
+                    <m:mi>σ</m:mi>
+                    <m:mi>D</m:mi>
+                  </m:msup>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mfrac>
+                  <m:mn>1</m:mn>
+                  <m:mn>2</m:mn>
+                </m:mfrac>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:msub>
+                    <m:mi>σ</m:mi>
+                    <m:mi>x</m:mi>
+                  </m:msub>
+                  <m:mo>-</m:mo>
+                  <m:msub>
+                    <m:mi>σ</m:mi>
+                    <m:mi>y</m:mi>
+                  </m:msub>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msubsup>
+              <m:mi>τ</m:mi>
+              <m:mrow>
+                <m:mi>x</m:mi>
+                <m:mi>y</m:mi>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msubsup>
+            <m:mo>≤</m:mo>
+            <m:msup>
+              <m:mi>k</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id123978">The matrix <m:math overflow="scroll"><m:msup><m:mi>σ</m:mi><m:mi>D</m:mi></m:msup></m:math> has trace zero, so the eigenvalues are of equal magnitude and opposite sign. Therefore the plain strain redesign problem is</para>
+      <equation id="uid6">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mtext>Minimize</m:mtext>
+                  <m:mspace width="4.pt"/>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:munder>
+                    <m:mrow>
+                      <m:mspace width="0.277778em"/>
+                      <m:mpadded width="-3pt">
+                        <m:mo>∫</m:mo>
+                      </m:mpadded>
+                      <m:mpadded width="-3pt">
+                        <m:mo>∫</m:mo>
+                      </m:mpadded>
+                      <m:mspace width="0.277778em"/>
+                    </m:mrow>
+                    <m:mi>Ω</m:mi>
+                  </m:munder>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>λ</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:msup>
+                      <m:mi>σ</m:mi>
+                      <m:mi>D</m:mi>
+                    </m:msup>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mo>+</m:mo>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>λ</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:msup>
+                      <m:mi>σ</m:mi>
+                      <m:mi>D</m:mi>
+                    </m:msup>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mtext>subject</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:mtext>to</m:mtext>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mrow>
+                    <m:mtext>div</m:mtext>
+                    <m:mspace width="4.pt"/>
+                    <m:mi>σ</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mn>0</m:mn>
+                    <m:mspace width="4.pt"/>
+                    <m:mtext>in</m:mtext>
+                    <m:mspace width="4.pt"/>
+                    <m:mi>Ω</m:mi>
+                    <m:mo>,</m:mo>
+                    <m:mspace width="0.277778em"/>
+                    <m:mi>σ</m:mi>
+                    <m:mo>:</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mspace width="4.pt"/>
+                    <m:mtext>on</m:mtext>
+                    <m:mspace width="4.pt"/>
+                    <m:mi>Γ</m:mi>
+                    <m:mo>,</m:mo>
+                    <m:mspace width="0.277778em"/>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>λ</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:msup>
+                      <m:mi>σ</m:mi>
+                      <m:mi>D</m:mi>
+                    </m:msup>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                  <m:mo>=</m:mo>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:msub>
+                        <m:mi>λ</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:msub>
+                      <m:mrow>
+                        <m:mo>(</m:mo>
+                        <m:msup>
+                          <m:mi>σ</m:mi>
+                          <m:mi>D</m:mi>
+                        </m:msup>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                  <m:mo>≤</m:mo>
+                  <m:msup>
+                    <m:mi>k</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id124266">Rewriting this in terms of the stress function <m:math overflow="scroll"><m:mi>ψ</m:mi></m:math>, and denoting it by <m:math overflow="scroll"><m:mrow><m:mo>∥</m:mo><m:mi>ψ</m:mi><m:mo>∥</m:mo></m:mrow></m:math>, we get</para>
+      <equation id="id124296">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msup>
+              <m:mrow>
+                <m:mo>∥</m:mo>
+                <m:mi>ψ</m:mi>
+                <m:mo>∥</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mfrac>
+                  <m:mn>1</m:mn>
+                  <m:mn>2</m:mn>
+                </m:mfrac>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:msub>
+                    <m:mi>ψ</m:mi>
+                    <m:mrow>
+                      <m:mi>x</m:mi>
+                      <m:mi>x</m:mi>
+                    </m:mrow>
+                  </m:msub>
+                  <m:mo>-</m:mo>
+                  <m:msub>
+                    <m:mi>ψ</m:mi>
+                    <m:mrow>
+                      <m:mi>y</m:mi>
+                      <m:mi>y</m:mi>
+                    </m:mrow>
+                  </m:msub>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msubsup>
+              <m:mi>ψ</m:mi>
+              <m:mrow>
+                <m:mi>x</m:mi>
+                <m:mi>y</m:mi>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msubsup>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id124384">Therefore the constrained problem above takes the form</para>
+      <equation id="id124390">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mtext>Minimize</m:mtext>
+                  <m:mspace width="4.pt"/>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:munder>
+                    <m:mrow>
+                      <m:mspace width="0.277778em"/>
+                      <m:mpadded width="-3pt">
+                        <m:mo>∫</m:mo>
+                      </m:mpadded>
+                      <m:mpadded width="-3pt">
+                        <m:mo>∫</m:mo>
+                      </m:mpadded>
+                      <m:mspace width="0.277778em"/>
+                    </m:mrow>
+                    <m:mi>Ω</m:mi>
+                  </m:munder>
+                  <m:mn>2</m:mn>
+                  <m:mrow>
+                    <m:mo>∥</m:mo>
+                    <m:mi>ψ</m:mi>
+                    <m:mo>∥</m:mo>
+                  </m:mrow>
+                  <m:mspace width="4pt"/>
+                  <m:mi>d</m:mi>
+                  <m:mi>x</m:mi>
+                  <m:mspace width="4pt"/>
+                  <m:mi>d</m:mi>
+                  <m:mi>y</m:mi>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mtext>subject</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:mtext>to</m:mtext>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mrow>
+                    <m:mo>∥</m:mo>
+                    <m:mi>ψ</m:mi>
+                    <m:mo>∥</m:mo>
+                  </m:mrow>
+                  <m:mo>≤</m:mo>
+                  <m:mi>k</m:mi>
+                  <m:mspace width="4.pt"/>
+                  <m:mtext>in</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:mi>Ω</m:mi>
+                  <m:mo>,</m:mo>
+                  <m:mspace width="0.277778em"/>
+                  <m:mi>ψ</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mi>g</m:mi>
+                  <m:mo>,</m:mo>
+                  <m:mspace width="0.277778em"/>
+                  <m:msub>
+                    <m:mi>ψ</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msub>
+                  <m:mo>=</m:mo>
+                  <m:mi>h</m:mi>
+                  <m:mspace width="4.pt"/>
+                  <m:mtext>on</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:mi>Γ</m:mi>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id124556">If the <m:math overflow="scroll"><m:mi>k</m:mi></m:math> is too small, or <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub></m:math> and <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub></m:math> are too large, then the material may be too weak to withstand the load, and no truss can exist without collapsing.</para>
+    </section>
+    <section id="id124600">
+      <title>The dual problems and optimality conditions</title>
+      <para id="id124606">Now we give an informal derivation of the dual problem, which is a maximization over displacements <m:math overflow="scroll"><m:mrow><m:mi>u</m:mi><m:mo>=</m:mo><m:mo>(</m:mo><m:msub><m:mi>u</m:mi><m:mn>1</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>)</m:mo></m:mrow><m:mo>,</m:mo><m:msub><m:mi>u</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>)</m:mo></m:mrow><m:mo>)</m:mo></m:mrow></m:math>. No boundary conditions are imposed, because <m:math overflow="scroll"><m:mrow><m:mi>σ</m:mi><m:mo>:</m:mo><m:mi>n</m:mi><m:mo>=</m:mo><m:mi>f</m:mi></m:mrow></m:math> was prescribed on all of <m:math overflow="scroll"><m:mi>Γ</m:mi></m:math>. To solve for the maximum over the constraint <m:math overflow="scroll"><m:mrow><m:mtext>div</m:mtext><m:mspace width="4.pt"/><m:mi>σ</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>, we introduce a Lagrange multiplier. This is a system of two equations, <m:math overflow="scroll"><m:mrow><m:mfrac><m:mrow><m:mi>∂</m:mi><m:msub><m:mi>σ</m:mi><m:mi>x</m:mi></m:msub></m:mrow><m:mrow><m:mi>∂</m:mi><m:mi>x</m:mi></m:mrow></m:mfrac><m:mo>+</m:mo><m:mfrac><m:mrow><m:mi>∂</m:mi><m:msub><m:mi>τ</m:mi><m:mrow><m:mi>x</m:mi><m:mi>y</m:mi></m:mrow></m:msub></m:mrow><m:mrow><m:mi>∂</m:mi><m:mi>y</m:mi></m:mrow></m:mfrac><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mfrac><m:mrow><m:mi>∂</m:mi><m:msub><m:mi>τ</m:mi><m:mrow><m:mi>x</m:mi><m:mi>y</m:mi></m:mrow></m:msub></m:mrow><m:mrow><m:mi>∂</m:mi><m:mi>x</m:mi></m:mrow></m:mfrac><m:mo>+</m:mo><m:mfrac><m:mrow><m:mi>∂</m:mi><m:msub><m:mi>σ</m:mi><m:mi>y</m:mi></m:msub></m:mrow><m:mrow><m:mi>∂</m:mi><m:mi>y</m:mi></m:mrow></m:mfrac><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>, and we denote the multipliers by <m:math overflow="scroll"><m:msub><m:mi>u</m:mi><m:mn>1</m:mn></m:msub></m:math> and <m:math overflow="scroll"><m:msub><m:mi>u</m:mi><m:mn>2</m:mn></m:msub></m:math>. Then</para>
+      <equation id="uid7">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:munder>
+                    <m:mo movablelimits="true" form="prefix">min</m:mo>
+                    <m:mtable>
+                      <m:mtr>
+                        <m:mtd>
+                          <m:mrow>
+                            <m:mtext>div</m:mtext>
+                            <m:mspace width="4.pt"/>
+                            <m:mi>σ</m:mi>
+                            <m:mo>=</m:mo>
+                            <m:mn>0</m:mn>
+                          </m:mrow>
+                        </m:mtd>
+                      </m:mtr>
+                      <m:mtr>
+                        <m:mtd>
+                          <m:mrow>
+                            <m:mi>σ</m:mi>
+                            <m:mo>:</m:mo>
+                            <m:mi>n</m:mi>
+                            <m:mo>=</m:mo>
+                            <m:mi>f</m:mi>
+                          </m:mrow>
+                        </m:mtd>
+                      </m:mtr>
+                    </m:mtable>
+                  </m:munder>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mspace width="0.277778em"/>
+                      <m:mpadded width="-3pt">
+                        <m:mo>∫</m:mo>
+                      </m:mpadded>
+                      <m:mpadded width="-3pt">
+                        <m:mo>∫</m:mo>
+                      </m:mpadded>
+                      <m:mspace width="0.277778em"/>
+                    </m:mrow>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>λ</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mo>+</m:mo>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>λ</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munder>
+                    <m:mo movablelimits="true" form="prefix">min</m:mo>
+                    <m:mrow>
+                      <m:mi>σ</m:mi>
+                      <m:mo>:</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mi>f</m:mi>
+                    </m:mrow>
+                  </m:munder>
+                  <m:munder>
+                    <m:mo movablelimits="true" form="prefix">max</m:mo>
+                    <m:mi>u</m:mi>
+                  </m:munder>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mspace width="0.277778em"/>
+                      <m:mpadded width="-3pt">
+                        <m:mo>∫</m:mo>
+                      </m:mpadded>
+                      <m:mpadded width="-3pt">
+                        <m:mo>∫</m:mo>
+                      </m:mpadded>
+                      <m:mspace width="0.277778em"/>
+                    </m:mrow>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>λ</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mo>+</m:mo>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>λ</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mo>+</m:mo>
+                    <m:mi>u</m:mi>
+                    <m:mo>·</m:mo>
+                    <m:mtext>div</m:mtext>
+                    <m:mspace width="4.pt"/>
+                    <m:mi>σ</m:mi>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munder>
+                    <m:mo movablelimits="true" form="prefix">max</m:mo>
+                    <m:mi>u</m:mi>
+                  </m:munder>
+                  <m:munder>
+                    <m:mo movablelimits="true" form="prefix">min</m:mo>
+                    <m:mi>σ</m:mi>
+                  </m:munder>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mspace width="0.277778em"/>
+                      <m:mpadded width="-3pt">
+                        <m:mo>∫</m:mo>
+                      </m:mpadded>
+                      <m:mpadded width="-3pt">
+                        <m:mo>∫</m:mo>
+                      </m:mpadded>
+                      <m:mspace width="0.277778em"/>
+                    </m:mrow>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>λ</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mo>+</m:mo>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>λ</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mo>-</m:mo>
+                    <m:mrow>
+                      <m:mo>〈</m:mo>
+                      <m:mi>ε</m:mi>
+                      <m:mrow>
+                        <m:mo>(</m:mo>
+                        <m:mi>u</m:mi>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                      <m:mo>,</m:mo>
+                      <m:mi>σ</m:mi>
+                      <m:mo>〉</m:mo>
+                    </m:mrow>
+                    <m:mo>+</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mo>∫</m:mo>
+                    <m:mi>Γ</m:mi>
+                  </m:msub>
+                  <m:mi>u</m:mi>
+                  <m:mo>·</m:mo>
+                  <m:mi>f</m:mi>
+                  <m:mspace width="4pt"/>
+                  <m:mi>d</m:mi>
+                  <m:mi>s</m:mi>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id125197">
+where <m:math overflow="scroll"><m:mi>ε</m:mi></m:math> is the deformation tensor with components <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ε</m:mi><m:mrow><m:mi>i</m:mi><m:mi>j</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mrow><m:mo>(</m:mo><m:mfrac><m:mrow><m:mi>∂</m:mi><m:msub><m:mi>u</m:mi><m:mi>i</m:mi></m:msub></m:mrow><m:mrow><m:mi>∂</m:mi><m:mi>j</m:mi></m:mrow></m:mfrac><m:mo>+</m:mo><m:mfrac><m:mrow><m:mi>∂</m:mi><m:msub><m:mi>u</m:mi><m:mi>j</m:mi></m:msub></m:mrow><m:mrow><m:mi>∂</m:mi><m:mi>i</m:mi></m:mrow></m:mfrac><m:mo>)</m:mo></m:mrow></m:mrow></m:math> and the inner product <m:math overflow="scroll"><m:mrow><m:mo>〈</m:mo><m:mi>ε</m:mi><m:mo>,</m:mo><m:mi>σ</m:mi><m:mo>〉</m:mo></m:mrow></m:math> is <m:math overflow="scroll"><m:mrow><m:mo>∑</m:mo><m:mo>∑</m:mo><m:msub><m:mi>ε</m:mi><m:mrow><m:mi>i</m:mi><m:mi>j</m:mi></m:mrow></m:msub><m:msub><m:mi>σ</m:mi><m:mrow><m:mi>i</m:mi><m:mi>j</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mtext>trace</m:mtext><m:mspace width="4.pt"/><m:mrow><m:mo>(</m:mo><m:mi>ε</m:mi><m:mi>σ</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>.</para>
+      <para id="id125356">The next step is minimization over <m:math overflow="scroll"><m:mi>σ</m:mi></m:math>, so <m:math overflow="scroll"><m:mi>ε</m:mi></m:math> remains fixed.</para>
+      <equation id="uid8">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:munder>
+              <m:mo movablelimits="true" form="prefix">min</m:mo>
+              <m:mi>σ</m:mi>
+            </m:munder>
+            <m:mrow>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>λ</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>σ</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>+</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>λ</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>σ</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>-</m:mo>
+              <m:mrow>
+                <m:mo>〈</m:mo>
+                <m:mi>ε</m:mi>
+                <m:mo>,</m:mo>
+                <m:mi>σ</m:mi>
+                <m:mo>〉</m:mo>
+              </m:mrow>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id125464">First, we must diagonalize <m:math overflow="scroll"><m:mi>ε</m:mi></m:math> by a principle axis transformation, <m:math overflow="scroll"><m:mrow><m:mi>ε</m:mi><m:mo>=</m:mo><m:msup><m:mi>R</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:msup><m:mi>ε</m:mi><m:mo>'</m:mo></m:msup><m:mi>R</m:mi></m:mrow></m:math> where <m:math overflow="scroll"><m:mrow><m:msup><m:mi>R</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mo>=</m:mo><m:msup><m:mi>R</m:mi><m:mi>t</m:mi></m:msup></m:mrow></m:math>, so that the eigenvalues <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub></m:math> and <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mn>2</m:mn></m:msub></m:math> (the principal strains) appear in the diagonal matrix <m:math overflow="scroll"><m:msup><m:mi>ε</m:mi><m:mo>'</m:mo></m:msup></m:math>. The inner product <m:math overflow="scroll"><m:mrow><m:mo>〈</m:mo><m:mi>ϵ</m:mi><m:mo>,</m:mo><m:mi>σ</m:mi><m:mo>〉</m:mo></m:mrow></m:math> and the eigenvalues <m:math overflow="scroll"><m:mrow><m:mi>λ</m:mi><m:mo>(</m:mo><m:mi>σ</m:mi><m:mo>)</m:mo></m:mrow></m:math> are invariant if this transformation is applied at the same time to <m:math overflow="scroll"><m:mi>σ</m:mi></m:math>:</para>
+      <equation id="id125630">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mrow>
+              <m:mo>〈</m:mo>
+              <m:mi>ε</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi>σ</m:mi>
+              <m:mo>〉</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mtext>trace</m:mtext>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ε</m:mi>
+              <m:mi>σ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mtext>trace</m:mtext>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi>R</m:mi>
+                <m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mrow>
+              </m:msup>
+              <m:msup>
+                <m:mi>ε</m:mi>
+                <m:mo>'</m:mo>
+              </m:msup>
+              <m:mi>R</m:mi>
+              <m:msup>
+                <m:mi>R</m:mi>
+                <m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mrow>
+              </m:msup>
+              <m:msup>
+                <m:mi>σ</m:mi>
+                <m:mo>'</m:mo>
+              </m:msup>
+              <m:mi>R</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mtext>trace</m:mtext>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi>ε</m:mi>
+                <m:mo>'</m:mo>
+              </m:msup>
+              <m:msup>
+                <m:mi>σ</m:mi>
+                <m:mo>'</m:mo>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mrow>
+              <m:mo>〈</m:mo>
+              <m:msup>
+                <m:mi>ε</m:mi>
+                <m:mo>'</m:mo>
+              </m:msup>
+              <m:mo>,</m:mo>
+              <m:msup>
+                <m:mi>σ</m:mi>
+                <m:mo>'</m:mo>
+              </m:msup>
+              <m:mo>〉</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id125770">Thus the minimization simplifies to</para>
+      <equation id="id125776">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mrow>
+              <m:mo movablelimits="true" form="prefix">min</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>λ</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi>σ</m:mi>
+                <m:mo>'</m:mo>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>+</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>λ</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi>σ</m:mi>
+                <m:mo>'</m:mo>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>-</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>ε</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msubsup>
+              <m:mi>σ</m:mi>
+              <m:mn>11</m:mn>
+              <m:mo>'</m:mo>
+            </m:msubsup>
+            <m:mo>-</m:mo>
+            <m:msub>
+              <m:mi>ε</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:msubsup>
+              <m:mi>σ</m:mi>
+              <m:mn>22</m:mn>
+              <m:mo>'</m:mo>
+            </m:msubsup>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id125891">If <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub><m:mrow><m:mo>|</m:mo><m:mo>&gt;</m:mo><m:mn>1</m:mn></m:mrow></m:mrow></m:math>, take <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>σ</m:mi><m:mn>11</m:mn><m:mo>'</m:mo></m:msubsup><m:mo>=</m:mo><m:mi>K</m:mi><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>σ</m:mi><m:mn>22</m:mn><m:mo>'</m:mo></m:msubsup><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> for some <m:math overflow="scroll"><m:mrow><m:mi>K</m:mi><m:mo>≥</m:mo><m:mn>0</m:mn></m:mrow></m:math> so that the expression now becomes <m:math overflow="scroll"><m:mrow><m:mrow><m:mi>K</m:mi><m:mo>|</m:mo></m:mrow><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub><m:mrow><m:mo>|</m:mo><m:mo>-</m:mo><m:mi>K</m:mi><m:mo>|</m:mo></m:mrow><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub><m:msup><m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow></m:math>, and let <m:math overflow="scroll"><m:mrow><m:mi>K</m:mi><m:mo>→</m:mo><m:mi>∞</m:mi></m:mrow></m:math> so that the minimum goes to <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow></m:math>. Similarly, the minimum is <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow></m:math> if <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>ε</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>|</m:mo><m:mo>&gt;</m:mo><m:mn>1</m:mn></m:mrow></m:mrow></m:math>. Otherwise, if <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub><m:mrow><m:mo>|</m:mo><m:mo>,</m:mo><m:mo>|</m:mo></m:mrow><m:msub><m:mi>ε</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>|</m:mo><m:mo>≤</m:mo><m:mn>1</m:mn></m:mrow></m:mrow></m:math>, the minimum is zero. To see this, let <m:math overflow="scroll"><m:mrow><m:msub><m:mi>σ</m:mi><m:mrow><m:mi>i</m:mi><m:mi>i</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> if <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>ε</m:mi><m:mo>|</m:mo><m:mo>&lt;</m:mo><m:mn>1</m:mn></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>σ</m:mi><m:mrow><m:mi>i</m:mi><m:mi>i</m:mi></m:mrow><m:mo>'</m:mo></m:msubsup><m:mo>=</m:mo><m:mi>K</m:mi><m:msub><m:mi>ε</m:mi><m:mi>i</m:mi></m:msub></m:mrow></m:math> if <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>ε</m:mi><m:mi>i</m:mi></m:msub><m:mrow><m:mo>|</m:mo><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:mrow></m:math>.</para>
+      <para id="id126253">Substituting in this minimum, the dual problem is now</para>
+      <equation id="id126257">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mtext>Maximize</m:mtext>
+            <m:mspace width="4.pt"/>
+            <m:msub>
+              <m:mo>∫</m:mo>
+              <m:mi>Γ</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>u</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:msub>
+                <m:mi>f</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>u</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:msub>
+                <m:mi>f</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mspace width="4pt"/>
+            <m:mi>d</m:mi>
+            <m:mi>s</m:mi>
+            <m:mspace width="4.pt"/>
+            <m:mtext>subject</m:mtext>
+            <m:mspace width="4.pt"/>
+            <m:mtext>to</m:mtext>
+            <m:mspace width="4.pt"/>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:msub>
+                <m:mi>ε</m:mi>
+                <m:mi>i</m:mi>
+              </m:msub>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>u</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mo>≤</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id126364">It's expected that this maximum value is equal to the minimum of <link target-id="uid3"/>, corresponding to the minimum volume of the truss.</para>
+      <para id="id126375">Consider the case when <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>ε</m:mi><m:mi>i</m:mi></m:msub><m:mrow><m:mo>|</m:mo><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:mrow></m:math>. When <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ε</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:math> the principal strains have equal magnitude and opposite sign, which can happen only for a special class of displacement fields. There is a condition <m:math overflow="scroll"><m:mrow><m:mfrac><m:mrow><m:msup><m:mi>∂</m:mi><m:mn>2</m:mn></m:msup><m:mi>θ</m:mi></m:mrow><m:mrow><m:mi>∂</m:mi><m:mi>α</m:mi><m:mi>∂</m:mi><m:mi>β</m:mi></m:mrow></m:mfrac><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> on the angle <m:math overflow="scroll"><m:mi>θ</m:mi></m:math> between the horizontal and the direction of the strain <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>, and the secondary property <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>ε</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mfrac><m:mrow><m:mi>∂</m:mi><m:msub><m:mi>u</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:mi>∂</m:mi><m:mi>x</m:mi></m:mrow></m:mfrac><m:mo>+</m:mo><m:mfrac><m:mrow><m:mi>∂</m:mi><m:msub><m:mi>u</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:mi>∂</m:mi><m:mi>y</m:mi></m:mrow></m:mfrac><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>. Here, the geometrical problem is identical to that of slip lines in plane strain, where the eigenvalues of stress equal <m:math overflow="scroll"><m:mrow><m:mo>±</m:mo><m:msub><m:mi>σ</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:math>. In the cases when <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>ε</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math> or <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>ε</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:math> there is a similar correspondence with pure hydrostatic pressure in the stress case.</para>
+      <para id="id126665">Because <link target-id="uid8"/> is equal to 0, for every admissible <m:math overflow="scroll"><m:mi>σ</m:mi></m:math> and <m:math overflow="scroll"><m:mi>u</m:mi></m:math>,</para>
+      <equation id="id126691">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:munder>
+              <m:mo movablelimits="true" form="prefix">min</m:mo>
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mtext>div</m:mtext>
+                      <m:mspace width="4.pt"/>
+                      <m:mi>σ</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mi>σ</m:mi>
+                      <m:mo>:</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mi>f</m:mi>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:munder>
+            <m:munder>
+              <m:mrow>
+                <m:mspace width="0.277778em"/>
+                <m:mpadded width="-3pt">
+                  <m:mo>∫</m:mo>
+                </m:mpadded>
+                <m:mpadded width="-3pt">
+                  <m:mo>∫</m:mo>
+                </m:mpadded>
+                <m:mspace width="0.277778em"/>
+              </m:mrow>
+              <m:mi>Ω</m:mi>
+            </m:munder>
+            <m:mrow>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>λ</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>+</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>λ</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>=</m:mo>
+            </m:mrow>
+            <m:munder>
+              <m:mo movablelimits="true" form="prefix">max</m:mo>
+              <m:mi>u</m:mi>
+            </m:munder>
+            <m:msub>
+              <m:mo>∫</m:mo>
+              <m:mi>Γ</m:mi>
+            </m:msub>
+            <m:mi>u</m:mi>
+            <m:mo>·</m:mo>
+            <m:mi>f</m:mi>
+            <m:mspace width="4pt"/>
+            <m:mi>d</m:mi>
+            <m:mi>s</m:mi>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id126831">so that</para>
+      <equation id="id126836">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:munder>
+              <m:mrow>
+                <m:mspace width="0.277778em"/>
+                <m:mpadded width="-3pt">
+                  <m:mo>∫</m:mo>
+                </m:mpadded>
+                <m:mpadded width="-3pt">
+                  <m:mo>∫</m:mo>
+                </m:mpadded>
+                <m:mspace width="0.277778em"/>
+              </m:mrow>
+              <m:mi>Ω</m:mi>
+            </m:munder>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>λ</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>σ</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>+</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>λ</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>σ</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>|</m:mo>
+              <m:mspace width="4pt"/>
+              <m:mi>d</m:mi>
+              <m:mi>x</m:mi>
+              <m:mspace width="4pt"/>
+              <m:mi>d</m:mi>
+              <m:mi>y</m:mi>
+              <m:mo>≥</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mo>∫</m:mo>
+              <m:mi>Γ</m:mi>
+            </m:msub>
+            <m:mi>u</m:mi>
+            <m:mo>·</m:mo>
+            <m:mi>f</m:mi>
+            <m:mspace width="4pt"/>
+            <m:mi>d</m:mi>
+            <m:mi>s</m:mi>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id126957">with equality holding if the optimality condition is satisfied.</para>
+      <para id="id126963">If <m:math overflow="scroll"><m:mi>σ</m:mi></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>ε</m:mi><m:mo>(</m:mo><m:mi>u</m:mi><m:mo>)</m:mo></m:mrow></m:math> are simultaneously diagonal, the possibilities for <m:math overflow="scroll"><m:mi>σ</m:mi></m:math> can be restated as</para>
+      <equation id="uid9">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mtext>if</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:msub>
+                    <m:mi>λ</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>σ</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mrow>
+                    <m:mo>=</m:mo>
+                    <m:mn>0</m:mn>
+                    <m:mo>,</m:mo>
+                    <m:mspace width="4.pt"/>
+                    <m:mtext>then</m:mtext>
+                    <m:mspace width="4.pt"/>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>ε</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>u</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mo>≤</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mtext>if</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:msub>
+                    <m:mi>λ</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>σ</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>≠</m:mo>
+                  <m:mn>0</m:mn>
+                  <m:mo>,</m:mo>
+                  <m:mspace width="4.pt"/>
+                  <m:mtext>then</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:msub>
+                    <m:mi>ε</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>u</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mspace width="4.pt"/>
+                  <m:mtext>sgn</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:msub>
+                    <m:mi>λ</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id127170">
+because in a diagonal matrix, <m:math overflow="scroll"><m:mrow><m:msub><m:mi>λ</m:mi><m:mi>i</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>σ</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msubsup><m:mi>σ</m:mi><m:mrow><m:mi>i</m:mi><m:mi>i</m:mi></m:mrow><m:mo>'</m:mo></m:msubsup></m:mrow></m:math>.</para>
+      <para id="id127216">The dual of the problem <link target-id="uid5"/> becomes</para>
+      <equation id="uid10">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:munder>
+              <m:mo movablelimits="true" form="prefix">min</m:mo>
+              <m:mrow>
+                <m:mrow>
+                  <m:mo>|</m:mo>
+                </m:mrow>
+                <m:msub>
+                  <m:mi>λ</m:mi>
+                  <m:mi>i</m:mi>
+                </m:msub>
+                <m:mrow>
+                  <m:mo>|</m:mo>
+                  <m:mo>≤</m:mo>
+                  <m:mi>Λ</m:mi>
+                </m:mrow>
+              </m:mrow>
+            </m:munder>
+            <m:mrow>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>λ</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>σ</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>+</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>λ</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>σ</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>-</m:mo>
+              <m:mrow>
+                <m:mo>〈</m:mo>
+                <m:mi>ε</m:mi>
+                <m:mo>,</m:mo>
+                <m:mi>σ</m:mi>
+                <m:mo>〉</m:mo>
+              </m:mrow>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id127327">and the principal axis transformation leads to</para>
+      <equation id="uid11">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:munder>
+              <m:mo movablelimits="true" form="prefix">min</m:mo>
+              <m:mrow>
+                <m:mrow>
+                  <m:mo>|</m:mo>
+                </m:mrow>
+                <m:msub>
+                  <m:mi>λ</m:mi>
+                  <m:mi>i</m:mi>
+                </m:msub>
+                <m:mrow>
+                  <m:mo>|</m:mo>
+                  <m:mo>≤</m:mo>
+                  <m:mi>Λ</m:mi>
+                </m:mrow>
+              </m:mrow>
+            </m:munder>
+            <m:mrow>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>λ</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi>σ</m:mi>
+                <m:mo>'</m:mo>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>+</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>λ</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi>σ</m:mi>
+                <m:mo>'</m:mo>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>-</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>ε</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msubsup>
+              <m:mi>σ</m:mi>
+              <m:mn>11</m:mn>
+              <m:mo>'</m:mo>
+            </m:msubsup>
+            <m:mo>-</m:mo>
+            <m:msub>
+              <m:mi>ε</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:msubsup>
+              <m:mi>σ</m:mi>
+              <m:mn>22</m:mn>
+              <m:mo>'</m:mo>
+            </m:msubsup>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id127475">Because <m:math overflow="scroll"><m:msub><m:mi>λ</m:mi><m:mi>i</m:mi></m:msub></m:math> cannot be arbitrarily large, <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow></m:math> is no longer reached when <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>ε</m:mi><m:mi>i</m:mi></m:msub><m:mrow><m:mo>|</m:mo><m:mo>&gt;</m:mo><m:mn>1</m:mn></m:mrow></m:mrow></m:math>. Hence, there are now three cases, depending on the value of <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>ε</m:mi><m:mi>i</m:mi></m:msub><m:mrow><m:mo>|</m:mo></m:mrow></m:mrow></m:math>:</para>
+      <equation id="uid12">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mrow>
+                    <m:mtext>if</m:mtext>
+                    <m:mspace width="4.pt"/>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>ε</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>&gt;</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo>,</m:mo>
+                  <m:mspace width="4.pt"/>
+                  <m:mtext>then</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:msub>
+                    <m:mi>λ</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mo>=</m:mo>
+                  <m:mi>Λ</m:mi>
+                  <m:mspace width="4.pt"/>
+                  <m:mtext>sgn</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:msub>
+                    <m:mi>ε</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mrow>
+                    <m:mtext>if</m:mtext>
+                    <m:mspace width="4.pt"/>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>ε</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo>,</m:mo>
+                  <m:mspace width="4.pt"/>
+                  <m:mtext>then</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:msub>
+                    <m:mi>λ</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>=</m:mo>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>λ</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mspace width="4.pt"/>
+                    <m:mtext>sgn</m:mtext>
+                    <m:mspace width="4.pt"/>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>ε</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mo>,</m:mo>
+                  <m:mn>0</m:mn>
+                  <m:mo>≤</m:mo>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:msub>
+                      <m:mi>λ</m:mi>
+                      <m:mi>i</m:mi>
+                    </m:msub>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:mo>≤</m:mo>
+                  <m:mi>Λ</m:mi>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mrow>
+                    <m:mtext>if</m:mtext>
+                    <m:mspace width="4.pt"/>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>ε</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>&lt;</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo>,</m:mo>
+                  <m:mspace width="4.pt"/>
+                  <m:mtext>then</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:msub>
+                    <m:mi>λ</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mo>=</m:mo>
+                  <m:mn>0</m:mn>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id127814">
+In the second and third cases, the minimum value in <link target-id="uid10"/> and <link target-id="uid11"/> is still zero. However, in the first case, when <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>ε</m:mi><m:mi>i</m:mi></m:msub><m:mrow><m:mo>|</m:mo><m:mo>&gt;</m:mo><m:mn>1</m:mn></m:mrow></m:mrow></m:math>, the minimum is no longer <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow></m:math>. When <m:math overflow="scroll"><m:msup><m:mi>σ</m:mi><m:mo>'</m:mo></m:msup></m:math> is diagonal with <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>σ</m:mi><m:mrow><m:mi>i</m:mi><m:mi>i</m:mi></m:mrow><m:mo>'</m:mo></m:msubsup><m:mo>=</m:mo><m:msub><m:mi>λ</m:mi><m:mi>i</m:mi></m:msub><m:mo>=</m:mo><m:mi>Λ</m:mi><m:mspace width="4.pt"/><m:mtext>sgn</m:mtext><m:mspace width="4.pt"/><m:msub><m:mi>ε</m:mi><m:mi>i</m:mi></m:msub></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>λ</m:mi><m:mi>i</m:mi></m:msub><m:mrow><m:mo>|</m:mo><m:mo>-</m:mo></m:mrow><m:msub><m:mi>ε</m:mi><m:mi>i</m:mi></m:msub><m:msubsup><m:mi>σ</m:mi><m:mrow><m:mi>i</m:mi><m:mi>i</m:mi></m:mrow><m:mo>'</m:mo></m:msubsup><m:mo>=</m:mo><m:mrow><m:mi>Λ</m:mi><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>-</m:mo><m:mo>|</m:mo></m:mrow><m:msub><m:mi>ε</m:mi><m:mi>i</m:mi></m:msub><m:mrow><m:mo>|</m:mo><m:mo>)</m:mo></m:mrow></m:mrow></m:math>. Thus, the minimum in <link target-id="uid10"/> and <link target-id="uid11"/> can be expressed as</para>
+      <equation id="id128019">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>M</m:mi>
+              <m:mi>Λ</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mrow>
+              <m:mi>Λ</m:mi>
+              <m:mo movablelimits="true" form="prefix">min</m:mo>
+              <m:mo>(</m:mo>
+              <m:mn>0</m:mn>
+              <m:mo>,</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>-</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>ε</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>)</m:mo>
+              <m:mo>+</m:mo>
+              <m:mi>Λ</m:mi>
+              <m:mo movablelimits="true" form="prefix">min</m:mo>
+              <m:mo>(</m:mo>
+              <m:mn>0</m:mn>
+              <m:mo>,</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>-</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>ε</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id128112">Here, <m:math overflow="scroll"><m:msub><m:mi>λ</m:mi><m:mi>i</m:mi></m:msub></m:math> is being chosen through the minimum expression depending on the fixed <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>i</m:mi></m:msub></m:math>. Hence the dual problem can now be stated as</para>
+      <equation id="id128148">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mtext>Maximize</m:mtext>
+            <m:mspace width="4.pt"/>
+            <m:munder>
+              <m:mrow>
+                <m:mspace width="0.277778em"/>
+                <m:mpadded width="-3pt">
+                  <m:mo>∫</m:mo>
+                </m:mpadded>
+                <m:mpadded width="-3pt">
+                  <m:mo>∫</m:mo>
+                </m:mpadded>
+                <m:mspace width="0.277778em"/>
+              </m:mrow>
+              <m:mi>Ω</m:mi>
+            </m:munder>
+            <m:msub>
+              <m:mi>M</m:mi>
+              <m:mi>Λ</m:mi>
+            </m:msub>
+            <m:mspace width="4pt"/>
+            <m:mi>d</m:mi>
+            <m:mi>x</m:mi>
+            <m:mspace width="4pt"/>
+            <m:mi>d</m:mi>
+            <m:mi>y</m:mi>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mo>∫</m:mo>
+              <m:mi>Γ</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>u</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:msub>
+                <m:mi>f</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>u</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:msub>
+                <m:mi>f</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mspace width="4pt"/>
+            <m:mi>d</m:mi>
+            <m:mi>s</m:mi>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id128264">The cases of interest arise when one family of bars is in tension and the other compression, meaning <m:math overflow="scroll"><m:mrow><m:msub><m:mi>λ</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>λ</m:mi><m:mn>2</m:mn></m:msub><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow></m:math>. Then there is a combination of Hencky-Prandtl nets, one coming from slip lines, and the other from Michell trusses.</para>
+      <para id="id128299">The slip line net will occur when <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub><m:mo>&gt;</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mspace width="0.166667em"/><m:msub><m:mi>ε</m:mi><m:mn>2</m:mn></m:msub><m:mo>&lt;</m:mo><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mspace width="0.166667em"/><m:msub><m:mi>λ</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mi>Λ</m:mi><m:mo>,</m:mo><m:mspace width="0.166667em"/><m:msub><m:mi>λ</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>Λ</m:mi></m:mrow></m:math>. In this case, <m:math overflow="scroll"><m:mrow><m:mo>∥</m:mo><m:mi>ψ</m:mi><m:mo>∥</m:mo></m:mrow></m:math> represents the difference <m:math overflow="scroll"><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mrow><m:mo>(</m:mo><m:msub><m:mi>λ</m:mi><m:mn>1</m:mn></m:msub><m:mo>-</m:mo><m:msub><m:mi>λ</m:mi><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:mrow></m:math>, which has the constant value <m:math overflow="scroll"><m:mi>Λ</m:mi></m:math>, which is the yield surface in plane strain. The Michell situation occurs when <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mspace width="0.166667em"/><m:msub><m:mi>ε</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mspace width="0.166667em"/><m:msub><m:mi>λ</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mspace width="0.166667em"/><m:msub><m:mi>λ</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>.</para>
+      <para id="id128516">The other constrained problem <link target-id="uid6"/> differs from the dual only in the condition of incompressibility:</para>
+      <equation id="id128525">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mtext>Maximize</m:mtext>
+              </m:mtd>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:munder>
+                    <m:mrow>
+                      <m:mspace width="0.277778em"/>
+                      <m:mpadded width="-3pt">
+                        <m:mo>∫</m:mo>
+                      </m:mpadded>
+                      <m:mpadded width="-3pt">
+                        <m:mo>∫</m:mo>
+                      </m:mpadded>
+                      <m:mspace width="0.277778em"/>
+                    </m:mrow>
+                    <m:mi>Ω</m:mi>
+                  </m:munder>
+                  <m:msub>
+                    <m:mi>M</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:mspace width="4pt"/>
+                  <m:mi>d</m:mi>
+                  <m:mi>x</m:mi>
+                  <m:mspace width="4pt"/>
+                  <m:mi>d</m:mi>
+                  <m:mi>y</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:msub>
+                    <m:mo>∫</m:mo>
+                    <m:mi>Λ</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:msub>
+                      <m:mi>u</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:msub>
+                      <m:mi>f</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:mo>+</m:mo>
+                    <m:msub>
+                      <m:mi>u</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:msub>
+                      <m:mi>f</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mspace width="4pt"/>
+                  <m:mi>d</m:mi>
+                  <m:mi>s</m:mi>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mtext>subject</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:mtext>to</m:mtext>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mtext>div</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:mi>u</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mn>0</m:mn>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id128684">The kinematic constraint <m:math overflow="scroll"><m:mrow><m:mtext>div</m:mtext><m:mspace width="4.pt"/><m:mi>u</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> arises because the trace of <m:math overflow="scroll"><m:mi>σ</m:mi></m:math> is unconstrained in <link target-id="uid6"/>. The optimality conditions relate the principal strains <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>i</m:mi></m:msub></m:math> to the eigenvalues <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>λ</m:mi><m:mi>i</m:mi><m:mi>D</m:mi></m:msubsup><m:mo>=</m:mo><m:msub><m:mi>λ</m:mi><m:mi>i</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:msup><m:mi>σ</m:mi><m:mi>D</m:mi></m:msup><m:mo>)</m:mo></m:mrow><m:mo>:</m:mo><m:mi>ε</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:msup><m:mi>σ</m:mi><m:mi>D</m:mi></m:msup></m:math> are simultaneously diagonal, and</para>
+      <equation id="uid13">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mtext>if</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:mo>|</m:mo>
+                  <m:mi>ε</m:mi>
+                  <m:mo>|</m:mo>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>&gt;</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo>,</m:mo>
+                  <m:mspace width="4.pt"/>
+                  <m:mtext>then</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:msubsup>
+                    <m:mi>λ</m:mi>
+                    <m:mi>i</m:mi>
+                    <m:mi>D</m:mi>
+                  </m:msubsup>
+                  <m:mo>=</m:mo>
+                  <m:mi>k</m:mi>
+                  <m:mspace width="4.pt"/>
+                  <m:mtext>sgn</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:msub>
+                    <m:mi>ε</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mo>,</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mtext>if</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:mo>|</m:mo>
+                  <m:mi>ε</m:mi>
+                  <m:mo>|</m:mo>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo>,</m:mo>
+                  <m:mspace width="4.pt"/>
+                  <m:mtext>then</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:msubsup>
+                    <m:mi>λ</m:mi>
+                    <m:mi>i</m:mi>
+                    <m:mi>D</m:mi>
+                  </m:msubsup>
+                  <m:mrow>
+                    <m:mo>=</m:mo>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:msubsup>
+                    <m:mi>λ</m:mi>
+                    <m:mi>i</m:mi>
+                    <m:mi>D</m:mi>
+                  </m:msubsup>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mspace width="4.pt"/>
+                    <m:mtext>sgn</m:mtext>
+                    <m:mspace width="4.pt"/>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>ε</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mo>,</m:mo>
+                  <m:mspace width="4pt"/>
+                  <m:mn>0</m:mn>
+                  <m:mo>≤</m:mo>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:msubsup>
+                      <m:mi>λ</m:mi>
+                      <m:mi>i</m:mi>
+                      <m:mi>D</m:mi>
+                    </m:msubsup>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:mo>≤</m:mo>
+                  <m:mi>k</m:mi>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mtext>if</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:mo>|</m:mo>
+                  <m:mi>ε</m:mi>
+                  <m:mo>|</m:mo>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>&lt;</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo>,</m:mo>
+                  <m:mspace width="4.pt"/>
+                  <m:mtext>then</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:msubsup>
+                    <m:mi>λ</m:mi>
+                    <m:mi>i</m:mi>
+                    <m:mi>D</m:mi>
+                  </m:msubsup>
+                  <m:mo>=</m:mo>
+                  <m:mn>0</m:mn>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <section id="id129056">
+        <title>Open problems</title>
+        <list id="id129063" display="block" list-type="bulleted"><item id="uid14">Find the most economical truss given a balanced point force field.
+</item>
+          <item id="uid15">Does the stress field in an optimal structure vary smoothly, so that the lines of principal stress are <m:math overflow="scroll"><m:msup><m:mi>C</m:mi><m:mn>1</m:mn></m:msup></m:math> curves? The problem of regularity runs deeper than that of existence.
+</item>
+        </list></section>
+    </section>
+  </content>
+  <bib:file>
+    <bib:entry id="bid1">
+      <bib:article>
+        <!--required fields-->
+        <bib:author>Michell, A. G.</bib:author>
+        <bib:title>The limits of economy of material in framed-structures</bib:title>
+        <bib:journal>Philosophical magazine</bib:journal>
+        <bib:year>1904</bib:year>
+        <!--optional fields-->
+        <bib:volume>8</bib:volume>
+        <bib:number/>
+        <bib:pages>589-597</bib:pages>
+        <bib:month/>
+        <bib:note/>
+      </bib:article>
+    </bib:entry>
+    <bib:entry id="bid0">
+      <bib:article>
+        <!--required fields-->
+        <bib:author>Strang, Gilbert and Kohn, Robert V.</bib:author>
+        <bib:title>Hencky-Prandtl nets and constrained Michell trusses</bib:title>
+        <bib:journal>Computer methods in applied mechanics and engineering</bib:journal>
+        <bib:year>1983</bib:year>
+        <!--optional fields-->
+        <bib:volume>36</bib:volume>
+        <bib:number/>
+        <bib:pages>207-222</bib:pages>
+        <bib:month/>
+        <bib:note/>
+      </bib:article>
+    </bib:entry>
+  </bib:file>
+</document>

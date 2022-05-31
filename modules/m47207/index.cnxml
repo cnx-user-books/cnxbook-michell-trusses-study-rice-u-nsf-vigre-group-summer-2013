@@ -1,0 +1,3828 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Derived copy of Michell Trusses</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m47207</md:content-id>
+  <md:title>Derived copy of Michell Trusses</md:title>
+  <md:abstract>This report summarizes work done as part of the Michell Trusses PFUG under Rice University's VIGRE program. VIGRE is a program of Vertically Integrated Grants for Research and Education in the Mathematical Sciences under the direction of the National Science Foundation. A PFUG is a group of Postdocs, Faculty, Undergraduates and Graduate students formed around the study of a common problem. In this PFUG, we study cost minimizing trusses. We ask what is the structure, constructed of bars and cables, of least cost that will withstand a set of point forces.  This work was studied in the Rice University VIGRE class MATH499 in the Spring and Fall of 2008 and by the 2013 Michell research group at Rice University</md:abstract>
+  <md:uuid>464f9a33-1ebb-4873-aedd-189d60967f2e</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1">
+      <title>Introduction</title>
+      <para id="id283999">The Michell Truss PFUG studies a variational problem posed by mechanical engineer
+Anthony George Maldon Michell in the early part of the last century;
+what configuration of bars and cables is needed to withstand a system
+of balanced point forces is most economical?
+Suppose that some collection of forces with their points of application (point forces)
+is given and you are asked to build a structure which can withstand these forces.
+Your choice of materials are bars and cables.
+Bars can withstand compression (forces parallel and pointing inward) but will break
+under extension (forces parallel and pointing outward).
+Cables can withstand extension but will buckle under compression.
+You may also choose the strength of the bar or cable;
+the strength is the largest
+compression or extension the bar or cable respectively can withstand.
+A structure built of such cables and bars will be called a truss.</para>
+      <para id="id284010">The first question the PFUG has addressed is whether one can build such a truss at all.
+Notice that a bar or cable by itself can
+withstand only one set of point forces; that of two opposite forces applied to the endpoints of the bar or cable.
+These point forces have the property that if the points of application were attached to a stationary body, the center of
+mass would not accelerate and the body would not rotate. This property is called balanced.
+Since point forces can be linearly superimposed, a necessary condition that a set of
+point forces be withstood by a truss is that it be balanced. Below we show that being balanced is also a sufficient condition;
+if the set of point forces is balanced then there is a truss withstanding it.</para>
+      <para id="id284020">Next, the PFUG formulated necessary conditions for a truss to be economical.
+The cost of a bar or cable is its strength times its length. The cost of a truss is defined
+to be the sum of the cost of bars and cables constituted by the truss.
+In general, there are many trusses which withstand a given a set of point forces.
+The question is, which is most economical, i.e. which truss costs the least?
+In general this is a very difficult question to answer because a minimizing sequence,
+which we know to exist from the first part, may converge in a larger class of measures
+than described here and it is difficult to formulate any class of perturbations of a truss.
+Below we describe one class of perturbations on trusses with corners which yields
+a surprising necessary condition for economy. A set of perturbations to be studied
+in the future are also described.</para><note id="eip-923">The 2013 Michell group has made some minor corrections and additions to the original module created by the 2008 PFUG, but this module is still largely the work of the 2008 PFUG.</note></section>
+    <section id="cid2">
+      <title>Notation</title>
+      <para id="id284378">We will restrict ourselves to points and vectors in three dimensional Euclidean space, <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="double-struck">R</m:mi><m:mn>3</m:mn></m:msup><m:mo>.</m:mo></m:mrow></m:math>
+A <emphasis effect="italics">point force</emphasis> is a vector valued measure
+<m:math overflow="scroll"><m:mrow><m:mi>v</m:mi><m:mi>δ</m:mi><m:mo>(</m:mo><m:mi>a</m:mi><m:mo>)</m:mo></m:mrow></m:math> where <m:math overflow="scroll"><m:mi>v</m:mi></m:math> is a vector and <m:math overflow="scroll"><m:mi>a</m:mi></m:math> is a point in Euclidean space and <m:math overflow="scroll"><m:mrow><m:mi>δ</m:mi><m:mo>(</m:mo><m:mo>·</m:mo><m:mo>)</m:mo></m:mrow></m:math> is the Kronecker delta mass. If <m:math overflow="scroll"><m:mi>φ</m:mi></m:math> is a continuous
+vector field on Euclidean space we define</para>
+      <equation id="id284462">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>v</m:mi>
+            <m:mi>δ</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>a</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>,</m:mo>
+            <m:mi>φ</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>=</m:mo>
+            <m:mi>φ</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>a</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>·</m:mo>
+            <m:mi>v</m:mi>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id284505">and extend this definition linearly to a sum of point forces. A beam <m:math overflow="scroll"><m:mi>B</m:mi></m:math> is a pair of distinct points <m:math overflow="scroll"><m:mi>a</m:mi></m:math> and <m:math overflow="scroll"><m:mi>b</m:mi></m:math>
+in Euclidean space with a weight <m:math overflow="scroll"><m:mrow><m:mi>ω</m:mi><m:mo>∈</m:mo><m:mi mathvariant="double-struck">R</m:mi><m:mo>.</m:mo></m:mrow></m:math> We can associate with <m:math overflow="scroll"><m:mi>B</m:mi></m:math>
+a mass</para>
+      <equation id="uid1">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi> Cost </m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>B</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>=</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi>ω</m:mi>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi>a</m:mi>
+            <m:mo>-</m:mo>
+            <m:mi>b</m:mi>
+            <m:mo>|</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id284779">and point forces field</para>
+      <equation id="uid2">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>δ</m:mi>
+            <m:mi>B</m:mi>
+            <m:mo>=</m:mo>
+            <m:mi>ω</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mi>a</m:mi>
+                <m:mo>-</m:mo>
+                <m:mi>b</m:mi>
+              </m:mrow>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>a</m:mi>
+                <m:mo>-</m:mo>
+                <m:mi>b</m:mi>
+                <m:mo>|</m:mo>
+              </m:mrow>
+            </m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>δ</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>a</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>-</m:mo>
+              <m:mi>δ</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>b</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id284856"><m:math overflow="scroll"><m:mrow><m:mi>δ</m:mi><m:mi>B</m:mi></m:mrow></m:math> corresponds to the reaction force of a cable if <m:math overflow="scroll"><m:mrow><m:mi>ω</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow></m:math>
+and of a bar if <m:math overflow="scroll"><m:mrow><m:mi>ω</m:mi><m:mo>&gt;</m:mo><m:mn>0</m:mn></m:mrow></m:math> with endpoints at <m:math overflow="scroll"><m:mi>a</m:mi></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>b</m:mi><m:mo>.</m:mo></m:mrow></m:math>
+Note that <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>δ</m:mi><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>φ</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> if <m:math overflow="scroll"><m:mi>φ</m:mi></m:math> is a constant vector field.
+To see this, note that</para>
+      <equation id="uid3">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>δ</m:mi>
+                  <m:mi>B</m:mi>
+                  <m:mo>,</m:mo>
+                  <m:mi>φ</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mfenced separators="" open="(" close=")">
+                    <m:mi>ω</m:mi>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mi>a</m:mi>
+                        <m:mo>-</m:mo>
+                        <m:mi>b</m:mi>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                        <m:mi>a</m:mi>
+                        <m:mo>-</m:mo>
+                        <m:mi>b</m:mi>
+                        <m:mo>|</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                    <m:mi>δ</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>a</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi>ω</m:mi>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mi>a</m:mi>
+                        <m:mo>-</m:mo>
+                        <m:mi>b</m:mi>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                        <m:mi>a</m:mi>
+                        <m:mo>-</m:mo>
+                        <m:mi>b</m:mi>
+                        <m:mo>|</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                    <m:mi>δ</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>b</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>,</m:mo>
+                    <m:mi>φ</m:mi>
+                  </m:mfenced>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>φ</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>a</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>·</m:mo>
+                  <m:mi>ω</m:mi>
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:mi>a</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>b</m:mi>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>a</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>b</m:mi>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mo>-</m:mo>
+                  <m:mi>φ</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>b</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>·</m:mo>
+                  <m:mi>ω</m:mi>
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:mi>a</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>b</m:mi>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>a</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>b</m:mi>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mn>0</m:mn>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id285162">
+because <m:math overflow="scroll"><m:mrow><m:mi>φ</m:mi><m:mo>(</m:mo><m:mi>a</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>φ</m:mi><m:mo>(</m:mo><m:mi>b</m:mi><m:mo>)</m:mo></m:mrow></m:math> since <m:math overflow="scroll"><m:mi>φ</m:mi></m:math> is a constant vector field.
+We choose the notation <m:math overflow="scroll"><m:mrow><m:mi>δ</m:mi><m:mi>B</m:mi></m:mrow></m:math> to be consistent with the notion of first variation of mass,
+although in this case it differs by the sign of <m:math overflow="scroll"><m:mrow><m:mi>ω</m:mi><m:mo>.</m:mo></m:mrow></m:math>
+A truss <m:math overflow="scroll"><m:mi>T</m:mi></m:math> is a finite collection of beams and we define <m:math overflow="scroll"><m:mrow><m:mi> Cost </m:mi><m:mo>(</m:mo><m:mi>T</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+and <m:math overflow="scroll"><m:mrow><m:mi>δ</m:mi><m:mi>T</m:mi></m:mrow></m:math> by extending the definitions <link target-id="uid1"/> and <link target-id="uid2"/> linearly;</para>
+      <equation id="uid4">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi> Cost </m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>T</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:munder>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>B</m:mi>
+                <m:mo>∈</m:mo>
+                <m:mi>T</m:mi>
+              </m:mrow>
+            </m:munder>
+            <m:mi> Cost </m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>B</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id285314">and</para>
+      <equation id="uid5">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>δ</m:mi>
+            <m:mi>T</m:mi>
+            <m:mo>=</m:mo>
+            <m:munder>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>B</m:mi>
+                <m:mo>∈</m:mo>
+                <m:mi>T</m:mi>
+              </m:mrow>
+            </m:munder>
+            <m:mi>δ</m:mi>
+            <m:mi>B</m:mi>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id285358">If <m:math overflow="scroll"><m:mi mathvariant="bold">f</m:mi></m:math> is a point force field (a sum of point forces) and <m:math overflow="scroll"><m:mi>T</m:mi></m:math> is a truss, then <m:math overflow="scroll"><m:mi>T</m:mi></m:math> is said to <emphasis effect="italics">equilibrate </emphasis><m:math overflow="scroll"><m:mi mathvariant="bold">f</m:mi></m:math>
+if <m:math overflow="scroll"><m:mrow><m:mi>δ</m:mi><m:mi>T</m:mi><m:mo>=</m:mo><m:mi mathvariant="bold">f</m:mi></m:mrow></m:math> in the sense that</para>
+      <equation id="uid6">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>δ</m:mi>
+            <m:mi>T</m:mi>
+            <m:mo>,</m:mo>
+            <m:mi>φ</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>=</m:mo>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="bold">f</m:mi>
+            <m:mo>,</m:mo>
+            <m:mi>φ</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id285460">for all continuous vector fields <m:math overflow="scroll"><m:mrow><m:mi>φ</m:mi><m:mo>.</m:mo></m:mrow></m:math><m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">f</m:mi><m:mo>=</m:mo><m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub><m:mi>δ</m:mi><m:mrow><m:mo>(</m:mo><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mo>⋯</m:mo><m:mo>+</m:mo><m:msub><m:mi>f</m:mi><m:mi>μ</m:mi></m:msub><m:mi>δ</m:mi><m:mrow><m:mo>(</m:mo><m:msub><m:mi>a</m:mi><m:mi>μ</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:mrow></m:math> is
+said to be <emphasis effect="italics">balanced</emphasis> if
+</para>
+      <equation id="uid7">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>μ</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <equation id="uid8">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>μ</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>×</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+    </section>
+    <section id="cid3">
+      <title>Existence of equilibrating trusses</title>
+      <para id="id285662">One may easily check that <m:math overflow="scroll"><m:mrow><m:mi>δ</m:mi><m:mi>B</m:mi></m:mrow></m:math> is equilibrated if <m:math overflow="scroll"><m:mi>B</m:mi></m:math> is a beam and by linearity <m:math overflow="scroll"><m:mrow><m:mi>δ</m:mi><m:mi>T</m:mi></m:mrow></m:math> is
+equilibrated if <m:math overflow="scroll"><m:mi>T</m:mi></m:math> is a truss. The first natural question we deal with is the converse question; is every
+balanced point force field equal to <m:math overflow="scroll"><m:mrow><m:mi>δ</m:mi><m:mi>T</m:mi></m:mrow></m:math> for some truss <m:math overflow="scroll"><m:mrow><m:mi>T</m:mi><m:mo>?</m:mo></m:mrow></m:math> In other words, can any balanced
+point force field be equilibrated by a truss? This section answers this question in the affirmative.
+The sufficiency will follow from a proof by induction.</para>
+      <para id="id285728"><emphasis effect="bold">Lemma 1</emphasis> Let <m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">f</m:mi><m:mo>=</m:mo><m:mi>f</m:mi><m:mi>δ</m:mi><m:mo>(</m:mo><m:mi>a</m:mi><m:mo>)</m:mo><m:mo>+</m:mo><m:mi>g</m:mi><m:mi>δ</m:mi><m:mo>(</m:mo><m:mi>b</m:mi><m:mo>)</m:mo></m:mrow></m:math> be balanced. Then <m:math overflow="scroll"><m:mi mathvariant="bold">f</m:mi></m:math> is equilibrated by a truss <m:math overflow="scroll"><m:mrow><m:mi>T</m:mi><m:mo>.</m:mo></m:mrow></m:math></para>
+      <para id="id285803">Let <m:math overflow="scroll"><m:mi>T</m:mi></m:math> consist of the single beam <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>a</m:mi><m:mo>,</m:mo><m:mi>b</m:mi><m:mo>)</m:mo></m:mrow></m:math> with <m:math overflow="scroll"><m:mrow><m:mi>ω</m:mi><m:mo>=</m:mo><m:mi>g</m:mi><m:mo>·</m:mo><m:mo>(</m:mo><m:mi>a</m:mi><m:mo>-</m:mo><m:mi>b</m:mi><m:mo>)</m:mo><m:mo>/</m:mo><m:mo>|</m:mo><m:mi>a</m:mi><m:mo>-</m:mo><m:mi>b</m:mi><m:mo>|</m:mo><m:mo>.</m:mo></m:mrow></m:math>
+Then <link target-id="uid7"/> implies <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>g</m:mi></m:mrow></m:math> and then <link target-id="uid8"/> implies that <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub></m:math> is parallel to <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>-</m:mo><m:mi>b</m:mi><m:mo>,</m:mo></m:mrow></m:math> because <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>×</m:mo><m:mo>(</m:mo><m:mi>a</m:mi><m:mo>-</m:mo><m:mi>b</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>.
+<m:math overflow="scroll"><m:mrow><m:mi>ω</m:mi><m:mo>=</m:mo><m:mfrac><m:mrow><m:mi>g</m:mi><m:mo>·</m:mo><m:mo>(</m:mo><m:mi>a</m:mi><m:mo>-</m:mo><m:mi>b</m:mi><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>|</m:mo><m:mi>a</m:mi><m:mo>-</m:mo><m:mi>b</m:mi><m:mo>|</m:mo></m:mrow></m:mfrac><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo>-</m:mo><m:mi>f</m:mi><m:mo>·</m:mo><m:mo>(</m:mo><m:mi>a</m:mi><m:mo>-</m:mo><m:mi>b</m:mi><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>|</m:mo><m:mi>a</m:mi><m:mo>-</m:mo><m:mi>b</m:mi><m:mo>|</m:mo></m:mrow></m:mfrac><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo>|</m:mo><m:mo>-</m:mo><m:mi>f</m:mi><m:mo>|</m:mo><m:mo>|</m:mo><m:mi>a</m:mi><m:mo>-</m:mo><m:mi>b</m:mi><m:mo>|</m:mo></m:mrow><m:mrow><m:mo>|</m:mo><m:mi>a</m:mi><m:mo>-</m:mo><m:mi>b</m:mi><m:mo>|</m:mo></m:mrow></m:mfrac><m:mo>=</m:mo><m:mrow><m:mo>|</m:mo><m:mi>f</m:mi><m:mo>|</m:mo></m:mrow></m:mrow></m:math> because <m:math overflow="scroll"><m:mi>f</m:mi></m:math> is parallel to <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>-</m:mo><m:mi>b</m:mi></m:mrow></m:math>.
+Therefore <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>=</m:mo><m:mrow><m:mo>|</m:mo><m:mi>f</m:mi><m:mo>|</m:mo></m:mrow><m:mfrac><m:mrow><m:mi>a</m:mi><m:mo>-</m:mo><m:mi>b</m:mi></m:mrow><m:mrow><m:mo>|</m:mo><m:mi>a</m:mi><m:mo>-</m:mo><m:mi>b</m:mi><m:mo>|</m:mo></m:mrow></m:mfrac></m:mrow></m:math> because <m:math overflow="scroll"><m:mfrac><m:mrow><m:mi>a</m:mi><m:mo>-</m:mo><m:mi>b</m:mi></m:mrow><m:mrow><m:mo>|</m:mo><m:mi>a</m:mi><m:mo>-</m:mo><m:mi>b</m:mi><m:mo>|</m:mo></m:mrow></m:mfrac></m:math> is a unit vector parallel to <m:math overflow="scroll"><m:mi>f</m:mi></m:math>.
+Thus <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>=</m:mo><m:mi>ω</m:mi><m:mfrac><m:mrow><m:mi>a</m:mi><m:mo>-</m:mo><m:mi>b</m:mi></m:mrow><m:mrow><m:mo>|</m:mo><m:mi>a</m:mi><m:mo>-</m:mo><m:mi>b</m:mi><m:mo>|</m:mo></m:mrow></m:mfrac></m:mrow></m:math>.
+By definition</para>
+      <equation id="id286214">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>δ</m:mi>
+            <m:mi>T</m:mi>
+            <m:mo>=</m:mo>
+            <m:mi>ω</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mi>a</m:mi>
+                <m:mo>-</m:mo>
+                <m:mi>b</m:mi>
+              </m:mrow>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>a</m:mi>
+                <m:mo>-</m:mo>
+                <m:mi>b</m:mi>
+                <m:mo>|</m:mo>
+              </m:mrow>
+            </m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>δ</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>a</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>-</m:mo>
+              <m:mi>δ</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>b</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi>f</m:mi>
+            <m:mi>δ</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>a</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>-</m:mo>
+            <m:mi>f</m:mi>
+            <m:mi>δ</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>b</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi>f</m:mi>
+            <m:mi>δ</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>a</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:mi>g</m:mi>
+            <m:mi>δ</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>b</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi mathvariant="bold">f</m:mi>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id286346">Clearly then <link target-id="uid6"/> holds.</para>
+      <para id="id286356"><emphasis effect="bold">Lemma 2</emphasis> Let <m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">f</m:mi><m:mo>=</m:mo><m:mi>f</m:mi><m:mi>δ</m:mi><m:mo>(</m:mo><m:mi>a</m:mi><m:mo>)</m:mo><m:mo>+</m:mo><m:mi>g</m:mi><m:mi>δ</m:mi><m:mo>(</m:mo><m:mi>b</m:mi><m:mo>)</m:mo><m:mo>+</m:mo><m:mi>h</m:mi><m:mi>δ</m:mi><m:mo>(</m:mo><m:mi>c</m:mi><m:mo>)</m:mo></m:mrow></m:math> be balanced with <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>,</m:mo><m:mi>b</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mi>c</m:mi></m:math> not lying
+on the same line. Then <m:math overflow="scroll"><m:mi mathvariant="bold">f</m:mi></m:math> is equilibrated by a truss <m:math overflow="scroll"><m:mrow><m:mi>T</m:mi><m:mo>.</m:mo></m:mrow></m:math></para>
+      <para id="id286473">Without loss of generality, <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>,</m:mo><m:mi>b</m:mi><m:mo>,</m:mo></m:mrow></m:math> and <m:math overflow="scroll"><m:mi>c</m:mi></m:math> lie in the <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mi>y</m:mi></m:mrow></m:math>-plane and <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo></m:mrow></m:math><m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>,</m:mo><m:mi>g</m:mi></m:mrow></m:math>, and <m:math overflow="scroll"><m:mi>h</m:mi></m:math> must lie in the plane, because otherwise it would be impossible to balance the forces. Because <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>,</m:mo><m:mi>b</m:mi><m:mo>,</m:mo></m:mrow></m:math> and <m:math overflow="scroll"><m:mi>c</m:mi></m:math> do not all lie on the same line, two of the points, say <m:math overflow="scroll"><m:mi>b</m:mi></m:math> and <m:math overflow="scroll"><m:mi>c</m:mi></m:math>, are linearly
+independent; dotting <link target-id="uid8"/> with <m:math overflow="scroll"><m:mi>b</m:mi></m:math> and then <m:math overflow="scroll"><m:mi>c</m:mi></m:math> implies that <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>·</m:mo><m:msub><m:mi>e</m:mi><m:mn>3</m:mn></m:msub><m:mo>=</m:mo><m:mi>g</m:mi><m:mo>·</m:mo><m:msub><m:mi>e</m:mi><m:mn>3</m:mn></m:msub><m:mo>=</m:mo><m:mi>h</m:mi><m:mo>·</m:mo><m:msub><m:mi>e</m:mi><m:mn>3</m:mn></m:msub><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>
+where <m:math overflow="scroll"><m:msub><m:mi>e</m:mi><m:mn>3</m:mn></m:msub></m:math> is the unit basis vector parallel with the <m:math overflow="scroll"><m:mi>z</m:mi></m:math>-axis.
+Hence <m:math overflow="scroll"><m:mi>f</m:mi></m:math> can be expressed as a linear combination of <m:math overflow="scroll"><m:mi>b</m:mi></m:math> and <m:math overflow="scroll"><m:mi>c</m:mi></m:math></para>
+      <equation id="id286720">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>f</m:mi>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mi>b</m:mi>
+            </m:msub>
+            <m:mfrac>
+              <m:mi>b</m:mi>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>b</m:mi>
+                <m:mo>|</m:mo>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mi>c</m:mi>
+            </m:msub>
+            <m:mfrac>
+              <m:mi>c</m:mi>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>c</m:mi>
+                <m:mo>|</m:mo>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id286776">Consider the point force field <m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">e</m:mi><m:mo>=</m:mo><m:msub><m:mi>e</m:mi><m:mi>b</m:mi></m:msub><m:mi>δ</m:mi><m:mrow><m:mo>(</m:mo><m:mi>b</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mi>e</m:mi><m:mi>c</m:mi></m:msub><m:mi>δ</m:mi><m:mrow><m:mo>(</m:mo><m:mi>c</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> where
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>e</m:mi><m:mi>b</m:mi></m:msub><m:mo>=</m:mo><m:mi>g</m:mi><m:mo>+</m:mo><m:msub><m:mi>ω</m:mi><m:mi>b</m:mi></m:msub><m:mfrac><m:mi>b</m:mi><m:mrow><m:mo>|</m:mo><m:mi>b</m:mi><m:mo>|</m:mo></m:mrow></m:mfrac></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>e</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mi>h</m:mi><m:mo>+</m:mo><m:mi>ω</m:mi><m:mfrac><m:mi>c</m:mi><m:mrow><m:mo>|</m:mo><m:mi>c</m:mi><m:mo>|</m:mo></m:mrow></m:mfrac><m:mo>.</m:mo></m:mrow></m:math> We claim <m:math overflow="scroll"><m:mi mathvariant="bold">e</m:mi></m:math> is balanced;</para>
+      <equation id="id286924">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>e</m:mi>
+              <m:mi>b</m:mi>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>e</m:mi>
+              <m:mi>c</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mi>g</m:mi>
+            <m:mo>+</m:mo>
+            <m:mi>h</m:mi>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mi>b</m:mi>
+            </m:msub>
+            <m:mfrac>
+              <m:mi>b</m:mi>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>b</m:mi>
+                <m:mo>|</m:mo>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mi>c</m:mi>
+            </m:msub>
+            <m:mfrac>
+              <m:mi>c</m:mi>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>c</m:mi>
+                <m:mo>|</m:mo>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>=</m:mo>
+            <m:mi>f</m:mi>
+            <m:mo>+</m:mo>
+            <m:mi>g</m:mi>
+            <m:mo>+</m:mo>
+            <m:mi>h</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id287021">and</para>
+      <equation id="uid11">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>e</m:mi>
+                    <m:mi>b</m:mi>
+                  </m:msub>
+                  <m:mo>×</m:mo>
+                  <m:mi>b</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:msub>
+                    <m:mi>e</m:mi>
+                    <m:mi>c</m:mi>
+                  </m:msub>
+                  <m:mo>×</m:mo>
+                  <m:mi>c</m:mi>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mfenced separators="" open="(" close=")">
+                    <m:mi>g</m:mi>
+                    <m:mo>+</m:mo>
+                    <m:msub>
+                      <m:mi>ω</m:mi>
+                      <m:mi>b</m:mi>
+                    </m:msub>
+                    <m:mfrac>
+                      <m:mi>b</m:mi>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                        <m:mi>b</m:mi>
+                        <m:mo>|</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mfenced>
+                  <m:mo>×</m:mo>
+                  <m:mi>b</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:mfenced separators="" open="(" close=")">
+                    <m:mi>h</m:mi>
+                    <m:mo>+</m:mo>
+                    <m:msub>
+                      <m:mi>ω</m:mi>
+                      <m:mi>c</m:mi>
+                    </m:msub>
+                    <m:mfrac>
+                      <m:mi>c</m:mi>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                        <m:mi>c</m:mi>
+                        <m:mo>|</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mfenced>
+                  <m:mo>×</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>g</m:mi>
+                  <m:mo>×</m:mo>
+                  <m:mi>b</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:mi>b</m:mi>
+                  <m:mo>×</m:mo>
+                  <m:msub>
+                    <m:mi>ω</m:mi>
+                    <m:mi>b</m:mi>
+                  </m:msub>
+                  <m:mfrac>
+                    <m:mi>b</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>b</m:mi>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mo>+</m:mo>
+                  <m:mi>h</m:mi>
+                  <m:mo>×</m:mo>
+                  <m:mi>c</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:mi>c</m:mi>
+                  <m:mo>×</m:mo>
+                  <m:msub>
+                    <m:mi>ω</m:mi>
+                    <m:mi>c</m:mi>
+                  </m:msub>
+                  <m:mfrac>
+                    <m:mi>c</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>c</m:mi>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>g</m:mi>
+                  <m:mo>×</m:mo>
+                  <m:mi>b</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:mi>h</m:mi>
+                  <m:mo>×</m:mo>
+                  <m:mi>c</m:mi>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mn>0</m:mn>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id287263">
+because <m:math overflow="scroll"><m:mi>b</m:mi></m:math> is parallel to <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ω</m:mi><m:mi>b</m:mi></m:msub><m:mfrac><m:mi>b</m:mi><m:mrow><m:mo>|</m:mo><m:mi>b</m:mi><m:mo>|</m:mo></m:mrow></m:mfrac></m:mrow></m:math> (and likewise for <m:math overflow="scroll"><m:mi>c</m:mi></m:math>) and <m:math overflow="scroll"><m:mi mathvariant="bold">f</m:mi></m:math> is balanced.
+According to Lemma 1, there is a truss <m:math overflow="scroll"><m:mi>R</m:mi></m:math> with equilibrating <m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">e</m:mi><m:mo>.</m:mo></m:mrow></m:math>
+Let <m:math overflow="scroll"><m:mi>S</m:mi></m:math> be the truss consisting of the collection of beams <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mi>b</m:mi><m:mo>)</m:mo></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mi>c</m:mi><m:mo>)</m:mo></m:mrow></m:math> with weights <m:math overflow="scroll"><m:msub><m:mi>ω</m:mi><m:mi>b</m:mi></m:msub></m:math> and <m:math overflow="scroll"><m:msub><m:mi>ω</m:mi><m:mi>c</m:mi></m:msub></m:math> respectively.
+We claim <m:math overflow="scroll"><m:mrow><m:mi>T</m:mi><m:mo>=</m:mo><m:mi>R</m:mi><m:mo>+</m:mo><m:mi>S</m:mi></m:mrow></m:math> equilibrates <m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">f</m:mi><m:mo>.</m:mo></m:mrow></m:math> Let <m:math overflow="scroll"><m:mi>φ</m:mi></m:math> be a continuous vector field. Then</para>
+      <equation id="id287466">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>δ</m:mi>
+                  <m:mi>T</m:mi>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>δ</m:mi>
+                  <m:mi>R</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:mi>δ</m:mi>
+                  <m:mi>S</m:mi>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi mathvariant="bold">e</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:msub>
+                    <m:mi>ω</m:mi>
+                    <m:mi>b</m:mi>
+                  </m:msub>
+                  <m:mfrac>
+                    <m:mi>b</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>b</m:mi>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>δ</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>b</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi>δ</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mn>0</m:mn>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>+</m:mo>
+                  <m:msub>
+                    <m:mi>ω</m:mi>
+                    <m:mi>c</m:mi>
+                  </m:msub>
+                  <m:mfrac>
+                    <m:mi>c</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>c</m:mi>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>δ</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>c</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi>δ</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mn>0</m:mn>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mfenced separators="" open="(" close=")">
+                    <m:mi>g</m:mi>
+                    <m:mo>+</m:mo>
+                    <m:msub>
+                      <m:mi>ω</m:mi>
+                      <m:mi>b</m:mi>
+                    </m:msub>
+                    <m:mfrac>
+                      <m:mi>b</m:mi>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                        <m:mi>b</m:mi>
+                        <m:mo>|</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mfenced>
+                  <m:mi>δ</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>b</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>+</m:mo>
+                  <m:mfenced separators="" open="(" close=")">
+                    <m:mi>h</m:mi>
+                    <m:mo>+</m:mo>
+                    <m:msub>
+                      <m:mi>ω</m:mi>
+                      <m:mi>c</m:mi>
+                    </m:msub>
+                    <m:mfrac>
+                      <m:mi>c</m:mi>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                        <m:mi>c</m:mi>
+                        <m:mo>|</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mfenced>
+                  <m:mi>δ</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>c</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>+</m:mo>
+                  <m:msub>
+                    <m:mi>ω</m:mi>
+                    <m:mi>b</m:mi>
+                  </m:msub>
+                  <m:mfrac>
+                    <m:mi>b</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>b</m:mi>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mi>δ</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>b</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>+</m:mo>
+                  <m:msub>
+                    <m:mi>ω</m:mi>
+                    <m:mi>c</m:mi>
+                  </m:msub>
+                  <m:mfrac>
+                    <m:mi>c</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>c</m:mi>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mi>δ</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>c</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mi>δ</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mn>0</m:mn>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mfenced separators="" open="(" close=")">
+                    <m:msub>
+                      <m:mi>ω</m:mi>
+                      <m:mi>b</m:mi>
+                    </m:msub>
+                    <m:mfrac>
+                      <m:mi>b</m:mi>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                        <m:mi>b</m:mi>
+                        <m:mo>|</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                    <m:mo>+</m:mo>
+                    <m:msub>
+                      <m:mi>ω</m:mi>
+                      <m:mi>c</m:mi>
+                    </m:msub>
+                    <m:mfrac>
+                      <m:mi>c</m:mi>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                        <m:mi>c</m:mi>
+                        <m:mo>|</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mfenced>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>g</m:mi>
+                  <m:mi>δ</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>b</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:msub>
+                    <m:mi>ω</m:mi>
+                    <m:mi>b</m:mi>
+                  </m:msub>
+                  <m:mfrac>
+                    <m:mi>b</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>b</m:mi>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mi>δ</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>b</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>+</m:mo>
+                  <m:mi>h</m:mi>
+                  <m:mi>δ</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>c</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:msub>
+                    <m:mi>ω</m:mi>
+                    <m:mi>c</m:mi>
+                  </m:msub>
+                  <m:mfrac>
+                    <m:mi>c</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>c</m:mi>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mi>δ</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>c</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>+</m:mo>
+                  <m:msub>
+                    <m:mi>ω</m:mi>
+                    <m:mi>b</m:mi>
+                  </m:msub>
+                  <m:mfrac>
+                    <m:mi>b</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>b</m:mi>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mi>δ</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>b</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>+</m:mo>
+                  <m:msub>
+                    <m:mi>ω</m:mi>
+                    <m:mi>c</m:mi>
+                  </m:msub>
+                  <m:mfrac>
+                    <m:mi>c</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>c</m:mi>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mi>δ</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>c</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mi>f</m:mi>
+                  <m:mi>δ</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mn>0</m:mn>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>f</m:mi>
+                  <m:mi>δ</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>a</m:mi>
+                  <m:mo>)</m:mo>
+                  <m:mo>+</m:mo>
+                  <m:mi>g</m:mi>
+                  <m:mi>δ</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>b</m:mi>
+                  <m:mo>)</m:mo>
+                  <m:mo>+</m:mo>
+                  <m:mi>h</m:mi>
+                  <m:mi>δ</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>c</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi mathvariant="bold">f</m:mi>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id288064">which then implies <link target-id="uid6"/>.</para>
+      <para id="id288074">The following lemma shows when the volume of
+the parallelpiped spanned by three vectors can be made to be nonzero by sheering the
+parallelpiped in a fixed direction by an appropriate amount.
+An example in two dimensions is drawn below.</para>
+      <para id="id288080">
+        <figure id="id288083">
+          <media id="id288083_media" alt="">
+            <image mime-type="image/png" src="../../media/span.png" id="id288083_onlineimage" width="265"><!-- NOTE: attribute width changes image size online (pixels). original width is 265. --></image>
+            <image mime-type="application/postscript" for="pdf" src="../../media/span.eps" id="id288083_printimage" print-width="2.0in">
+              <!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+            </image>
+          </media>
+        </figure>
+      </para>
+      <para id="id288092"><emphasis effect="bold">Lemma 3</emphasis> Let <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>,</m:mo><m:mi>b</m:mi><m:mo>,</m:mo><m:mi>c</m:mi></m:mrow></m:math> be distinct, nonzero points in Euclidean space and <m:math overflow="scroll"><m:mi>v</m:mi></m:math> a nonzero vector.
+Then there exists <m:math overflow="scroll"><m:mrow><m:mi>t</m:mi><m:mo>∈</m:mo><m:mi mathvariant="double-struck">R</m:mi></m:mrow></m:math>
+such that <m:math overflow="scroll"><m:mrow><m:mi>v</m:mi><m:mo>∈</m:mo><m:mi> Span </m:mi><m:mo>{</m:mo><m:mi>a</m:mi><m:mo>+</m:mo><m:mi>t</m:mi><m:mi>v</m:mi><m:mo>,</m:mo><m:mi>b</m:mi><m:mo>+</m:mo><m:mi>t</m:mi><m:mi>v</m:mi><m:mo>,</m:mo><m:mi>c</m:mi><m:mo>+</m:mo><m:mi>t</m:mi><m:mi>v</m:mi><m:mo>}</m:mo><m:mo>.</m:mo></m:mrow></m:math></para>
+      <para id="id288206">If <m:math overflow="scroll"><m:mrow><m:mi>ν</m:mi><m:mo>∈</m:mo><m:mi> Span </m:mi><m:mo>{</m:mo><m:mi>a</m:mi><m:mo>,</m:mo><m:mi>b</m:mi><m:mo>,</m:mo><m:mi>c</m:mi><m:mo>}</m:mo></m:mrow></m:math>, then just take <m:math overflow="scroll"><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>.
+If any of the vectors, say <m:math overflow="scroll"><m:mi>a</m:mi></m:math> and <m:math overflow="scroll"><m:mi>b</m:mi></m:math>, are linearly dependent, then for some constant, <m:math overflow="scroll"><m:mi>n</m:mi></m:math>, <m:math overflow="scroll"><m:mrow><m:mi>b</m:mi><m:mo>=</m:mo><m:mi>n</m:mi><m:mi>a</m:mi></m:mrow></m:math>.
+For any nonzero <m:math overflow="scroll"><m:mi>t</m:mi></m:math>, <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>+</m:mo><m:mi>t</m:mi><m:mi>ν</m:mi></m:mrow></m:math> is linearly independent from <m:math overflow="scroll"><m:mrow><m:mi>b</m:mi><m:mo>+</m:mo><m:mi>t</m:mi><m:mi>ν</m:mi></m:mrow></m:math> because <m:math overflow="scroll"><m:mrow><m:mi>b</m:mi><m:mo>+</m:mo><m:mi>t</m:mi><m:mi>ν</m:mi><m:mo>=</m:mo><m:mi>a</m:mi><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>t</m:mi><m:mi>ν</m:mi></m:mrow></m:math> is not equal to <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>(</m:mo><m:mi>a</m:mi><m:mo>+</m:mo><m:mi>t</m:mi><m:mi>ν</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>a</m:mi><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>n</m:mi><m:mi>t</m:mi><m:mi>ν</m:mi><m:mo>)</m:mo></m:mrow></m:math> since <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mi>t</m:mi><m:mi>ν</m:mi><m:mo>≠</m:mo><m:mi>t</m:mi><m:mi>ν</m:mi></m:mrow></m:math> because <m:math overflow="scroll"><m:mi>ν</m:mi></m:math> and <m:math overflow="scroll"><m:mi>t</m:mi></m:math> are nonzero.
+Applying this argument again to <m:math overflow="scroll"><m:mi>b</m:mi></m:math> and <m:math overflow="scroll"><m:mi>c</m:mi></m:math> if necessary, we can get three vectors, <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>+</m:mo><m:mi>t</m:mi><m:mi>ν</m:mi><m:mo>,</m:mo><m:mi>b</m:mi><m:mo>+</m:mo><m:mi>t</m:mi><m:mi>ν</m:mi><m:mo>,</m:mo></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>c</m:mi><m:mo>+</m:mo><m:mi>t</m:mi><m:mi>ν</m:mi></m:mrow></m:math>, which are guaranteed to be linearly independent.
+Because the span of any three linearly independent vectors is all of <m:math overflow="scroll"><m:msup><m:mi mathvariant="double-struck">R</m:mi><m:mn>3</m:mn></m:msup></m:math>, every vector is contained in <m:math overflow="scroll"><m:mrow><m:mi> Span </m:mi><m:mo>{</m:mo><m:mi>a</m:mi><m:mo>,</m:mo><m:mi>b</m:mi><m:mo>,</m:mo><m:mi>c</m:mi><m:mo>}</m:mo></m:mrow></m:math>, so it must be that <m:math overflow="scroll"><m:mrow><m:mi>ν</m:mi><m:mo>∈</m:mo><m:mi> Span </m:mi><m:mo>{</m:mo><m:mi>a</m:mi><m:mo>,</m:mo><m:mi>b</m:mi><m:mo>,</m:mo><m:mi>c</m:mi><m:mo>}</m:mo></m:mrow></m:math>, as desired.</para>
+      <para id="id288586">Combining the above lemmas, we have</para>
+      <para id="id288589"><emphasis effect="bold">Theorem 1</emphasis> A necessary and sufficient condition that a point force field <m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">f</m:mi><m:mo>=</m:mo><m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub><m:mi>δ</m:mi><m:mrow><m:mo>(</m:mo><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mo>⋯</m:mo><m:mo>+</m:mo><m:msub><m:mi>f</m:mi><m:mi>ν</m:mi></m:msub><m:mi>δ</m:mi><m:mrow><m:mo>(</m:mo><m:msub><m:mi>a</m:mi><m:mi>ν</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:mrow></m:math>
+be balanced is that it is equilibrated by a truss <m:math overflow="scroll"><m:mrow><m:mi>T</m:mi><m:mo>.</m:mo></m:mrow></m:math></para>
+      <para id="id288688">(Necessity) Suppose <m:math overflow="scroll"><m:mi mathvariant="bold">f</m:mi></m:math> is equilibrated by the truss <m:math overflow="scroll"><m:mrow><m:mi>T</m:mi><m:mo>.</m:mo></m:mrow></m:math> Let <m:math overflow="scroll"><m:mrow><m:mi>ν</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="double-struck">R</m:mi><m:mn>3</m:mn></m:msup></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>φ</m:mi><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>ν</m:mi></m:mrow></m:math> for all <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="double-struck">R</m:mi><m:mn>3</m:mn></m:msup><m:mo>.</m:mo></m:mrow></m:math> Then <link target-id="uid6"/> implies</para>
+      <equation id="id288786">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mn>0</m:mn>
+            <m:mo>=</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>δ</m:mi>
+              <m:mi>T</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi>φ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="bold">f</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi>φ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>μ</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>·</m:mo>
+            <m:mi>v</m:mi>
+            <m:mo>=</m:mo>
+            <m:mi>ν</m:mi>
+            <m:mo>·</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>μ</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id288895">because <m:math overflow="scroll"><m:mi>φ</m:mi></m:math> is a constant vector field.
+Since <m:math overflow="scroll"><m:mi>ν</m:mi></m:math> was arbitrary, it can be chosen to be</para>
+      <equation id="id288920">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>ν</m:mi>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>μ</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id288957">so that</para>
+      <equation id="id288963">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mn>0</m:mn>
+            <m:mo>=</m:mo>
+            <m:mi>ν</m:mi>
+            <m:mo>·</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>μ</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mfenced separators="" open="|" close="|">
+                <m:munderover>
+                  <m:mo>∑</m:mo>
+                  <m:mrow>
+                    <m:mi>i</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                  <m:mi>μ</m:mi>
+                </m:munderover>
+                <m:msub>
+                  <m:mi>f</m:mi>
+                  <m:mi>i</m:mi>
+                </m:msub>
+              </m:mfenced>
+              <m:mn>2</m:mn>
+            </m:msup>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id289045">and conclude that</para>
+      <equation id="id289051">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>μ</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id289089">which implies <link target-id="uid7"/>.
+For <m:math overflow="scroll"><m:mrow><m:mi>w</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="double-struck">R</m:mi><m:mn>3</m:mn></m:msup><m:mo>,</m:mo></m:mrow></m:math> define the skew symmetric matrix</para>
+      <equation id="id289124">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mover accent="true">
+              <m:mi>w</m:mi>
+              <m:mo>^</m:mo>
+            </m:mover>
+            <m:mo>=</m:mo>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mn>0</m:mn>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:msub>
+                        <m:mi>w</m:mi>
+                        <m:mn>3</m:mn>
+                      </m:msub>
+                    </m:mrow>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:msub>
+                      <m:mi>w</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:msub>
+                      <m:mi>w</m:mi>
+                      <m:mn>3</m:mn>
+                    </m:msub>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mn>0</m:mn>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:msub>
+                        <m:mi>w</m:mi>
+                        <m:mn>1</m:mn>
+                      </m:msub>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:msub>
+                        <m:mi>w</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:msub>
+                    </m:mrow>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:msub>
+                      <m:mi>w</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mn>0</m:mn>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id289226">It is easy to check that <m:math overflow="scroll"><m:mrow><m:mover accent="true"><m:mi>w</m:mi><m:mo>^</m:mo></m:mover><m:mi>ν</m:mi><m:mo>=</m:mo><m:mi>w</m:mi><m:mo>×</m:mo><m:mi>ν</m:mi><m:mo>.</m:mo></m:mrow></m:math> Let <m:math overflow="scroll"><m:mrow><m:mi>ν</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="double-struck">R</m:mi><m:mn>3</m:mn></m:msup></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>φ</m:mi><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mover accent="true"><m:mi>x</m:mi><m:mo>^</m:mo></m:mover><m:mi>ν</m:mi><m:mo>.</m:mo></m:mrow></m:math> Then</para>
+      <equation id="id289317">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>δ</m:mi>
+                    <m:mi>T</m:mi>
+                    <m:mo>,</m:mo>
+                    <m:mi>φ</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>i</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                    <m:mi>μ</m:mi>
+                  </m:munderover>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>δ</m:mi>
+                    <m:mi>B</m:mi>
+                    <m:mo>,</m:mo>
+                    <m:mi>φ</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>i</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                    <m:mi>μ</m:mi>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>ω</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>φ</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:msub>
+                        <m:mi>a</m:mi>
+                        <m:mi>i</m:mi>
+                      </m:msub>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi>φ</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:msub>
+                        <m:mi>b</m:mi>
+                        <m:mi>i</m:mi>
+                      </m:msub>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>·</m:mo>
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:msub>
+                        <m:mi>a</m:mi>
+                        <m:mi>i</m:mi>
+                      </m:msub>
+                      <m:mo>-</m:mo>
+                      <m:msub>
+                        <m:mi>b</m:mi>
+                        <m:mi>i</m:mi>
+                      </m:msub>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                      </m:mrow>
+                      <m:msub>
+                        <m:mi>a</m:mi>
+                        <m:mi>i</m:mi>
+                      </m:msub>
+                      <m:mo>-</m:mo>
+                      <m:msub>
+                        <m:mi>b</m:mi>
+                        <m:mi>i</m:mi>
+                      </m:msub>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mfrac>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>i</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                    <m:mi>μ</m:mi>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>ω</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:msub>
+                      <m:mover accent="true">
+                        <m:mi>a</m:mi>
+                        <m:mo>^</m:mo>
+                      </m:mover>
+                      <m:mi>i</m:mi>
+                    </m:msub>
+                    <m:mo>-</m:mo>
+                    <m:msub>
+                      <m:mover accent="true">
+                        <m:mi>b</m:mi>
+                        <m:mo>^</m:mo>
+                      </m:mover>
+                      <m:mi>i</m:mi>
+                    </m:msub>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mi>ν</m:mi>
+                  <m:mo>·</m:mo>
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:msub>
+                        <m:mi>a</m:mi>
+                        <m:mi>i</m:mi>
+                      </m:msub>
+                      <m:mo>-</m:mo>
+                      <m:msub>
+                        <m:mi>b</m:mi>
+                        <m:mi>i</m:mi>
+                      </m:msub>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                      </m:mrow>
+                      <m:msub>
+                        <m:mi>a</m:mi>
+                        <m:mi>i</m:mi>
+                      </m:msub>
+                      <m:mo>-</m:mo>
+                      <m:msub>
+                        <m:mi>b</m:mi>
+                        <m:mi>i</m:mi>
+                      </m:msub>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mfrac>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>i</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                    <m:mi>μ</m:mi>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>ω</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:msub>
+                      <m:mi>a</m:mi>
+                      <m:mi>i</m:mi>
+                    </m:msub>
+                    <m:mo>-</m:mo>
+                    <m:msub>
+                      <m:mi>b</m:mi>
+                      <m:mi>i</m:mi>
+                    </m:msub>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>×</m:mo>
+                  <m:mi>ν</m:mi>
+                  <m:mo>·</m:mo>
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:msub>
+                        <m:mi>a</m:mi>
+                        <m:mi>i</m:mi>
+                      </m:msub>
+                      <m:mo>-</m:mo>
+                      <m:msub>
+                        <m:mi>b</m:mi>
+                        <m:mi>i</m:mi>
+                      </m:msub>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                      </m:mrow>
+                      <m:msub>
+                        <m:mi>a</m:mi>
+                        <m:mi>i</m:mi>
+                      </m:msub>
+                      <m:mo>-</m:mo>
+                      <m:msub>
+                        <m:mi>b</m:mi>
+                        <m:mi>i</m:mi>
+                      </m:msub>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mo>=</m:mo>
+                  <m:mn>0</m:mn>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id289724">because the cross product <m:math overflow="scroll"><m:mrow><m:msub><m:mi>w</m:mi><m:mi>i</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:msub><m:mi>a</m:mi><m:mi>i</m:mi></m:msub><m:mo>-</m:mo><m:msub><m:mi>b</m:mi><m:mi>i</m:mi></m:msub><m:mo>)</m:mo></m:mrow><m:mo>×</m:mo><m:mi>ν</m:mi></m:mrow></m:math> is perpendicular to the vector <m:math overflow="scroll"><m:mrow><m:msub><m:mi>a</m:mi><m:mi>i</m:mi></m:msub><m:mo>-</m:mo><m:msub><m:mi>b</m:mi><m:mi>i</m:mi></m:msub></m:mrow></m:math>, which is parallel to <m:math overflow="scroll"><m:mfrac><m:mrow><m:msub><m:mi>a</m:mi><m:mi>i</m:mi></m:msub><m:mo>-</m:mo><m:msub><m:mi>b</m:mi><m:mi>i</m:mi></m:msub></m:mrow><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>a</m:mi><m:mi>i</m:mi></m:msub><m:mo>-</m:mo><m:msub><m:mi>b</m:mi><m:mi>i</m:mi></m:msub><m:mrow><m:mo>|</m:mo></m:mrow></m:mrow></m:mfrac></m:math> so their dot product is zero.
+By <link target-id="uid6"/>, this implies</para>
+      <equation id="id289854">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mn>0</m:mn>
+            <m:mo>=</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>δ</m:mi>
+              <m:mi>T</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi>φ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="bold">f</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi>φ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>μ</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>·</m:mo>
+            <m:mi>φ</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>a</m:mi>
+                <m:mi>i</m:mi>
+              </m:msub>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>μ</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>·</m:mo>
+            <m:msub>
+              <m:mover accent="true">
+                <m:mi>a</m:mi>
+                <m:mo>^</m:mo>
+              </m:mover>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mi>v</m:mi>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>μ</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>·</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>×</m:mo>
+            <m:mi>ν</m:mi>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>μ</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>×</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>·</m:mo>
+            <m:mi>ν</m:mi>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id290071">Since <m:math overflow="scroll"><m:mi>ν</m:mi></m:math> is arbitrary, we infer <link target-id="uid8"/>. Thus <m:math overflow="scroll"><m:mi mathvariant="bold">f</m:mi></m:math> is balanced.</para>
+      <para id="id290102">(Sufficiency) We proceed by induction on <m:math overflow="scroll"><m:mrow><m:mi>ν</m:mi><m:mo>.</m:mo></m:mrow></m:math> If <m:math overflow="scroll"><m:mrow><m:mi>ν</m:mi><m:mo>=</m:mo><m:mn>2</m:mn><m:mo>,</m:mo></m:mrow></m:math>
+then <m:math overflow="scroll"><m:mi mathvariant="bold">f</m:mi></m:math> is equilibrated by the truss <m:math overflow="scroll"><m:mi>T</m:mi></m:math> guaranteed in Lemma 1.
+If <m:math overflow="scroll"><m:mrow><m:mi>ν</m:mi><m:mo>=</m:mo><m:mn>3</m:mn></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math> and <m:math overflow="scroll"><m:msub><m:mi>a</m:mi><m:mn>3</m:mn></m:msub></m:math> do not all lie on a line, then
+<m:math overflow="scroll"><m:mi mathvariant="bold">f</m:mi></m:math> is equilibrated by the truss <m:math overflow="scroll"><m:mi>T</m:mi></m:math> guaranteed in Lemma 2.
+If <m:math overflow="scroll"><m:mrow><m:mi>ν</m:mi><m:mo>=</m:mo><m:mn>3</m:mn></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math> and <m:math overflow="scroll"><m:msub><m:mi>a</m:mi><m:mn>3</m:mn></m:msub></m:math> lie on a line, consider the equivalent
+point force field <m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">g</m:mi><m:mo>=</m:mo><m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub><m:mi>δ</m:mi><m:mrow><m:mo>(</m:mo><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub><m:mi>δ</m:mi><m:mrow><m:mo>(</m:mo><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mi>f</m:mi><m:mn>3</m:mn></m:msub><m:mi>δ</m:mi><m:mrow><m:mo>(</m:mo><m:msub><m:mi>a</m:mi><m:mn>3</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mn>0</m:mn><m:mi>δ</m:mi><m:mrow><m:mo>(</m:mo><m:msub><m:mi>a</m:mi><m:mn>4</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:mrow></m:math>
+where <m:math overflow="scroll"><m:msub><m:mi>a</m:mi><m:mn>4</m:mn></m:msub></m:math> is a arbitrary point chosen off the line containing <m:math overflow="scroll"><m:mrow><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>a</m:mi><m:mn>3</m:mn></m:msub><m:mo>.</m:mo></m:mrow></m:math> The
+result for <m:math overflow="scroll"><m:mrow><m:mi>ν</m:mi><m:mo>=</m:mo><m:mn>4</m:mn></m:mrow></m:math> proves that <m:math overflow="scroll"><m:mi mathvariant="bold">g</m:mi></m:math> is equilibrated by a truss <m:math overflow="scroll"><m:mrow><m:mi>T</m:mi><m:mo>.</m:mo></m:mrow></m:math> However, since
+<m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi mathvariant="bold">g</m:mi><m:mo>,</m:mo><m:mi>φ</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mo>(</m:mo><m:mi mathvariant="bold">f</m:mi><m:mo>,</m:mo><m:mi>φ</m:mi><m:mo>)</m:mo></m:mrow></m:math> for all continuous vector fields <m:math overflow="scroll"><m:mrow><m:mi>φ</m:mi><m:mo>,</m:mo></m:mrow></m:math> this implies
+that <m:math overflow="scroll"><m:mi>T</m:mi></m:math> also equilibrates <m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">f</m:mi><m:mo>.</m:mo></m:mrow></m:math>
+Assume that sufficiency holds for <m:math overflow="scroll"><m:mrow><m:mi>ν</m:mi><m:mo>≥</m:mo><m:mn>3</m:mn><m:mo>.</m:mo></m:mrow></m:math> If <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mrow><m:mi>ν</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>,</m:mo></m:mrow></m:math> then we are done.
+Otherwise, according to Lemma 3, there is <m:math overflow="scroll"><m:mrow><m:mi>ρ</m:mi><m:mo>∈</m:mo><m:mi mathvariant="double-struck">R</m:mi></m:mrow></m:math> so that</para>
+      <equation id="id290615">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mrow>
+                <m:mi>ν</m:mi>
+                <m:mo>+</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msub>
+            <m:mo>∈</m:mo>
+            <m:mi> Span </m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>a</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>-</m:mo>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:msub>
+                  <m:mi>a</m:mi>
+                  <m:mrow>
+                    <m:mi>ν</m:mi>
+                    <m:mo>+</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:msub>
+                <m:mo>+</m:mo>
+                <m:mi>ρ</m:mi>
+                <m:msub>
+                  <m:mi>f</m:mi>
+                  <m:mrow>
+                    <m:mi>ν</m:mi>
+                    <m:mo>+</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:msub>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>,</m:mo>
+              <m:msub>
+                <m:mi>a</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>-</m:mo>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:msub>
+                  <m:mi>a</m:mi>
+                  <m:mrow>
+                    <m:mi>ν</m:mi>
+                    <m:mo>+</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:msub>
+                <m:mo>+</m:mo>
+                <m:mi>ρ</m:mi>
+                <m:msub>
+                  <m:mi>f</m:mi>
+                  <m:mrow>
+                    <m:mi>ν</m:mi>
+                    <m:mo>+</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:msub>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>,</m:mo>
+              <m:msub>
+                <m:mi>a</m:mi>
+                <m:mn>3</m:mn>
+              </m:msub>
+              <m:mo>-</m:mo>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:msub>
+                  <m:mi>a</m:mi>
+                  <m:mrow>
+                    <m:mi>ν</m:mi>
+                    <m:mo>+</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:msub>
+                <m:mo>+</m:mo>
+                <m:mi>ρ</m:mi>
+                <m:msub>
+                  <m:mi>f</m:mi>
+                  <m:mrow>
+                    <m:mi>ν</m:mi>
+                    <m:mo>+</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:msub>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id290791">Let <m:math overflow="scroll"><m:mrow><m:mi>b</m:mi><m:mo>=</m:mo><m:msub><m:mi>a</m:mi><m:mrow><m:mi>ν</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>+</m:mo><m:mi>ρ</m:mi><m:msub><m:mi>f</m:mi><m:mrow><m:mi>ν</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:mrow></m:math> and let</para>
+      <equation id="id290839">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mrow>
+                <m:mi>ν</m:mi>
+                <m:mo>+</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>Ω</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>a</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>-</m:mo>
+              <m:mi>b</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>Ω</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>a</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>-</m:mo>
+              <m:mi>b</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>Ω</m:mi>
+              <m:mn>3</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>a</m:mi>
+                <m:mn>3</m:mn>
+              </m:msub>
+              <m:mo>-</m:mo>
+              <m:mi>b</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id290945">
+        <figure id="id290948">
+          <media id="id290948_media" alt="">
+            <image mime-type="image/png" src="../../media/induction.png" id="id290948_onlineimage" width="373"><!-- NOTE: attribute width changes image size online (pixels). original width is 373. --></image>
+            <image mime-type="application/postscript" for="pdf" src="../../media/induction.eps" id="id290948_printimage" print-width="2.0in">
+              <!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+            </image>
+          </media>
+        </figure>
+      </para>
+      <para id="id290957">Define the point force field <m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">g</m:mi><m:mo>=</m:mo><m:msub><m:mi>g</m:mi><m:mn>1</m:mn></m:msub><m:mi>δ</m:mi><m:mrow><m:mo>(</m:mo><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mo>⋯</m:mo><m:mo>+</m:mo><m:msub><m:mi>g</m:mi><m:mi>ν</m:mi></m:msub><m:mi>δ</m:mi><m:mrow><m:mo>(</m:mo><m:msub><m:mi>b</m:mi><m:mi>ν</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:mrow></m:math> by</para>
+      <equation id="id291027">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>g</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mo>=</m:mo>
+                  <m:msub>
+                    <m:mi>f</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mo>+</m:mo>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:msub>
+                      <m:mi>a</m:mi>
+                      <m:mi>i</m:mi>
+                    </m:msub>
+                    <m:mo>-</m:mo>
+                    <m:mi>b</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>Ω</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mo>,</m:mo>
+                  <m:mspace width="1.em"/>
+                  <m:mi>i</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo>,</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mo>,</m:mo>
+                  <m:mn>3</m:mn>
+                  <m:mo>,</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>g</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mo>=</m:mo>
+                  <m:msub>
+                    <m:mi>f</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mo>,</m:mo>
+                  <m:mspace width="1.em"/>
+                  <m:mi>i</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mn>4</m:mn>
+                  <m:mo>,</m:mo>
+                  <m:mo>⋯</m:mo>
+                  <m:mo>,</m:mo>
+                  <m:mi>ν</m:mi>
+                  <m:mo>,</m:mo>
+                  <m:mspace width="1.em"/>
+                  <m:msub>
+                    <m:mi>b</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mo>=</m:mo>
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mo>,</m:mo>
+                  <m:mspace width="1.em"/>
+                  <m:mi>i</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo>,</m:mo>
+                  <m:mo>⋯</m:mo>
+                  <m:mo>,</m:mo>
+                  <m:mi>ν</m:mi>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id291196">We claim that <m:math overflow="scroll"><m:mi mathvariant="bold">g</m:mi></m:math> is balanced; by <link target-id="uid7"/></para>
+      <equation id="id291217">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>ν</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>g</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>ν</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mn>3</m:mn>
+            </m:munderover>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>a</m:mi>
+                <m:mi>i</m:mi>
+              </m:msub>
+              <m:mo>-</m:mo>
+              <m:mi>b</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>Ω</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>ν</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mrow>
+                <m:mi>ν</m:mi>
+                <m:mo>+</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id291366">and by <link target-id="uid8"/></para>
+      <equation id="id291376">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>i</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                    <m:mi>ν</m:mi>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>g</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mo>×</m:mo>
+                  <m:msub>
+                    <m:mi>b</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>i</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                    <m:mi>ν</m:mi>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>f</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mo>×</m:mo>
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mo>+</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>i</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                    <m:mn>3</m:mn>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>Ω</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:msub>
+                      <m:mi>a</m:mi>
+                      <m:mi>i</m:mi>
+                    </m:msub>
+                    <m:mo>-</m:mo>
+                    <m:mi>b</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>×</m:mo>
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>i</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                    <m:mi>ν</m:mi>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>f</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mo>×</m:mo>
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mo>+</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>i</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                    <m:mn>3</m:mn>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>Ω</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:msub>
+                      <m:mi>a</m:mi>
+                      <m:mi>i</m:mi>
+                    </m:msub>
+                    <m:mo>-</m:mo>
+                    <m:mi>b</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>×</m:mo>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:msub>
+                      <m:mi>a</m:mi>
+                      <m:mi>i</m:mi>
+                    </m:msub>
+                    <m:mo>-</m:mo>
+                    <m:mi>b</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>+</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>i</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                    <m:mn>3</m:mn>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>Ω</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:msub>
+                      <m:mi>a</m:mi>
+                      <m:mi>i</m:mi>
+                    </m:msub>
+                    <m:mo>-</m:mo>
+                    <m:mi>b</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>×</m:mo>
+                  <m:mi>b</m:mi>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>i</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                    <m:mi>ν</m:mi>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>f</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mo>×</m:mo>
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mi>i</m:mi>
+                  </m:msub>
+                  <m:mo>+</m:mo>
+                  <m:msub>
+                    <m:mi>f</m:mi>
+                    <m:mrow>
+                      <m:mi>ν</m:mi>
+                      <m:mo>+</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:msub>
+                  <m:mo>×</m:mo>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:msub>
+                      <m:mi>a</m:mi>
+                      <m:mrow>
+                        <m:mi>ν</m:mi>
+                        <m:mo>+</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                    </m:msub>
+                    <m:mo>+</m:mo>
+                    <m:mi>ρ</m:mi>
+                    <m:msub>
+                      <m:mi>f</m:mi>
+                      <m:mrow>
+                        <m:mi>ν</m:mi>
+                        <m:mo>+</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                    </m:msub>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mn>0</m:mn>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id291776">By induction, there exists a truss <m:math overflow="scroll"><m:mi>R</m:mi></m:math> equilibrating <m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">g</m:mi><m:mo>.</m:mo></m:mrow></m:math> Let <m:math overflow="scroll"><m:mi>S</m:mi></m:math> be the truss consisting of the collection
+of beams <m:math overflow="scroll"><m:mrow><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mo>-</m:mo><m:mi>b</m:mi><m:mo>,</m:mo><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub><m:mo>-</m:mo><m:mi>b</m:mi><m:mo>,</m:mo><m:msub><m:mi>a</m:mi><m:mn>3</m:mn></m:msub><m:mo>-</m:mo><m:mi>b</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>b</m:mi><m:mo>-</m:mo><m:msub><m:mi>a</m:mi><m:mrow><m:mi>ν</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:mrow></m:math> with weights <m:math overflow="scroll"><m:mrow><m:msub><m:mi>Ω</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>Ω</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>Ω</m:mi><m:mn>3</m:mn></m:msub></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>f</m:mi><m:mi>ν</m:mi></m:msub><m:mrow><m:mo>|</m:mo></m:mrow></m:mrow></m:math> resp.
+Arguing as in Lemma 2, we find that <m:math overflow="scroll"><m:mrow><m:mi>T</m:mi><m:mo>=</m:mo><m:mi>R</m:mi><m:mo>+</m:mo><m:mi>S</m:mi></m:mrow></m:math> equilibrates <m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">f</m:mi><m:mo>.</m:mo></m:mrow></m:math></para>
+    </section>
+    <section id="cid4">
+      <title>Some Economical Trusses</title>
+      <para id="id291985">After proving the question of existence we turn to the question of economy.
+We say that a truss <m:math overflow="scroll"><m:mi>T</m:mi></m:math> is economical if it satisfies</para>
+      <equation id="id291999">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi> Cost </m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>T</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>≤</m:mo>
+            <m:mi> Cost </m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>S</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id292028">whenever <m:math overflow="scroll"><m:mrow><m:mi>δ</m:mi><m:mi>S</m:mi><m:mo>=</m:mo><m:mi>δ</m:mi><m:mi>T</m:mi><m:mo>.</m:mo></m:mrow></m:math> That is to say, the cost of <m:math overflow="scroll"><m:mi>T</m:mi></m:math> is less than or equal to
+that of any truss which equilibrates the same force system as <m:math overflow="scroll"><m:mrow><m:mi>T</m:mi><m:mo>.</m:mo></m:mrow></m:math>
+We begin by describing some global statements about economical trusses
+that can proven by choosing special test vector fields <m:math overflow="scroll"><m:mi>φ</m:mi></m:math> in <link target-id="uid6"/>.
+Then we make local perturbations on trusses with corners to find a necessary condition
+for economy.</para>
+      <section id="uid14">
+        <title>Some Global Properties</title>
+        <para id="id292100">A surprising and easily proven fact is</para>
+        <para id="id292104"><emphasis effect="bold">Lemma 4</emphasis> A truss is economical if the weights of the beams are all of the same sign. Such a truss lies in the closed convex hull of the support of the point forces
+it equilibrates.</para>
+        <para id="id292125">To prove the first statement, note that</para>
+        <equation id="id292129">
+          <m:math overflow="scroll" mode="display">
+            <m:mtable displaystyle="true">
+              <m:mtr>
+                <m:mtd columnalign="right">
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>δ</m:mi>
+                    <m:mi>T</m:mi>
+                    <m:mo>,</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>=</m:mo>
+                    <m:munder>
+                      <m:mo>∑</m:mo>
+                      <m:mrow>
+                        <m:mi>B</m:mi>
+                        <m:mo>∈</m:mo>
+                        <m:mi>T</m:mi>
+                      </m:mrow>
+                    </m:munder>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>δ</m:mi>
+                      <m:mi>B</m:mi>
+                      <m:mo>,</m:mo>
+                      <m:mi>x</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>=</m:mo>
+                    <m:munder>
+                      <m:mo>∑</m:mo>
+                      <m:mrow>
+                        <m:mi>B</m:mi>
+                        <m:mo>∈</m:mo>
+                        <m:mi>T</m:mi>
+                      </m:mrow>
+                    </m:munder>
+                    <m:mi>ω</m:mi>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mi>a</m:mi>
+                        <m:mo>-</m:mo>
+                        <m:mi>b</m:mi>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                        <m:mi>a</m:mi>
+                        <m:mo>-</m:mo>
+                        <m:mi>b</m:mi>
+                        <m:mo>|</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                    <m:mo>·</m:mo>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>a</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>b</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>=</m:mo>
+                    <m:munder>
+                      <m:mo>∑</m:mo>
+                      <m:mrow>
+                        <m:mi>B</m:mi>
+                        <m:mo>∈</m:mo>
+                        <m:mi>T</m:mi>
+                      </m:mrow>
+                    </m:munder>
+                    <m:mi>ω</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>a</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>b</m:mi>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>=</m:mo>
+                    <m:munder>
+                      <m:mo>∑</m:mo>
+                      <m:mrow>
+                        <m:mi>B</m:mi>
+                        <m:mo>∈</m:mo>
+                        <m:mi>T</m:mi>
+                      </m:mrow>
+                    </m:munder>
+                    <m:mi> Cost </m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>B</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>=</m:mo>
+                    <m:mi> Cost </m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>T</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>.</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:math>
+        </equation>
+        <para id="id292322">if <m:math overflow="scroll"><m:mrow><m:mi>ω</m:mi><m:mo>&gt;</m:mo><m:mn>0</m:mn></m:mrow></m:math> for each <m:math overflow="scroll"><m:mrow><m:mi>B</m:mi><m:mo>∈</m:mo><m:mi>T</m:mi><m:mo>.</m:mo></m:mrow></m:math>
+On the other hand,
+if <m:math overflow="scroll"><m:mi>S</m:mi></m:math> is a truss with <m:math overflow="scroll"><m:mrow><m:mi>δ</m:mi><m:mi>S</m:mi><m:mo>=</m:mo><m:mi>δ</m:mi><m:mi>T</m:mi><m:mo>,</m:mo></m:mrow></m:math> then</para>
+        <equation id="id292389">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:mi> Cost </m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>T</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>=</m:mo>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>δ</m:mi>
+                <m:mi>T</m:mi>
+                <m:mo>,</m:mo>
+                <m:mi>x</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>=</m:mo>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>δ</m:mi>
+                <m:mi>S</m:mi>
+                <m:mo>,</m:mo>
+                <m:mi>x</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>=</m:mo>
+              <m:munder>
+                <m:mo>∑</m:mo>
+                <m:mrow>
+                  <m:mi>B</m:mi>
+                  <m:mo>∈</m:mo>
+                  <m:mi>S</m:mi>
+                </m:mrow>
+              </m:munder>
+              <m:mi>ω</m:mi>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>a</m:mi>
+                <m:mo>-</m:mo>
+                <m:mi>b</m:mi>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mo>≤</m:mo>
+              <m:mi> Cost </m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>S</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>.</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id292485">Hence <m:math overflow="scroll"><m:mi>T</m:mi></m:math> is economical.</para>
+        <para id="id292500">To prove the latter statement, let <m:math overflow="scroll"><m:mi>K</m:mi></m:math> be the closure of the convex hull of the support of the point forces equilibrated by <m:math overflow="scroll"><m:mrow><m:mi>T</m:mi><m:mo>.</m:mo></m:mrow></m:math>
+Then <m:math overflow="scroll"><m:mi>K</m:mi></m:math> is a convex polyhedron; let <m:math overflow="scroll"><m:mi>H</m:mi></m:math> be the hyper-plane passing through one of its sides. Without loss of generality,
+assume that <m:math overflow="scroll"><m:mi>H</m:mi></m:math> is the <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mi>y</m:mi></m:mrow></m:math>-plane and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>H</m:mi><m:mo>+</m:mo></m:msub><m:mo>=</m:mo><m:mrow><m:mo>{</m:mo><m:mi>x</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="double-struck">R</m:mi><m:mn>3</m:mn></m:msup><m:mo>:</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:mo>&gt;</m:mo><m:mn>0</m:mn><m:mo>}</m:mo></m:mrow></m:mrow></m:math> is the upper half space,
+and <m:math overflow="scroll"><m:mrow><m:mi> Support </m:mi><m:mrow><m:mo>(</m:mo><m:mi>δ</m:mi><m:mi>T</m:mi><m:mo>)</m:mo></m:mrow><m:mo>⊂</m:mo><m:msup><m:mi mathvariant="normal">R</m:mi><m:mn>3</m:mn></m:msup><m:mo>∖</m:mo><m:msub><m:mi>H</m:mi><m:mo>+</m:mo></m:msub><m:mo>.</m:mo></m:mrow></m:math>
+Let <m:math overflow="scroll"><m:mrow><m:mi>φ</m:mi><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msub><m:mi>e</m:mi><m:mn>3</m:mn></m:msub><m:mo>⊗</m:mo><m:msub><m:mi>e</m:mi><m:mn>3</m:mn></m:msub><m:mi>x</m:mi></m:mrow></m:math> for <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:mo>&gt;</m:mo><m:mn>0</m:mn></m:mrow></m:math> and 0 otherwise where <m:math overflow="scroll"><m:msub><m:mi>e</m:mi><m:mn>3</m:mn></m:msub></m:math> is the unit basis vector <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:math>
+and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>e</m:mi><m:mn>3</m:mn></m:msub><m:mo>⊗</m:mo><m:msub><m:mi>e</m:mi><m:mn>3</m:mn></m:msub></m:mrow></m:math> is the tensor product</para>
+        <equation id="id292805">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:msub>
+                <m:mi>e</m:mi>
+                <m:mn>3</m:mn>
+              </m:msub>
+              <m:mo>⊗</m:mo>
+              <m:msub>
+                <m:mi>e</m:mi>
+                <m:mn>3</m:mn>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:mfenced separators="" open="(" close=")">
+                <m:mtable>
+                  <m:mtr>
+                    <m:mtd>
+                      <m:mn>0</m:mn>
+                    </m:mtd>
+                    <m:mtd>
+                      <m:mn>0</m:mn>
+                    </m:mtd>
+                    <m:mtd>
+                      <m:mn>0</m:mn>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mtd>
+                      <m:mn>0</m:mn>
+                    </m:mtd>
+                    <m:mtd>
+                      <m:mn>0</m:mn>
+                    </m:mtd>
+                    <m:mtd>
+                      <m:mn>0</m:mn>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mtd>
+                      <m:mn>0</m:mn>
+                    </m:mtd>
+                    <m:mtd>
+                      <m:mn>0</m:mn>
+                    </m:mtd>
+                    <m:mtd>
+                      <m:mn>1</m:mn>
+                    </m:mtd>
+                  </m:mtr>
+                </m:mtable>
+              </m:mfenced>
+              <m:mo>.</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id292877">Then,</para>
+        <equation id="id292882">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:mn>0</m:mn>
+              <m:mo>=</m:mo>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>δ</m:mi>
+                <m:mi>T</m:mi>
+                <m:mo>,</m:mo>
+                <m:mi>φ</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>=</m:mo>
+              <m:munder>
+                <m:mo>∑</m:mo>
+                <m:mrow>
+                  <m:mi>B</m:mi>
+                  <m:mo>∈</m:mo>
+                  <m:mi>T</m:mi>
+                </m:mrow>
+              </m:munder>
+              <m:mi>ω</m:mi>
+              <m:mfrac>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>a</m:mi>
+                  <m:mo>-</m:mo>
+                  <m:mi>b</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mrow>
+                  <m:mo>|</m:mo>
+                  <m:mi>a</m:mi>
+                  <m:mo>-</m:mo>
+                  <m:mi>b</m:mi>
+                  <m:mo>|</m:mo>
+                </m:mrow>
+              </m:mfrac>
+              <m:mo>·</m:mo>
+              <m:msub>
+                <m:mi>e</m:mi>
+                <m:mn>3</m:mn>
+              </m:msub>
+              <m:mo>⊗</m:mo>
+              <m:msub>
+                <m:mi>e</m:mi>
+                <m:mn>3</m:mn>
+              </m:msub>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>a</m:mi>
+                <m:mo>-</m:mo>
+                <m:mi>b</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>=</m:mo>
+              <m:munder>
+                <m:mo>∑</m:mo>
+                <m:mrow>
+                  <m:mi>B</m:mi>
+                  <m:mo>∈</m:mo>
+                  <m:mi>T</m:mi>
+                </m:mrow>
+              </m:munder>
+              <m:mi>ω</m:mi>
+              <m:mfrac>
+                <m:mrow>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mn>3</m:mn>
+                  </m:msub>
+                  <m:mo>-</m:mo>
+                  <m:msub>
+                    <m:mi>b</m:mi>
+                    <m:mn>3</m:mn>
+                  </m:msub>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                </m:mrow>
+                <m:mrow>
+                  <m:mo>|</m:mo>
+                  <m:mi>a</m:mi>
+                  <m:mo>-</m:mo>
+                  <m:mi>b</m:mi>
+                  <m:mo>|</m:mo>
+                </m:mrow>
+              </m:mfrac>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id293047">which implies that <m:math overflow="scroll"><m:mrow><m:mi>ω</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> if it corresponds to a beam lying in <m:math overflow="scroll"><m:mrow><m:msub><m:mi>H</m:mi><m:mo>+</m:mo></m:msub><m:mo>.</m:mo></m:mrow></m:math></para>
+      </section>
+      <section id="uid16">
+        <title>Some Local Properties: Cutting Corners</title>
+        <para id="id293094">Our object of interest are two dimensional trusses with corners. We have
+shown that an economical truss cannot have corners. To show this, we analyzed
+a perturbation of a truss with corners which consists of cutting the corner and replacing
+it with a flat top. Specifically, we showed that for any corner, the cut can be made sufficiently small
+so that the perturbed truss costs less. This surprising result suggests that any economical truss,
+if made of both cables and bars, has as boundary a differentiable curve and is supported on a set
+of positive two dimensional area.</para>
+        <para id="id293102">We define a corner to be the union of three beams <m:math overflow="scroll"><m:mrow><m:mo>{</m:mo><m:msub><m:mi>B</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>B</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>B</m:mi><m:mn>3</m:mn></m:msub><m:mo>}</m:mo><m:mo>⊂</m:mo><m:mi>T</m:mi></m:mrow></m:math> which share
+an endpoint <m:math overflow="scroll"><m:mrow><m:mi>p</m:mi><m:mo>,</m:mo></m:mrow></m:math> lie in a halfplane about <m:math overflow="scroll"><m:mi>p</m:mi></m:math> and
+<m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>δ</m:mi><m:msub><m:mi>B</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:mi>δ</m:mi><m:msub><m:mi>B</m:mi><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mi>δ</m:mi><m:msub><m:mi>B</m:mi><m:mn>3</m:mn></m:msub><m:mo>,</m:mo><m:mi>φ</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> for all <m:math overflow="scroll"><m:mi>φ</m:mi></m:math> with <m:math overflow="scroll"><m:mrow><m:mi> Support </m:mi><m:mo>(</m:mo><m:mi>φ</m:mi><m:mo>)</m:mo><m:mo>⊂</m:mo><m:mi>U</m:mi></m:mrow></m:math>
+for some neighborhood <m:math overflow="scroll"><m:mi>U</m:mi></m:math> of <m:math overflow="scroll"><m:mrow><m:mi>p</m:mi><m:mo>.</m:mo></m:mrow></m:math></para>
+        <para id="id293276">By rescaling, translating and rotating, we may assume that <m:math overflow="scroll"><m:msub><m:mi>B</m:mi><m:mn>1</m:mn></m:msub></m:math> and <m:math overflow="scroll"><m:msub><m:mi>B</m:mi><m:mn>2</m:mn></m:msub></m:math> form two
+sides of an isosceles triangle and one endpoint of <m:math overflow="scroll"><m:msub><m:mi>B</m:mi><m:mn>3</m:mn></m:msub></m:math> lies in the base of this triangle.
+The base of the triangle and <m:math overflow="scroll"><m:msub><m:mi>B</m:mi><m:mn>1</m:mn></m:msub></m:math> form an angle of <m:math overflow="scroll"><m:mi>θ</m:mi></m:math> and
+the base of the triangle and <m:math overflow="scroll"><m:msub><m:mi>B</m:mi><m:mn>3</m:mn></m:msub></m:math> form an angle of <m:math overflow="scroll"><m:mrow><m:mi>φ</m:mi><m:mo>.</m:mo></m:mrow></m:math> The height of the triangle is <m:math overflow="scroll"><m:mrow><m:mi>l</m:mi><m:mo>.</m:mo></m:mrow></m:math>
+We will need the relation</para>
+        <equation id="uid17">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:mfrac>
+                <m:mi>π</m:mi>
+                <m:mn>2</m:mn>
+              </m:mfrac>
+              <m:mo>&gt;</m:mo>
+              <m:mi>φ</m:mi>
+              <m:mo>&gt;</m:mo>
+              <m:mi>θ</m:mi>
+              <m:mo>&gt;</m:mo>
+              <m:mn>0</m:mn>
+              <m:mo>.</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id293421">The sum of <m:math overflow="scroll"><m:mrow><m:msub><m:mi>B</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>B</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math> and <m:math overflow="scroll"><m:msub><m:mi>B</m:mi><m:mn>3</m:mn></m:msub></m:math>
+will be called the four point truss, <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mn>4</m:mn></m:msub></m:math>. The four point truss equilibrates the system of forces <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math> and <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mn>3</m:mn></m:msub></m:math>
+with points of application the intersection of <m:math overflow="scroll"><m:mrow><m:msub><m:mi>B</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>B</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math> and <m:math overflow="scroll"><m:msub><m:mi>B</m:mi><m:mn>3</m:mn></m:msub></m:math> resp. with the base of the triangle.
+We require</para>
+        <equation id="uid18">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:msub>
+                <m:mi>f</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>f</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>f</m:mi>
+                <m:mn>3</m:mn>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id293604">or</para>
+        <equation id="uid19">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:mrow>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:msub>
+                <m:mi>f</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mo>+</m:mo>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:msub>
+                <m:mi>f</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mo>=</m:mo>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:msub>
+                <m:mi>f</m:mi>
+                <m:mn>3</m:mn>
+              </m:msub>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mo form="prefix">sin</m:mo>
+                <m:mi>φ</m:mi>
+                <m:mo form="prefix">csc</m:mo>
+                <m:mi>θ</m:mi>
+                <m:mo>,</m:mo>
+                <m:mspace width="1.em"/>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:msub>
+                <m:mi>f</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mo>-</m:mo>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:msub>
+                <m:mi>f</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mo>=</m:mo>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:msub>
+                <m:mi>f</m:mi>
+                <m:mn>3</m:mn>
+              </m:msub>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mo form="prefix">cos</m:mo>
+                <m:mi>φ</m:mi>
+                <m:mo form="prefix">sec</m:mo>
+                <m:mi>θ</m:mi>
+                <m:mo>.</m:mo>
+              </m:mrow>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id293745">The simplicity of this truss allows an for a straight forward calculation of the cost.
+For <m:math overflow="scroll"><m:mrow><m:mi>i</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mn>3</m:mn></m:mrow></m:math> let <m:math overflow="scroll"><m:msub><m:mi>ω</m:mi><m:mi>i</m:mi></m:msub></m:math> and <m:math overflow="scroll"><m:msub><m:mi>λ</m:mi><m:mi>i</m:mi></m:msub></m:math> denote the strength and length resp. of beam <m:math overflow="scroll"><m:mrow><m:msub><m:mi>B</m:mi><m:mi>i</m:mi></m:msub><m:mo>.</m:mo></m:mrow></m:math>
+It is easy to see that for this truss to equilibrate the the strengths of each of individual beam must be equal to the force that is based on a point of the beam and aligned to it, thus:</para>
+        <equation id="id293821">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:msub>
+                <m:mi>ω</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mrow>
+                <m:mo>=</m:mo>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:msub>
+                <m:mi>f</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mo>,</m:mo>
+                <m:mspace width="1.em"/>
+              </m:mrow>
+              <m:msub>
+                <m:mi>ω</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mrow>
+                <m:mo>=</m:mo>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:msub>
+                <m:mi>f</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mo>,</m:mo>
+                <m:mspace width="1.em"/>
+              </m:mrow>
+              <m:msub>
+                <m:mi>ω</m:mi>
+                <m:mn>3</m:mn>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:mo>-</m:mo>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:msub>
+                  <m:mi>f</m:mi>
+                  <m:mn>3</m:mn>
+                </m:msub>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mo>.</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id293915">The lengths of the the <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mn>4</m:mn></m:msub></m:math> are also easily calculated.
+<m:math overflow="scroll"><m:msub><m:mi>B</m:mi><m:mn>1</m:mn></m:msub></m:math> and <m:math overflow="scroll"><m:msub><m:mi>B</m:mi><m:mn>2</m:mn></m:msub></m:math> being the equal sides of an isosceles triangle it might be superfluous to state that:</para>
+        <equation id="id293964">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:msub>
+                <m:mi>λ</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:msub>
+                <m:mi>λ</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id293991">With the use of trigonometry it is clear that</para>
+        <equation id="id293997">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:msub>
+                <m:mi>λ</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:msub>
+                <m:mi>λ</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:mi>l</m:mi>
+              <m:mfenced separators="" open="|" close="|">
+                <m:mo form="prefix">csc</m:mo>
+                <m:mi>θ</m:mi>
+              </m:mfenced>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id294043">and</para>
+        <equation id="id294048">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:msub>
+                <m:mi>λ</m:mi>
+                <m:mn>3</m:mn>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:mi>l</m:mi>
+              <m:mfenced separators="" open="|" close="|">
+                <m:mo form="prefix">csc</m:mo>
+                <m:mi>φ</m:mi>
+              </m:mfenced>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id294085">The cost of <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mn>4</m:mn></m:msub></m:math> is given by the formula</para>
+        <equation id="uid20">
+          <m:math overflow="scroll" mode="display">
+            <m:mtable displaystyle="true">
+              <m:mtr>
+                <m:mtd columnalign="right">
+                  <m:mrow>
+                    <m:mi> Cost </m:mi>
+                    <m:mo>(</m:mo>
+                    <m:msub>
+                      <m:mi>T</m:mi>
+                      <m:mn>4</m:mn>
+                    </m:msub>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∑</m:mo>
+                      <m:mrow>
+                        <m:mi>i</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                      <m:mn>3</m:mn>
+                    </m:munderover>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:msub>
+                        <m:mi>ω</m:mi>
+                        <m:mi>i</m:mi>
+                      </m:msub>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:msub>
+                      <m:mi>λ</m:mi>
+                      <m:mi>i</m:mi>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo>=</m:mo>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:msub>
+                      <m:mi>f</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>l</m:mi>
+                      <m:mo form="prefix">csc</m:mo>
+                      <m:mi>θ</m:mi>
+                      <m:mo>+</m:mo>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:msub>
+                      <m:mi>f</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>l</m:mi>
+                      <m:mo form="prefix">csc</m:mo>
+                      <m:mi>θ</m:mi>
+                      <m:mo>+</m:mo>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:msub>
+                      <m:mi>f</m:mi>
+                      <m:mn>3</m:mn>
+                    </m:msub>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>l</m:mi>
+                      <m:mo form="prefix">csc</m:mo>
+                      <m:mi>φ</m:mi>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo>=</m:mo>
+                      <m:mi>l</m:mi>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:msub>
+                      <m:mi>f</m:mi>
+                      <m:mn>3</m:mn>
+                    </m:msub>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mo form="prefix">sin</m:mo>
+                      <m:mi>φ</m:mi>
+                      <m:msup>
+                        <m:mo form="prefix">csc</m:mo>
+                        <m:mn>2</m:mn>
+                      </m:msup>
+                      <m:mi>θ</m:mi>
+                      <m:mo>+</m:mo>
+                      <m:mo form="prefix">csc</m:mo>
+                      <m:mi>φ</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>.</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:math>
+        </equation>
+        <para id="id294323">We have used <link target-id="uid19"/> in relating <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub><m:mrow><m:mo>|</m:mo></m:mrow></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>|</m:mo></m:mrow></m:mrow></m:math> to <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>f</m:mi><m:mn>3</m:mn></m:msub><m:mrow><m:mo>|</m:mo><m:mo>.</m:mo></m:mrow></m:mrow></m:math>
+Note that the cost is linear in <m:math overflow="scroll"><m:mi>l</m:mi></m:math> and diverges as <m:math overflow="scroll"><m:mrow><m:mi>θ</m:mi><m:mo>→</m:mo><m:mn>0</m:mn></m:mrow></m:math> or <m:math overflow="scroll"><m:mrow><m:mi>φ</m:mi><m:mo>→</m:mo><m:mn>0</m:mn><m:mo>.</m:mo></m:mrow></m:math></para>
+        <para id="id294440">
+          <figure id="id294443">
+            <media id="id294443_media" alt="">
+              <image mime-type="image/png" src="../../media/cut.png" id="id294443_onlineimage" width="945"><!-- NOTE: attribute width changes image size online (pixels). original width is 945. --></image>
+              <image mime-type="application/postscript" for="pdf" src="../../media/cut.eps" id="id294443_printimage" print-width="5.0in">
+                <!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+              </image>
+            </media>
+          </figure>
+        </para>
+        <para id="id294451">Having calculated the cost of the <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mn>4</m:mn></m:msub></m:math>
+we perturb the corner in order to produce a structure that may yield a lower cost compared to that of the <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mn>4</m:mn></m:msub></m:math>.
+Our main objective being that of investigation of the consequences or eliminating
+corners from an already existing truss.</para>
+        <para id="id294486">The modified truss will be obtained by removing the corner of the <m:math overflow="scroll"><m:mrow><m:msub><m:mi>T</m:mi><m:mn>4</m:mn></m:msub><m:mo>.</m:mo></m:mrow></m:math>
+A horizontal line parallel to the triangle base line a distance <m:math overflow="scroll"><m:mrow><m:mi>l</m:mi><m:mo>-</m:mo><m:mi>h</m:mi></m:mrow></m:math> from the base
+of the isosceles traingle is added.
+The beams <m:math overflow="scroll"><m:msubsup><m:mi>B</m:mi><m:mn>1</m:mn><m:mo>'</m:mo></m:msubsup></m:math> and <m:math overflow="scroll"><m:msubsup><m:mi>B</m:mi><m:mn>2</m:mn><m:mo>'</m:mo></m:msubsup></m:math> are formed by shortening
+<m:math overflow="scroll"><m:msub><m:mi>B</m:mi><m:mn>1</m:mn></m:msub></m:math> and <m:math overflow="scroll"><m:msub><m:mi>B</m:mi><m:mn>2</m:mn></m:msub></m:math> to where they intersect this added line.
+To mantain a truss structure <m:math overflow="scroll"><m:msub><m:mi>B</m:mi><m:mn>3</m:mn></m:msub></m:math> must be replaced by three new beams. <m:math overflow="scroll"><m:msub><m:mi>B</m:mi><m:mn>4</m:mn></m:msub></m:math> connects <m:math overflow="scroll"><m:msubsup><m:mi>B</m:mi><m:mn>1</m:mn><m:mo>'</m:mo></m:msubsup></m:math> and <m:math overflow="scroll"><m:msub><m:mi>B</m:mi><m:mn>2</m:mn></m:msub></m:math> in the place where the cut of the corner was made.
+<m:math overflow="scroll"><m:msubsup><m:mi>B</m:mi><m:mn>3</m:mn><m:mo>'</m:mo></m:msubsup></m:math> shares a connections point with <m:math overflow="scroll"><m:msub><m:mi>B</m:mi><m:mn>4</m:mn></m:msub></m:math> and <m:math overflow="scroll"><m:msubsup><m:mi>B</m:mi><m:mn>1</m:mn><m:mo>'</m:mo></m:msubsup></m:math> while <m:math overflow="scroll"><m:msubsup><m:mi>B</m:mi><m:mn>3</m:mn><m:mrow><m:mo>'</m:mo><m:mo>'</m:mo></m:mrow></m:msubsup></m:math> is connected to the node that is shared with both <m:math overflow="scroll"><m:msub><m:mi>B</m:mi><m:mn>4</m:mn></m:msub></m:math> and <m:math overflow="scroll"><m:msubsup><m:mi>B</m:mi><m:mn>2</m:mn><m:mo>'</m:mo></m:msubsup></m:math>.
+The shape of the new truss that is obtained is that of a trapezoid, the applied forces remain same as for <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mn>4</m:mn></m:msub></m:math>
+We shall hence forth refer to this truss structure and the five point tent truss, <m:math overflow="scroll"><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>5</m:mn><m:mo>,</m:mo><m:mi>h</m:mi></m:mrow></m:msub><m:mo>.</m:mo></m:mrow></m:math></para>
+        <para id="id294786">The complicated nature of the <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mrow><m:mn>5</m:mn><m:mo>,</m:mo><m:mi>h</m:mi></m:mrow></m:msub></m:math> makes the calculation of the lengths <m:math overflow="scroll"><m:msub><m:mi>λ</m:mi><m:mi>i</m:mi></m:msub></m:math>'s and strengths <m:math overflow="scroll"><m:msub><m:mi>ω</m:mi><m:mi>i</m:mi></m:msub></m:math>'s slightly less obvious than they were for the original <m:math overflow="scroll"><m:mrow><m:msub><m:mi>T</m:mi><m:mn>4</m:mn></m:msub><m:mo>.</m:mo></m:mrow></m:math>
+However, easy trigonometry and some calculations yield both the length's and the strengths of each individual beam.
+We use the same parameters to describe this truss as before, namely
+<m:math overflow="scroll"><m:mi>φ</m:mi></m:math>, <m:math overflow="scroll"><m:mi>θ</m:mi></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>l</m:mi><m:mo>.</m:mo></m:mrow></m:math>
+However, we need three more parameters to calculate the cost.
+These parameters are the following: <m:math overflow="scroll"><m:mi>h</m:mi></m:math> which describes the height of the cut and
+<m:math overflow="scroll"><m:msub><m:mi>φ</m:mi><m:mo>+</m:mo></m:msub></m:math> and <m:math overflow="scroll"><m:msub><m:mi>φ</m:mi><m:mn>2</m:mn></m:msub></m:math> represent the angle between the base and <m:math overflow="scroll"><m:msubsup><m:mi>B</m:mi><m:mn>3</m:mn><m:mo>'</m:mo></m:msubsup></m:math> and <m:math overflow="scroll"><m:msubsup><m:mi>B</m:mi><m:mn>3</m:mn><m:mrow><m:mo>'</m:mo><m:mo>'</m:mo></m:mrow></m:msubsup></m:math> resp.</para>
+        <para id="id294964">Keeping in mind some of the properties that govern the truss we have calculated the length's of each individual beams to be:</para>
+        <equation id="uid21">
+          <m:math overflow="scroll" mode="display">
+            <m:mtable displaystyle="true">
+              <m:mtr>
+                <m:mtd>
+                  <m:mrow>
+                    <m:msubsup>
+                      <m:mi>λ</m:mi>
+                      <m:mn>1</m:mn>
+                      <m:mo>'</m:mo>
+                    </m:msubsup>
+                    <m:mo>=</m:mo>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>l</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>h</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo form="prefix">csc</m:mo>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mrow>
+                    <m:msubsup>
+                      <m:mi>λ</m:mi>
+                      <m:mn>2</m:mn>
+                      <m:mo>'</m:mo>
+                    </m:msubsup>
+                    <m:mo>=</m:mo>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>l</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>h</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo form="prefix">csc</m:mo>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mrow>
+                    <m:msubsup>
+                      <m:mi>λ</m:mi>
+                      <m:mn>3</m:mn>
+                      <m:mo>'</m:mo>
+                    </m:msubsup>
+                    <m:mo>=</m:mo>
+                    <m:msqrt>
+                      <m:mrow>
+                        <m:msup>
+                          <m:mrow>
+                            <m:mo>(</m:mo>
+                            <m:mi>l</m:mi>
+                            <m:mo form="prefix">cot</m:mo>
+                            <m:mi>φ</m:mi>
+                            <m:mo>-</m:mo>
+                            <m:mi>h</m:mi>
+                            <m:mo form="prefix">cot</m:mo>
+                            <m:mi>θ</m:mi>
+                            <m:mo>)</m:mo>
+                          </m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:msup>
+                        <m:mo>+</m:mo>
+                        <m:msup>
+                          <m:mrow>
+                            <m:mo>(</m:mo>
+                            <m:mi>l</m:mi>
+                            <m:mo>-</m:mo>
+                            <m:mi>h</m:mi>
+                            <m:mo>)</m:mo>
+                          </m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:msup>
+                      </m:mrow>
+                    </m:msqrt>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mrow>
+                    <m:msubsup>
+                      <m:mi>λ</m:mi>
+                      <m:mn>3</m:mn>
+                      <m:mrow>
+                        <m:mo>'</m:mo>
+                        <m:mo>'</m:mo>
+                      </m:mrow>
+                    </m:msubsup>
+                    <m:mo>=</m:mo>
+                    <m:msqrt>
+                      <m:mrow>
+                        <m:msup>
+                          <m:mrow>
+                            <m:mo>(</m:mo>
+                            <m:mi>l</m:mi>
+                            <m:mo form="prefix">cot</m:mo>
+                            <m:mi>φ</m:mi>
+                            <m:mo>+</m:mo>
+                            <m:mi>h</m:mi>
+                            <m:mo form="prefix">cot</m:mo>
+                            <m:mi>θ</m:mi>
+                            <m:mo>)</m:mo>
+                          </m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:msup>
+                        <m:mo>+</m:mo>
+                        <m:msup>
+                          <m:mrow>
+                            <m:mo>(</m:mo>
+                            <m:mi>l</m:mi>
+                            <m:mo>-</m:mo>
+                            <m:mi>h</m:mi>
+                            <m:mo>)</m:mo>
+                          </m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:msup>
+                      </m:mrow>
+                    </m:msqrt>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mrow>
+                    <m:msub>
+                      <m:mi>λ</m:mi>
+                      <m:mn>4</m:mn>
+                    </m:msub>
+                    <m:mo>=</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mi>h</m:mi>
+                    <m:mo form="prefix">cot</m:mo>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:math>
+        </equation>
+        <para id="id295219">The magnitude of strengths are similarly calculated to be:
+</para>
+        <equation id="uid22">
+          <m:math overflow="scroll" mode="display">
+            <m:mtable displaystyle="true">
+              <m:mtr>
+                <m:mtd>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:msubsup>
+                      <m:mi>ω</m:mi>
+                      <m:mn>1</m:mn>
+                      <m:mo>'</m:mo>
+                    </m:msubsup>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>=</m:mo>
+                    </m:mrow>
+                    <m:mfenced separators="" open="|" close="|">
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mn>1</m:mn>
+                      </m:msub>
+                    </m:mfenced>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:msubsup>
+                      <m:mi>ω</m:mi>
+                      <m:mn>2</m:mn>
+                      <m:mo>'</m:mo>
+                    </m:msubsup>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>=</m:mo>
+                    </m:mrow>
+                    <m:mfenced separators="" open="|" close="|">
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:msub>
+                    </m:mfenced>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:msubsup>
+                      <m:mi>ω</m:mi>
+                      <m:mn>3</m:mn>
+                      <m:mo>'</m:mo>
+                    </m:msubsup>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>=</m:mo>
+                    </m:mrow>
+                    <m:mfenced separators="" open="|" close="|">
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mn>1</m:mn>
+                      </m:msub>
+                    </m:mfenced>
+                    <m:mo form="prefix">sin</m:mo>
+                    <m:mi>θ</m:mi>
+                    <m:mo form="prefix">csc</m:mo>
+                    <m:msub>
+                      <m:mi>φ</m:mi>
+                      <m:mo>+</m:mo>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:msubsup>
+                      <m:mi>ω</m:mi>
+                      <m:mn>3</m:mn>
+                      <m:mrow>
+                        <m:mo>'</m:mo>
+                        <m:mo>'</m:mo>
+                      </m:mrow>
+                    </m:msubsup>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>=</m:mo>
+                    </m:mrow>
+                    <m:mfenced separators="" open="|" close="|">
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:msub>
+                    </m:mfenced>
+                    <m:mo form="prefix">sin</m:mo>
+                    <m:mi>θ</m:mi>
+                    <m:mo form="prefix">csc</m:mo>
+                    <m:msub>
+                      <m:mi>φ</m:mi>
+                      <m:mo>-</m:mo>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:msub>
+                      <m:mi>ω</m:mi>
+                      <m:mn>4</m:mn>
+                    </m:msub>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>=</m:mo>
+                    </m:mrow>
+                    <m:mfenced separators="" open="|" close="|">
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mn>1</m:mn>
+                      </m:msub>
+                    </m:mfenced>
+                    <m:mo form="prefix">cos</m:mo>
+                    <m:mi>θ</m:mi>
+                    <m:mo>+</m:mo>
+                    <m:mfenced separators="" open="|" close="|">
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mn>1</m:mn>
+                      </m:msub>
+                    </m:mfenced>
+                    <m:mo form="prefix">sin</m:mo>
+                    <m:mi>θ</m:mi>
+                    <m:mo form="prefix">cot</m:mo>
+                    <m:msub>
+                      <m:mi>φ</m:mi>
+                      <m:mo>+</m:mo>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:math>
+        </equation>
+        <para id="id295520">Having acquired all the information we require we can now calculate the cost of the <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mrow><m:mn>5</m:mn><m:mo>,</m:mo><m:mi>h</m:mi></m:mrow></m:msub></m:math>:</para>
+        <equation id="uid23">
+          <m:math overflow="scroll" mode="display">
+            <m:mtable displaystyle="true">
+              <m:mtr>
+                <m:mtd columnalign="right">
+                  <m:mrow>
+                    <m:mi> Cost </m:mi>
+                    <m:mo>(</m:mo>
+                    <m:msub>
+                      <m:mi>T</m:mi>
+                      <m:mrow>
+                        <m:mn>5</m:mn>
+                        <m:mo>,</m:mo>
+                        <m:mi>h</m:mi>
+                      </m:mrow>
+                    </m:msub>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∑</m:mo>
+                      <m:mrow>
+                        <m:mi>i</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                      <m:mi>ν</m:mi>
+                    </m:munderover>
+                    <m:msub>
+                      <m:mi>ω</m:mi>
+                      <m:mi>i</m:mi>
+                    </m:msub>
+                    <m:msub>
+                      <m:mi>λ</m:mi>
+                      <m:mi>i</m:mi>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>=</m:mo>
+                    <m:mfenced separators="" open="|" close="|">
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mn>1</m:mn>
+                      </m:msub>
+                    </m:mfenced>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>l</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>h</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo form="prefix">csc</m:mo>
+                    <m:mi>θ</m:mi>
+                    <m:mo>+</m:mo>
+                    <m:mfenced separators="" open="|" close="|">
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:msub>
+                    </m:mfenced>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>l</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>h</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo form="prefix">csc</m:mo>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>+</m:mo>
+                    <m:mfenced separators="" open="|" close="|">
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mn>1</m:mn>
+                      </m:msub>
+                    </m:mfenced>
+                    <m:mo form="prefix">sin</m:mo>
+                    <m:mi>θ</m:mi>
+                    <m:mo form="prefix">csc</m:mo>
+                    <m:msub>
+                      <m:mi>φ</m:mi>
+                      <m:mo>+</m:mo>
+                    </m:msub>
+                    <m:msqrt>
+                      <m:mrow>
+                        <m:msup>
+                          <m:mrow>
+                            <m:mo>(</m:mo>
+                            <m:mi>l</m:mi>
+                            <m:mo form="prefix">cot</m:mo>
+                            <m:mi>φ</m:mi>
+                            <m:mo>-</m:mo>
+                            <m:mi>h</m:mi>
+                            <m:mo form="prefix">cot</m:mo>
+                            <m:mi>θ</m:mi>
+                            <m:mo>)</m:mo>
+                          </m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:msup>
+                        <m:mo>+</m:mo>
+                        <m:msup>
+                          <m:mrow>
+                            <m:mo>(</m:mo>
+                            <m:mi>l</m:mi>
+                            <m:mo>-</m:mo>
+                            <m:mi>h</m:mi>
+                            <m:mo>)</m:mo>
+                          </m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:msup>
+                      </m:mrow>
+                    </m:msqrt>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>+</m:mo>
+                    <m:mfenced separators="" open="|" close="|">
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:msub>
+                    </m:mfenced>
+                    <m:mo form="prefix">sin</m:mo>
+                    <m:mi>θ</m:mi>
+                    <m:mo form="prefix">csc</m:mo>
+                    <m:msub>
+                      <m:mi>φ</m:mi>
+                      <m:mo>-</m:mo>
+                    </m:msub>
+                    <m:msqrt>
+                      <m:mrow>
+                        <m:msup>
+                          <m:mrow>
+                            <m:mo>(</m:mo>
+                            <m:mi>l</m:mi>
+                            <m:mo form="prefix">cot</m:mo>
+                            <m:mi>φ</m:mi>
+                            <m:mo>+</m:mo>
+                            <m:mi>h</m:mi>
+                            <m:mo form="prefix">cot</m:mo>
+                            <m:mi>θ</m:mi>
+                            <m:mo>)</m:mo>
+                          </m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:msup>
+                        <m:mo>+</m:mo>
+                        <m:msup>
+                          <m:mrow>
+                            <m:mo>(</m:mo>
+                            <m:mi>l</m:mi>
+                            <m:mo>-</m:mo>
+                            <m:mi>h</m:mi>
+                            <m:mo>)</m:mo>
+                          </m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:msup>
+                      </m:mrow>
+                    </m:msqrt>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>+</m:mo>
+                    <m:mfenced separators="" open="|" close="|">
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mn>1</m:mn>
+                      </m:msub>
+                    </m:mfenced>
+                    <m:mo form="prefix">cos</m:mo>
+                    <m:mi>θ</m:mi>
+                    <m:mo>+</m:mo>
+                    <m:mfenced separators="" open="|" close="|">
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mn>1</m:mn>
+                      </m:msub>
+                    </m:mfenced>
+                    <m:mo form="prefix">sin</m:mo>
+                    <m:mi>θ</m:mi>
+                    <m:mo form="prefix">cot</m:mo>
+                    <m:msub>
+                      <m:mi>φ</m:mi>
+                      <m:mo>+</m:mo>
+                    </m:msub>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mn>2</m:mn>
+                      <m:mi>h</m:mi>
+                      <m:mo form="prefix">cot</m:mo>
+                      <m:mi>θ</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:math>
+        </equation>
+        <para id="id295976">In order to check that the perturbation lowers the cost for some sufficiently small <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mo>,</m:mo></m:mrow></m:math> we
+differentiate this expression and evaluate the derivate at <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo></m:mrow></m:math>
+Even further simplification reduces the formula to the following somewhat complicated expression:</para>
+        <equation id="id296011">
+          <m:math overflow="scroll" mode="display">
+            <m:mtable displaystyle="true">
+              <m:mtr>
+                <m:mtd columnalign="right">
+                  <m:mrow>
+                    <m:mfrac>
+                      <m:mi>d</m:mi>
+                      <m:mrow>
+                        <m:mi>d</m:mi>
+                        <m:mi>h</m:mi>
+                      </m:mrow>
+                    </m:mfrac>
+                    <m:mi> Cost </m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:msub>
+                        <m:mi>T</m:mi>
+                        <m:mrow>
+                          <m:mn>5</m:mn>
+                          <m:mo>,</m:mo>
+                          <m:mi>h</m:mi>
+                        </m:mrow>
+                      </m:msub>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:msub>
+                      <m:mo>|</m:mo>
+                      <m:mrow>
+                        <m:mi>h</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>=</m:mo>
+                    <m:mfenced separators="" open="|" close="|">
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mn>1</m:mn>
+                      </m:msub>
+                    </m:mfenced>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mo form="prefix">csc</m:mo>
+                      <m:mi>θ</m:mi>
+                      <m:mo>+</m:mo>
+                      <m:mo form="prefix">sin</m:mo>
+                      <m:mi>θ</m:mi>
+                    </m:mrow>
+                    <m:msup>
+                      <m:mo form="prefix">cos</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:msup>
+                    <m:mi>φ</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mo form="prefix">cot</m:mo>
+                      <m:mi>θ</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mo form="prefix">cot</m:mo>
+                      <m:mi>φ</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mo form="prefix">sin</m:mo>
+                    <m:mi>θ</m:mi>
+                    <m:mo>(</m:mo>
+                    <m:mo form="prefix">cot</m:mo>
+                    <m:mi>φ</m:mi>
+                    <m:mo form="prefix">cot</m:mo>
+                    <m:mi>θ</m:mi>
+                    <m:mo>+</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>)</m:mo>
+                    <m:mo>+</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo form="prefix">cot</m:mo>
+                    <m:mi>θ</m:mi>
+                    <m:mo>(</m:mo>
+                    <m:mo form="prefix">cos</m:mo>
+                    <m:mi>θ</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mo form="prefix">sin</m:mo>
+                    <m:mi>θ</m:mi>
+                    <m:mo form="prefix">cot</m:mo>
+                    <m:mi>φ</m:mi>
+                    <m:mo>)</m:mo>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>+</m:mo>
+                    <m:mfenced separators="" open="|" close="|">
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:msub>
+                    </m:mfenced>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mo form="prefix">csc</m:mo>
+                      <m:mi>θ</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mo form="prefix">sin</m:mo>
+                      <m:mi>θ</m:mi>
+                    </m:mrow>
+                    <m:msup>
+                      <m:mo form="prefix">cos</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:msup>
+                    <m:mi>φ</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mo form="prefix">cot</m:mo>
+                      <m:mi>φ</m:mi>
+                      <m:mo>+</m:mo>
+                      <m:mo form="prefix">cot</m:mo>
+                      <m:mi>θ</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>+</m:mo>
+                    <m:mo form="prefix">sin</m:mo>
+                    <m:mi>θ</m:mi>
+                    <m:mo>(</m:mo>
+                    <m:mo form="prefix">cot</m:mo>
+                    <m:mi>φ</m:mi>
+                    <m:mo form="prefix">cot</m:mo>
+                    <m:mi>θ</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>)</m:mo>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:math>
+        </equation>
+        <para id="id296343">With the help of the above analsysis, we have shown that</para><equation id="id296356">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:mfrac>
+                <m:mi>d</m:mi>
+                <m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:mi>h</m:mi>
+                </m:mrow>
+              </m:mfrac>
+              <m:mi> Cost </m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:msub>
+                  <m:mi>T</m:mi>
+                  <m:mrow>
+                    <m:mn>5</m:mn>
+                    <m:mo>,</m:mo>
+                    <m:mi>h</m:mi>
+                  </m:mrow>
+                </m:msub>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:msub>
+                <m:mo>|</m:mo>
+                <m:mrow>
+                  <m:mi>h</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mn>0</m:mn>
+                </m:mrow>
+              </m:msub>
+              <m:mo>&lt;</m:mo>
+              <m:mn>0</m:mn>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id296413">independent of <m:math overflow="scroll"><m:mrow><m:mi>l</m:mi><m:mo>,</m:mo><m:mi>θ</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>φ</m:mi><m:mo>.</m:mo></m:mrow></m:math> This proves the claim that two dimensional trusses
+cannot have corners.</para>
+      </section>
+      <section id="uid24">
+        <title>Other Deformations</title>
+        <para id="id296456">Other deformations of trusses worth considering are
+perturbations of other junctions. Consider the case when
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>B</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:mo>⋯</m:mo><m:mo>,</m:mo><m:msub><m:mi>B</m:mi><m:mi>m</m:mi></m:msub></m:mrow></m:math> are beams meeting at a point <m:math overflow="scroll"><m:mrow><m:mi>p</m:mi><m:mo>.</m:mo></m:mrow></m:math> Suppose we shorten
+each beam by introducing a polyhedron about <m:math overflow="scroll"><m:mi>p</m:mi></m:math> whose <m:math overflow="scroll"><m:mi>m</m:mi></m:math> vertices
+meet the beams <m:math overflow="scroll"><m:mrow><m:msub><m:mi>B</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:mo>⋯</m:mo><m:mo>,</m:mo><m:msub><m:mi>B</m:mi><m:mi>m</m:mi></m:msub></m:mrow></m:math> and each edge represents the location of a new beam.
+From Lemma 4 above we see that the cost does not change with
+the perturbation if the junction consists of only cables of only bars. This study
+would help rule out certain cases when both cables and bars meet at a junction.</para>
+        <para id="id296552">A second deformation consists of making piecewise affine deformations
+within a triangle as follows; divide the triangle into three sub-triangles
+with common vertex in the center. Choose a base and let <m:math overflow="scroll"><m:msub><m:mi>A</m:mi><m:mi>ρ</m:mi></m:msub></m:math> be the affine transformation of <m:math overflow="scroll"><m:msup><m:mi mathvariant="double-struck">R</m:mi><m:mn>2</m:mn></m:msup></m:math>
+which maps points <m:math overflow="scroll"><m:mi>x</m:mi></m:math> to points <m:math overflow="scroll"><m:mrow><m:msub><m:mi>A</m:mi><m:mi>ρ</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> whose distance to the line passing through the base is
+scaled by <m:math overflow="scroll"><m:mrow><m:mi>ρ</m:mi><m:mo>.</m:mo></m:mrow></m:math> The affine transformations in the remaining triangles is uniquely determined by continuity.
+Thus, <m:math overflow="scroll"><m:mrow><m:msub><m:mi>η</m:mi><m:mi>ρ</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> be the unique piecewise affine transformation of <m:math overflow="scroll"><m:msup><m:mi mathvariant="double-struck">R</m:mi><m:mn>2</m:mn></m:msup></m:math>
+with <m:math overflow="scroll"><m:mrow><m:msub><m:mi>η</m:mi><m:mi>ρ</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>x</m:mi></m:mrow></m:math> for <m:math overflow="scroll"><m:mi>x</m:mi></m:math> not in the triangle and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>η</m:mi><m:mi>ρ</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msub><m:mi>A</m:mi><m:mi>ρ</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> for <m:math overflow="scroll"><m:mi>x</m:mi></m:math> in the first sub-triangle.
+Applying <m:math overflow="scroll"><m:msub><m:mi>η</m:mi><m:mi>ρ</m:mi></m:msub></m:math> to a truss and then adding the necessary beams to ensure that is equilibrated
+then yields the perturbation.</para>
+      </section>
+    </section>
+  </content>
+</document>
